@@ -103,12 +103,13 @@ def run_inspection(repo_root: Path, year: int) -> int:
     _write_json(validation_dir / "raw_inspection_summary.json", summary)
 
     manifest_path = repo_root / "subway" / "data_manifest.csv"
-    if manifest_path.exists() and manifest_path.stat().st_size:
-        existing = pd.read_csv(manifest_path, dtype=str, keep_default_na=False)
-    else:
-        existing = pd.DataFrame(columns=MANIFEST_COLUMNS)
-    merged = merge_manifest(existing, inventory, year)
-    _write_csv(manifest_path, merged)
+    if not counts["ERROR"]:
+        if manifest_path.exists() and manifest_path.stat().st_size:
+            existing = pd.read_csv(manifest_path, dtype=str, keep_default_na=False)
+        else:
+            existing = pd.DataFrame(columns=MANIFEST_COLUMNS)
+        merged = merge_manifest(existing, inventory, year)
+        _write_csv(manifest_path, merged)
 
     return 1 if counts["ERROR"] else 0
 
