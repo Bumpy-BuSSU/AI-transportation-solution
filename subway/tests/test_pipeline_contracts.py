@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import pandas as pd
 import yaml
@@ -127,6 +128,60 @@ class PipelineContractsTests(unittest.TestCase):
             first = write_artifacts(root, frames, {})
             second = write_artifacts(root, {k: v.iloc[::-1] for k, v in frames.items()}, {})
             self.assertEqual(first, second)
+
+    def test_native_ordering_with_declared_unique_sort_columns(self):
+        frame=pd.DataFrame({'source_row_id':pd.Series([3,1,2],dtype='Int64'),
+                            'count':pd.Series([0,pd.NA,5],dtype='Int64'),
+                            'name':pd.Series(['C','A','B'],dtype='string')})
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(pd.DataFrame,'itertuples',side_effect=AssertionError('row-wise Python sorting forbidden')):
+                first=write_artifacts(Path(tmp),{'values.parquet':frame},{},sort_columns={'values.parquet':['source_row_id']})
+                second=write_artifacts(Path(tmp),{'values.parquet':frame.iloc[::-1]},{},sort_columns={'values.parquet':['source_row_id']})
+            self.assertEqual(first,second)
+            self.assertEqual(pd.read_parquet(Path(tmp)/'values.parquet').source_row_id.tolist(),[1,2,3])
+            for keys in [['unknown'],[],['name','name']]:
+                with self.subTest(keys=keys),self.assertRaises(ValueError):
+                    write_artifacts(Path(tmp),{'values.csv':frame},{},sort_columns={'values.csv':keys})
+            tied=frame.copy(); tied['source_row_id']=1
+            with self.assertRaises(ValueError):
+                write_artifacts(Path(tmp),{'values.csv':tied},{},sort_columns={'values.csv':['source_row_id']})
+
+    def test_native_default_ordering_and_explicit_null_last(self):
+        frame=pd.DataFrame({'count':pd.Series([2,pd.NA,1],dtype='Int64'),
+                            'name':pd.Series(['B','C','A'],dtype='string')})
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(pd.DataFrame,'itertuples',side_effect=AssertionError('row-wise Python sorting forbidden')):
+                first=write_artifacts(Path(tmp),{'values.parquet':frame},{})
+                second=write_artifacts(Path(tmp),{'values.parquet':frame.iloc[::-1]},{})
+            self.assertEqual(first,second)
+            loaded=pd.read_parquet(Path(tmp)/'values.parquet')
+            self.assertEqual(loaded['count'].iloc[:2].tolist(),[1,2])
+            self.assertTrue(pd.isna(loaded['count'].iloc[-1]))
+
+    def test_geoparquet_ordering_preserves_geometry_and_crs(self):
+        import geopandas as gpd
+        from shapely.geometry import Point
+        frame=gpd.GeoDataFrame({'id':['b','a']},geometry=[Point(1,2),Point(3,4)],crs='EPSG:4326')
+        with tempfile.TemporaryDirectory() as tmp:
+            first=write_artifacts(Path(tmp),{'geo.parquet':frame},{})
+            second=write_artifacts(Path(tmp),{'geo.parquet':frame.iloc[::-1]},{})
+            self.assertEqual(first,second)
+            loaded=gpd.read_parquet(Path(tmp)/'geo.parquet')
+            self.assertEqual(loaded.crs,frame.crs)
+            self.assertEqual(loaded.geometry.to_wkb().tolist(),frame.iloc[::-1].geometry.to_wkb().tolist())
+
+    def test_signed_zero_order_is_deterministic_and_values_preserved(self):
+        import numpy as np
+        for dtype in ['float64','Float64','float32']:
+            with self.subTest(dtype=dtype),tempfile.TemporaryDirectory() as tmp:
+                frame=pd.DataFrame({'value':pd.Series([0.0,-0.0,None],dtype=dtype)})
+                root=Path(tmp); frames={'zeros.csv':frame,'zeros.parquet':frame}
+                first=write_artifacts(root,frames,{})
+                second=write_artifacts(root,{k:v.iloc[::-1] for k,v in frames.items()},{})
+                self.assertEqual(first,second)
+                loaded=pd.read_parquet(root/'zeros.parquet')
+                self.assertEqual(np.signbit(loaded.value.iloc[:2].to_numpy(dtype=float)).tolist(),[False,True])
+                self.assertTrue(pd.isna(loaded.value.iloc[-1]))
 
     def test_missing_format_metadata_is_configuration_error(self):
         with tempfile.TemporaryDirectory() as tmp:

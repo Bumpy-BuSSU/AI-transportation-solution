@@ -2,6 +2,7 @@ import json
 from pathlib import Path, PurePosixPath, PureWindowsPath
 
 import pandas as pd
+import numpy as np
 
 from subway.src.utils.hashing import sha256_file
 
@@ -21,19 +22,29 @@ def _check_metadata(value):
         raise ValueError('absolute local path is not allowed in versioned artifacts')
 
 
-def _sort_token(value):
-    if hasattr(value, 'wkb_hex'):
-        return ('geometry', value.wkb_hex)
-    if pd.isna(value):
-        return ('null', '')
-    if isinstance(value, pd.Timestamp):
-        return ('timestamp', value.isoformat())
-    return (type(value).__module__ + '.' + type(value).__qualname__, str(value))
+def _ordering_column(series):
+    if hasattr(series, 'to_wkb'):
+        return series.to_wkb(hex=True)
+    if series.dtype == object and pd.api.types.infer_dtype(series, skipna=True) not in {'string', 'bytes', 'empty'}:
+        # Exceptional mixed object keys need type-aware tokens. Typed large tables
+        # use the native path; callers can select typed keys to avoid this fallback.
+        return series.map(lambda v: type(v).__module__ + '.' + type(v).__qualname__ + ':' + repr(v), na_action='ignore')
+    return series
 
 
-def write_artifacts(output_dir: Path, frames: dict[str, pd.DataFrame], summary: dict) -> dict[str, str]:
-    """Byte-stable within the same writer/library environment; retain declared columns/dtypes."""
+def write_artifacts(output_dir: Path, frames: dict[str, pd.DataFrame], summary: dict,
+                    *, sort_columns: dict[str, list[str]] | None = None) -> dict[str, str]:
+    """Byte-stable only in the same declared writer/library environment.
+
+    Sort ascending with nulls last. Default keys are all columns in declared
+    schema order; explicit per-artifact keys must be unique to prevent input-order
+    ties. For large ridership tables, declare typed provenance/hour keys.
+    Serialization retains declared columns, nullable dtypes and GeoDataFrame CRS.
+    """
     _check_metadata(summary)
+    sort_columns = sort_columns or {}
+    if set(sort_columns) - set(frames):
+        raise ValueError('sort contract references an unknown artifact')
     output_dir.mkdir(parents=True, exist_ok=True)
     hashes = {}
     for name in sorted(frames):
@@ -42,12 +53,27 @@ def write_artifacts(output_dir: Path, frames: dict[str, pd.DataFrame], summary: 
         frame = frames[name].copy()
         if frame.columns.duplicated().any():
             raise ValueError('duplicate artifact columns')
+        columns = sort_columns.get(name, list(frame.columns))
+        if not columns or len(set(columns)) != len(columns) or any(c not in frame for c in columns):
+            raise ValueError('sort columns must be a nonempty unique subset of the schema')
+        if name in sort_columns and frame.duplicated(columns, keep=False).any():
+            raise ValueError('declared sort columns must uniquely identify rows')
         for col in frame.select_dtypes(include=['object', 'string']).columns:
             for value in frame[col].dropna().unique():
                 _check_metadata(value)
         if not frame.empty:
-            keys = [tuple(_sort_token(v) for v in row) for row in frame.itertuples(index=False, name=None)]
-            frame = frame.iloc[sorted(range(len(keys)), key=keys.__getitem__)]
+            # Only selected columns participate; no Python row/cell tuple matrix.
+            keys = {}
+            for c in columns:
+                series = frame[c].reset_index(drop=True)
+                keys[len(keys)] = _ordering_column(series)
+                if pd.api.types.is_float_dtype(series.dtype):
+                    # Native numeric sorting ties +0/-0; serialized bytes do not.
+                    # Preserve values and resolve the tie with a vectorized bit.
+                    keys[len(keys)] = np.signbit(series.to_numpy(dtype=np.float64, na_value=np.nan))
+            ordering = pd.DataFrame(keys)
+            positions = ordering.sort_values(list(ordering.columns), kind='stable', na_position='last').index
+            frame = frame.iloc[positions]
         frame = frame.reset_index(drop=True)
         path = output_dir / name
         if name.endswith('.csv'):
