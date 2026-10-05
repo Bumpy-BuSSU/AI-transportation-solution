@@ -10,3 +10,179 @@ senior_excess_policy:
   rate_denominator: null
   concentration_rule: null
   evidence: null
+ridership:
+  boarding_map:
+    승차: boarding
+    하차: alighting
+  line_map:
+    1호선: '1'
+    2호선: '2'
+    3호선: '3'
+    4호선: '4'
+    5호선: '5'
+    6호선: '6'
+    7호선: '7'
+    8호선: '8'
+  time_bins:
+    senior_ridership:
+      06시간대이전:
+        hour_bin: before_06
+        hour_start: null
+        hour_end: 6
+      06-07시간대:
+        hour_bin: '06_07'
+        hour_start: 6
+        hour_end: 7
+      07-08시간대:
+        hour_bin: 07_08
+        hour_start: 7
+        hour_end: 8
+      08-09시간대:
+        hour_bin: 08_09
+        hour_start: 8
+        hour_end: 9
+      09-10시간대:
+        hour_bin: 09_10
+        hour_start: 9
+        hour_end: 10
+      10-11시간대:
+        hour_bin: '10_11'
+        hour_start: 10
+        hour_end: 11
+      11-12시간대:
+        hour_bin: '11_12'
+        hour_start: 11
+        hour_end: 12
+      12-13시간대:
+        hour_bin: '12_13'
+        hour_start: 12
+        hour_end: 13
+      13-14시간대:
+        hour_bin: '13_14'
+        hour_start: 13
+        hour_end: 14
+      14-15시간대:
+        hour_bin: '14_15'
+        hour_start: 14
+        hour_end: 15
+      15-16시간대:
+        hour_bin: '15_16'
+        hour_start: 15
+        hour_end: 16
+      16-17시간대:
+        hour_bin: '16_17'
+        hour_start: 16
+        hour_end: 17
+      17-18시간대:
+        hour_bin: '17_18'
+        hour_start: 17
+        hour_end: 18
+      18-19시간대:
+        hour_bin: '18_19'
+        hour_start: 18
+        hour_end: 19
+      19-20시간대:
+        hour_bin: '19_20'
+        hour_start: 19
+        hour_end: 20
+      20-21시간대:
+        hour_bin: '20_21'
+        hour_start: 20
+        hour_end: 21
+      21-22시간대:
+        hour_bin: '21_22'
+        hour_start: 21
+        hour_end: 22
+      22-23시간대:
+        hour_bin: '22_23'
+        hour_start: 22
+        hour_end: 23
+      23-24시간대:
+        hour_bin: '23_24'
+        hour_start: 23
+        hour_end: 24
+      24시간대이후:
+        hour_bin: after_24
+        hour_start: 24
+        hour_end: null
+    total_ridership:
+      06시이전:
+        hour_bin: before_06
+        hour_start: null
+        hour_end: 6
+      06-07시간대:
+        hour_bin: '06_07'
+        hour_start: 6
+        hour_end: 7
+      07-08시간대:
+        hour_bin: 07_08
+        hour_start: 7
+        hour_end: 8
+      08-09시간대:
+        hour_bin: 08_09
+        hour_start: 8
+        hour_end: 9
+      09-10시간대:
+        hour_bin: 09_10
+        hour_start: 9
+        hour_end: 10
+      10-11시간대:
+        hour_bin: '10_11'
+        hour_start: 10
+        hour_end: 11
+      11-12시간대:
+        hour_bin: '11_12'
+        hour_start: 11
+        hour_end: 12
+      12-13시간대:
+        hour_bin: '12_13'
+        hour_start: 12
+        hour_end: 13
+      13-14시간대:
+        hour_bin: '13_14'
+        hour_start: 13
+        hour_end: 14
+      14-15시간대:
+        hour_bin: '14_15'
+        hour_start: 14
+        hour_end: 15
+      15-16시간대:
+        hour_bin: '15_16'
+        hour_start: 15
+        hour_end: 16
+      16-17시간대:
+        hour_bin: '16_17'
+        hour_start: 16
+        hour_end: 17
+      17-18시간대:
+        hour_bin: '17_18'
+        hour_start: 17
+        hour_end: 18
+      18-19시간대:
+        hour_bin: '18_19'
+        hour_start: 18
+        hour_end: 19
+      19-20시간대:
+        hour_bin: '19_20'
+        hour_start: 19
+        hour_end: 20
+      20-21시간대:
+        hour_bin: '20_21'
+        hour_start: 20
+        hour_end: 21
+      21-22시간대:
+        hour_bin: '21_22'
+        hour_start: 21
+        hour_end: 22
+      22-23시간대:
+        hour_bin: '22_23'
+        hour_start: 22
+        hour_end: 23
+      23-24시간대:
+        hour_bin: '23_24'
+        hour_start: 23
+        hour_end: 24
+      24시이후:
+        hour_bin: after_24
+        hour_start: 24
+        hour_end: null
