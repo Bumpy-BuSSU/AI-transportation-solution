@@ -26,6 +26,28 @@
 - 강수·적설 blank는 의미 확인 전 NaN 유지. Station CRS는 공식 metadata 또는 충분한 source evidence 확인 전 설정하지 않는다.
 - 모든 구현 Task는 RED → minimal implementation → GREEN → 관련 regression → 해당 파일만 commit 순서로 진행한다.
 
+## Research Context와 해석 범위
+
+전체 팀 주제는 **“탄소중립 교통 전환 속 고령자의 이동 선택권 격차 분석 — 공공자전거와 도시철도를 중심으로”**이며, 이 계획은 subway 분석만 다룬다.
+
+현재 subway working question은 **“극한기온은 서울 고령층의 지하철 이용 패턴을 어떻게 변화시키며, 이러한 변화는 기존 교통 혼잡 및 기후대응 공간의 부족과 어떤 관계가 있는가?”**이다.
+
+- Primary testable question: “극한기온에서 65세 이상 고령층의 지하철 이용 변화가 비고령층과 다르게 나타나는가?”
+- Secondary hypothesis question: “연령별 차이가 존재한다면 그 차이가 10~16시 daytime/off-peak에서 더 강하게 나타나는가?” Daytime의 최종 정의와 검증은 분석 Stage에서 수행한다.
+
+연구질문은 현재 working question으로 확정되어 있다. 최종보고서 문장은 분석결과 후 조정할 수 있으며 분석결과·정책결론은 아직 없다. Aggregate ridership으로 trip purpose를 직접 증명할 수 없으므로 향후 해석은 최대 **“기후회피형 이동과 일치하는 패턴”** 수준으로 제한한다. Stage 2는 이 가설을 검정하지 않는다.
+
+현재 7개 Raw에는 일별 실제 혼잡을 검증할 core congestion dataset이 없다. **혼잡과의 관계는 Stage 2 증거 범위 밖**이다. 적합한 congestion dataset 확보 후 secondary analysis로 추가하거나 분석 단계에서 최종 연구질문의 범위를 조정한다. 현재 자료로 혼잡 결과를 예고하거나 추론하지 않는다. Shelter는 clean auxiliary spatial layer로 유지하며 기후대응 공간 부족에 대한 결과도 아직 확정하지 않는다.
+
+## Stage 2 information-preservation contract
+
+후속 분석 단위 **date × station × hour_bin × boarding/alighting × age comparison**을 손실 없이 보존한다. Age comparison은 별도 연령 long table을 지금 강제 생성한다는 뜻이 아니라 senior/non_senior를 동일 key에서 비교할 수 있도록 유지한다는 계약이다.
+
+- 20개 time bin을 임의 집계하지 않는다. 10~16시 indicator는 Stage 2에서 만들 필요가 없으며 이후 원래 hour_bin으로부터 생성 가능해야 한다.
+- Station-level heterogeneity 분석을 위해 canonical_station_id를 보존한다. Boarding/alighting을 합치거나 station/date/hour 단위를 축약하지 않는다.
+- Senior, total, non_senior, senior_share 각각의 source row·hour column·양쪽 join provenance와 파생식·유효성 조건을 보존한다. 미매칭·rejected·파생 null의 이유도 추적 가능해야 한다.
+- Weather는 core panel에 강제 join하지 않지만 서울 ASOS 108의 unique daily date key와 2024 coverage를 보존해 이후 date 기준으로 행 손실·증식 없는 join이 가능해야 한다. Population/shelter도 core panel에 강제 결합하지 않는다.
+
 ## Review Focus
 
 1. 역명 변경·문장부호·괄호와 호선 표기 차이: alias 없이는 임의 동치화 금지, before/after count 기록 (Task 3·5).
@@ -36,7 +58,7 @@
 
 ## Preflight와 실제 미확정 사항
 
-현재 HEAD의 Stage 1은 `2fa30e7`에서 16 tests, inspection 0, 7종/11 files/primary 7, finding 0, deterministic·Raw 불변·clean이 확인됐다. `run_pipeline.py`, clean/transform 모듈, aliases/rules config는 아직 없다. Stage 1 validator는 source 계약과 행 값의 의미까지 검사하지 않으므로 Stage 2 Gate 0에서 추가 확인한다.
+Stage 1 technical baseline commit은 `2fa30e7`, Stage 1 closeout / Stage 2 planning commit은 `7ec5c84`다. 이는 기준선의 이력이며 현재 branch HEAD를 과거 commit으로 지칭하지 않는다. Stage 1에서 16 tests, inspection 0, 7종/11 files/primary 7, finding 0, deterministic·Raw 불변·clean이 확인됐다. `run_pipeline.py`, clean/transform 모듈, aliases/rules config는 아직 없다. Stage 1 validator는 source 계약과 행 값의 의미까지 검사하지 않으므로 Stage 2 Gate 0에서 추가 확인한다.
 
 읽기 전용 진단 결과(2026-10-06, 원본 수정·clean 생성 없음):
 
@@ -92,6 +114,7 @@ Clean은 `subway/data/clean/`, processed는 `subway/data/processed/`에 쓴다. 
 
 - [ ] RED: `test_preflight_rejects_hash_header_year_drift`는 hash·필수 header·contract year 변조 각각 ERROR, Raw 불변을 assert한다. `test_status_and_empty_reports`는 3 status/exit와 빈 CSV header, `test_contracts_preserve_unknown_metadata`는 CRS null, `test_artifacts_are_stable`은 2회 bytes 동일을 확인한다.
 - [ ] `python -m unittest subway.tests.test_pipeline_contracts -v` → missing API 또는 새 assertion FAIL 확인.
+- [ ] Validation rules에는 senior>total count/rate threshold와 station/time/date 구조적 집중의 판정 기준·집계 분모·근거를 기록할 계약을 둔다. 실제 값은 지금 정하지 않으며 Task 1 또는 Task 8 구현 시 2024 진단 결과로 확정한다. 정책이 미확정인 상태를 임의 기본값으로 WARNING-only 처리하지 않는다.
 - [ ] Minimal: observed contract·manifest와 입력을 비교한다. Manifest 재생성으로 hash mismatch를 숨기지 않는다. Unknown year와 Gate 0 ERROR는 중단한다. Snapshot row count는 검사하되 값 품질은 후속 Gate에서 다룬다.
 - [ ] GREEN: 동일 명령 PASS. Regression `python -m unittest discover -s subway/tests -v` 전체 PASS.
 - [ ] Files만 commit: `feat: add subway clean contracts and validation gates`.
@@ -214,9 +237,9 @@ self.assertTrue(boundary_result.frame.geometry.is_valid.all())
 
 **Interfaces:** `integrate_ridership(senior: pd.DataFrame, total: pd.DataFrame) -> StageResult`. Task 3·5 IDs/line/name/match provenance와 Task 2 date/hour_bin/boarding_type 소비.
 
-- [ ] RED: `test_full_outer_join_and_status`는 (date,canonical_station_id,hour_bin,boarding_type) key와 exact/canonical matched, alias matched, total only, senior only, ambiguous/rejected 상태, 양쪽 provenance 유지. `test_duplicates_block_many_to_many`는 duplicate ERROR+exception·행폭증 금지. `test_safe_difference_and_share`는 정상matched에서 senior<=total만 파생, senior>total WARNING+exception·두 파생null, unmatched 두 파생null, total0이면 share null.
+- [ ] RED: `test_full_outer_join_and_status`는 (date,canonical_station_id,hour_bin,boarding_type) key와 exact/canonical matched, alias matched, total only, senior only, ambiguous/rejected 상태, 양쪽 provenance 유지. `test_duplicates_block_many_to_many`는 duplicate ERROR+exception·행폭증 금지. `test_safe_difference_and_share`는 정상matched에서 senior<=total만 파생, 고립된 소수 senior>total은 WARNING+exception·두 파생null, unmatched 두 파생null, total0이면 share null. `test_senior_excess_escalation`은 설정된 count/rate threshold 초과 또는 station/time/date의 구조적 집중으로 join/schema 문제 가능성이 있으면 ERROR+pipeline blocking을 assert한다. 모든 초과 행의 exception·두 파생null·원본 불변은 severity와 무관하게 유지한다.
 - [ ] `python -m unittest subway.tests.test_transform_ridership -v` → FAIL.
-- [ ] Minimal: cardinality 검사 후 full outer. Rejected rows는 exceptions로 보존. Non_senior는 matched·양쪽 비음수/비결측·senior<=total 때만, share는 추가로 total>0 때만 생성. 0/0을0으로 처리하지 않는다. Date overlap/hour compatibility를 report한다.
+- [ ] Minimal: cardinality 검사 후 full outer. Rejected rows는 exceptions로 보존. Non_senior는 matched·양쪽 비음수/비결측·senior<=total 때만, share는 추가로 total>0 때만 생성. 0/0을0으로 처리하지 않는다. Date overlap/hour compatibility를 report한다. Senior>total의 전체 count/rate 및 station/time/date별 집중 진단을 기록하고, 근거 기반으로 확정한 validation_rules 정책에 따라 WARNING 또는 ERROR로 분류한다. Threshold 값과 구조적 집중 기준은 실제 2024 진단 후 Task 1 또는 이 Task 구현 시 확정하며 지금 임의로 정하지 않는다. Silent correction은 계속 금지한다.
 - [ ] GREEN 동일 명령 PASS; regression `python -m unittest subway.tests.test_clean_ridership subway.tests.test_station_keys subway.tests.test_clean_station subway.tests.test_transform_ridership -v` PASS.
 - [ ] Commit `feat: integrate ridership with auditable exceptions`.
 
