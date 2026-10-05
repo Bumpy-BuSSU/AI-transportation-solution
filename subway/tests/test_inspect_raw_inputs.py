@@ -84,7 +84,10 @@ class InspectRawInputsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             self._make_repo(root, missing="shelter")
+            manifest_path = root / "subway" / "data_manifest.csv"
+            original = manifest_path.read_bytes()
             self.assertEqual(run_inspection(root, 2024), 1)
+            self.assertEqual(manifest_path.read_bytes(), original)
             report = pd.read_csv(
                 root / "subway" / "data" / "validation" / "raw_inspection_report.csv"
             )
