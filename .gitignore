@@ -221,3 +221,6 @@ __marimo__/
 
 # Project raw data
 **/data/raw/
+
+# Subway runtime logs
+subway/logs/*.log
