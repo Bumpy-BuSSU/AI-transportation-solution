@@ -137,3 +137,50 @@ def build_senior_crosswalk(senior: pd.DataFrame, total: pd.DataFrame, aliases: p
     assigned = assign_station_ids(left)
     exception_frame = pd.concat(exception_parts, ignore_index=True) if exception_parts else pd.DataFrame(columns=EXCEPTION_COLUMNS)
     return StageResult(assigned.frame, findings, exception_frame)
+
+
+def match_stations(ridership: pd.DataFrame, stations: pd.DataFrame, aliases: pd.DataFrame) -> StageResult:
+    """Outer identity audit by line/name, preserving both unmatched sets.
+
+    Codes can suggest candidates but never authorize a match. Station aliases
+    are independently scoped, with verified evidence and optional source line.
+    """
+    right=stations.copy(deep=True).reset_index(drop=True)
+    right['station_name']=right['station_name_raw'].map(_name)
+    right['alias_applied']=False
+    right['alias_evidence']=''
+    findings=[]
+    if set(aliases.columns)!=set(ALIAS_COLUMNS):
+        findings.append(Finding('ERROR','station','ALIAS_CONFIGURATION_ERROR','alias headers differ'))
+    else:
+        active=aliases[aliases.dataset_id.eq('station') & aliases.verified.map(lambda v:str(v).strip().lower()=='true')]
+        for (line,name),indexes in right.groupby(['line','station_name'],dropna=False).groups.items():
+            rows=active[active.station_name_raw.map(_name).eq(name) & active.line.fillna('').astype(str).isin(['',str(line)])]
+            if rows.empty:continue
+            if rows.station_name.map(_name).nunique()!=1 or rows.evidence.fillna('').str.strip().eq('').any() or rows.station_name.map(_name).eq('').any():
+                findings.append(Finding('ERROR','station','ALIAS_CONFIGURATION_ERROR',f'{line}/{name}: ambiguous or unsupported alias'))
+                continue
+            right.loc[list(indexes),'station_name']=_name(rows.iloc[0].station_name)
+            right.loc[list(indexes),'alias_applied']=True
+            right.loc[list(indexes),'alias_evidence']=rows.iloc[0].evidence
+    left=ridership[['line','station_name','station_code_raw']].drop_duplicates().copy()
+    if left.duplicated(['line','station_name']).any():
+        findings.append(Finding('ERROR','station','RIDERSHIP_IDENTITY_CONFLICT','multiple raw codes per canonical identity'))
+    if right.duplicated(['line','station_name']).any():
+        findings.append(Finding('ERROR','station','STATION_IDENTITY_CONFLICT','multiple coordinate rows per canonical identity'))
+        bad=right.copy();bad['exception_code']='STATION_IDENTITY_CONFLICT'
+        return StageResult(right,findings,bad)
+    valid_left=left.line.notna() & left.station_name.notna() & left.line.astype('string').str.strip().ne('') & left.station_name.astype('string').str.strip().ne('')
+    valid_right=right.line.notna() & right.station_name.notna() & right.line.astype('string').str.strip().ne('') & right.station_name.astype('string').str.strip().ne('')
+    merged=left.loc[valid_left].merge(right.loc[valid_right],on=['line','station_name'],how='outer',suffixes=('_ridership','_station'),indicator=True)
+    merged['match_status']=merged['_merge'].astype('string').map({'left_only':'ridership_only','right_only':'station_only','both':'exact_matched'})
+    merged.loc[merged['_merge'].eq('both') & merged.alias_applied.fillna(False),'match_status']='alias_matched'
+    for invalid,status in [(left.loc[~valid_left],'ridership_only'),(right.loc[~valid_right],'station_only')]:
+        if not invalid.empty:
+            invalid=invalid.copy();invalid['match_status']=status
+            merged=pd.concat([merged,invalid],ignore_index=True,sort=False)
+    bad=merged[merged.match_status.isin(['ridership_only','station_only'])].copy()
+    if len(bad):
+        bad['exception_code']='UNRESOLVED_STATION_IDENTITY'
+        findings.append(Finding('ERROR','station','UNRESOLVED_STATION_IDENTITY',f'{len(bad)} unmatched identities; no implicit aliases adopted'))
+    return StageResult(merged.drop(columns=['_merge']),findings,bad)
