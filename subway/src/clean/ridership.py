@@ -39,11 +39,19 @@ def clean_ridership(frame: pd.DataFrame, dataset_id: str, year: int, rules: dict
         return schema_failure('unsupported dataset/year')
     try:
         contract = rules['source_contracts'][dataset_id]
-        hour_map = rules['ridership']['time_bins'][dataset_id]
+        config = rules['ridership']
+        if config['boarding_map'] != {'승차': 'boarding', '하차': 'alighting'} or config['line_map'] != {f'{n}호선': str(n) for n in range(1, 9)}:
+            return schema_failure('unsupported boarding/line mapping')
+        hour_map = config['time_bins'][dataset_id]
         if frame.columns.duplicated().any() or set(frame.columns) != set(contract['columns']):
             return schema_failure('source headers differ from authoritative contract')
         if len(hour_map) != 20 or not set(hour_map).issubset(frame.columns):
             return schema_failure('explicit 20-bin configuration mismatch')
+        expected_bins = {'before_06': (None, 6), 'after_24': (24, None),
+                         **{f'{h:02d}_{h+1:02d}': (h, h+1) for h in range(6, 24)}}
+        configured_bins = {spec['hour_bin']: (spec['hour_start'], spec['hour_end']) for spec in hour_map.values()}
+        if configured_bins != expected_bins:
+            return schema_failure('noncanonical time bins or endpoint bounds')
     except (KeyError, TypeError) as exc:
         return schema_failure(f'missing required ridership configuration: {exc}')
 

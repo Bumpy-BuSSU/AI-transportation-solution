@@ -1,4 +1,5 @@
 from pathlib import Path
+import copy
 import unittest
 
 import pandas as pd
@@ -88,6 +89,19 @@ class CleanRidershipTests(unittest.TestCase):
         self.assertIn('UNKNOWN_LINE',{f.code for f in self.clean(raw,'total_ridership').findings})
         result=clean_ridership(self.fixture(),'senior_ridership',2025,self.rules,'subway/input.csv')
         self.assertTrue(any(f.severity=='ERROR' for f in result.findings))
+
+    def test_incomplete_or_noncanonical_mapping_is_blocking(self):
+        for change in ['boarding_missing','line_missing','duplicate_bin','bad_endpoint','field_missing']:
+            with self.subTest(change=change):
+                rules=copy.deepcopy(self.rules)
+                config=rules['ridership']; bins=config['time_bins']['senior_ridership']
+                if change=='boarding_missing': del config['boarding_map']
+                elif change=='line_missing': del config['line_map']
+                elif change=='duplicate_bin': bins['06-07시간대']['hour_bin']='before_06'
+                elif change=='bad_endpoint': bins['06시간대이전']['hour_start']=0
+                else: del bins['06-07시간대']['hour_end']
+                result=clean_ridership(self.fixture(),'senior_ridership',2024,rules,'subway/input.csv')
+                self.assertTrue(any(f.severity=='ERROR' for f in result.findings))
 
 
 if __name__=='__main__': unittest.main()
