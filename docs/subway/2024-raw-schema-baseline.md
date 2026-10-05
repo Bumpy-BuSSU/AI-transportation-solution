@@ -169,3 +169,14 @@ python subway/tools/inspect_raw_inputs.py --year 2024
 ```
 
 Stage 1 종료 전에는 위 명령을 두 번 실행하여 산출물 차이가 없는지 확인하고, 전체 unit test와 최종 inspection exit code를 다시 검증한다.
+
+
+## 8. Stage 1 Closeout
+
+**Stage 1 COMPLETE.** 종료 검증: unit test 16/16 PASS, 실제 2024 Raw inspection exit 0, `RAW INSPECTION PASSED`, ERROR/WARNING/INFO 모두 0. Raw 7종, inventory 11 files, primary 7개를 확인했다. 같은 입력으로 inspection을 두 번 실행해 validation 4개와 manifest의 SHA-256 불변, Raw 11개 SHA-256 불변, working-tree diff 및 staged diff 없음, working tree clean을 확인했다.
+
+Population은 손상된 CSV를 수선하지 않고 동일 조건 SpreadsheetML export의 `데이터` sheet를 사용한다. 형식 인식과 잘못된 `메타정보` sheet를 분리하는 regression test가 통과했다. 인구 집계·행정구 계층 복원은 Stage 2 작업이다.
+
+Windows에서는 LF 정책 적용 후 index stat cache에 과거 CRLF 크기가 남아, 실제 바이트가 index blob과 같아도 status가 M으로 표시되었다. 지정된 generated artifact 5개에만 `git add`를 수행해 blob/mode/content 변화 없이 stat cache를 갱신했다. 해당 재현성 수정으로 tracked file의 의미적 내용은 변경되지 않았다. `subway/.gitattributes`의 5개 `text eol=lf` 정책은 유지한다.
+
+Stage 2 authoritative inputs는 `subway/config/source_contracts_2024.yaml`, `subway/data_manifest.csv`, 이 Raw schema baseline과 `subway/data/validation/raw_schema_snapshot.json`이다. Stage 1 PASS는 loadability와 입력 재현성의 근거이며 Stage 2 join·값·공간 품질이 검증되었다는 뜻은 아니다. Stage 2 구현은 아직 시작하지 않았다.
