@@ -119,6 +119,43 @@ class PipelineContractsTests(unittest.TestCase):
                 with self.subTest(payload=payload), self.assertRaises(ValueError):
                     write_artifacts(Path(tmp), {}, payload)
 
+    def test_null_empty_and_mixed_types_sort_deterministically(self):
+        frames = {'nullable.parquet': pd.DataFrame({'name': pd.Series(['', pd.NA], dtype='string'), 'value': [1, 1]}),
+                  'mixed.csv': pd.DataFrame({'value': pd.Series([1, '1', None, ''], dtype=object)})}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            first = write_artifacts(root, frames, {})
+            second = write_artifacts(root, {k: v.iloc[::-1] for k, v in frames.items()}, {})
+            self.assertEqual(first, second)
+
+    def test_missing_format_metadata_is_configuration_error(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.make_repo(root)
+            p = root / 'subway/config/source_contracts_2024.yaml'
+            doc = yaml.safe_load(p.read_text()); del doc['contracts']['weather']['encoding']
+            p.write_text(yaml.safe_dump(doc))
+            self.assertIn('CONFIGURATION_ERROR', {f.code for f in preflight(root, 2024)})
+
+    def test_malformed_configuration_and_snapshot_are_findings(self):
+        for failure in ['datasets', 'snapshot', 'schema', 'sheets']:
+            with self.subTest(failure=failure), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp); self.make_repo(root)
+                if failure == 'datasets':
+                    (root/'subway/config/datasets.yaml').write_text('- invalid\n')
+                else:
+                    p = root/'subway/data/validation/raw_schema_snapshot.json'
+                    doc = json.loads(p.read_text())
+                    if failure == 'snapshot': doc = []
+                    elif failure == 'schema': doc['weather/weather.csv'] = []
+                    else:
+                        doc['weather/weather.csv'].update({'format':'spreadsheetml', 'sheets': []})
+                        cpath = root/'subway/config/source_contracts_2024.yaml'
+                        contracts = yaml.safe_load(cpath.read_text())
+                        contracts['contracts']['weather'].update({'format':'spreadsheetml', 'selected_sheet':'data', 'worksheet_names':['data'], 'title_row_count':0})
+                        cpath.write_text(yaml.safe_dump(contracts))
+                    p.write_text(json.dumps(doc))
+                self.assertTrue(any(f.severity == 'ERROR' for f in preflight(root, 2024)))
+
 
 if __name__ == '__main__':
     unittest.main()

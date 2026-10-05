@@ -35,13 +35,19 @@ def validate_frame(frame: pd.DataFrame, dataset_id: str, rules: dict) -> list[Fi
 
 
 def _schema_matches(schema: dict, contract: dict) -> bool:
+    if not isinstance(schema, dict):
+        raise ValueError('schema entry must be a mapping')
     if not schema.get('loadable') or schema.get('format') != contract.get('format'):
         return False
     actual = schema
     if contract['format'] in {'spreadsheetml', 'excel'}:
+        if not isinstance(schema.get('sheets'), dict):
+            raise ValueError('schema sheets must be a mapping')
         if contract.get('selected_sheet') not in schema.get('sheets', {}):
             return False
         actual = schema['sheets'][contract['selected_sheet']]
+        if not isinstance(actual, dict):
+            raise ValueError('sheet schema must be a mapping')
     for key in ['columns', 'row_count', 'title_row_count']:
         if key in contract and actual.get(key) != contract[key]:
             return False
@@ -57,6 +63,9 @@ def preflight(repo_root: Path, year: int) -> list[Finding]:
     config_dir = repo_root / 'subway/config'
     findings = []
     try:
+        dataset_doc = yaml.safe_load((config_dir / 'datasets.yaml').read_text(encoding='utf-8'))
+        if not isinstance(dataset_doc, dict):
+            raise ValueError('datasets configuration must be a mapping')
         datasets = load_dataset_config(config_dir / 'datasets.yaml', year)
         contract_doc = yaml.safe_load((config_dir / f'source_contracts_{year}.yaml').read_text(encoding='utf-8'))
         rules = yaml.safe_load((config_dir / 'validation_rules.yaml').read_text(encoding='utf-8'))
@@ -69,6 +78,8 @@ def preflight(repo_root: Path, year: int) -> list[Finding]:
             raise ValueError('contract dataset IDs mismatch')
         validation = repo_root / 'subway/data/validation'
         snapshot = json.loads((validation / 'raw_schema_snapshot.json').read_text(encoding='utf-8'))
+        if not isinstance(snapshot, dict):
+            raise ValueError('schema snapshot must be a mapping')
         inventory = pd.read_csv(validation / 'raw_inventory.csv', dtype=str, keep_default_na=False)
         manifest = pd.read_csv(repo_root / 'subway/data_manifest.csv', dtype=str, keep_default_na=False)
         if not {'dataset_id', 'relative_path', 'sha256', 'size_bytes', 'role'}.issubset(inventory.columns):
@@ -82,9 +93,15 @@ def preflight(repo_root: Path, year: int) -> list[Finding]:
 
     for dataset_id in sorted(datasets):
         contract = contracts[dataset_id]
+        format_fields = {'csv': {'encoding'}, 'shapefile': {'crs', 'geometry_types'},
+                         'spreadsheetml': {'encoding', 'worksheet_names', 'selected_sheet', 'title_row_count'},
+                         'excel': {'worksheet_names', 'selected_sheet'}}
         if (not isinstance(contract, dict) or not {'primary_file', 'format', 'columns', 'row_count'}.issubset(contract)
                 or contract.get('format') not in {'csv', 'spreadsheetml', 'excel', 'shapefile'}):
             findings.append(Finding('ERROR', dataset_id, 'CONFIGURATION_ERROR', 'unsupported or incomplete source contract'))
+            continue
+        if not format_fields[contract['format']].issubset(contract):
+            findings.append(Finding('ERROR', dataset_id, 'CONFIGURATION_ERROR', 'required format metadata missing'))
             continue
         try:
             directory = resolve_repo_relative(repo_root, datasets[dataset_id]['raw_dir'])

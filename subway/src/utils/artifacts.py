@@ -23,12 +23,12 @@ def _check_metadata(value):
 
 def _sort_token(value):
     if hasattr(value, 'wkb_hex'):
-        return value.wkb_hex
+        return ('geometry', value.wkb_hex)
     if pd.isna(value):
-        return ''
+        return ('null', '')
     if isinstance(value, pd.Timestamp):
-        return value.isoformat()
-    return str(value)
+        return ('timestamp', value.isoformat())
+    return (type(value).__module__ + '.' + type(value).__qualname__, str(value))
 
 
 def write_artifacts(output_dir: Path, frames: dict[str, pd.DataFrame], summary: dict) -> dict[str, str]:
