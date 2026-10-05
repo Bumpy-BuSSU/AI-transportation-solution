@@ -14,7 +14,7 @@ class ManifestTests(unittest.TestCase):
         raw_path = "subway/data/raw/2024/weather/a.csv"
         existing = pd.DataFrame([{c: "" for c in MANIFEST_COLUMNS}])
         existing.loc[0, ["dataset_id", "year", "raw_path", "provider", "source_url"]] = [
-            "weather", 2024, raw_path, "기상청", "https://example.test/weather"
+            "weather", "2024", raw_path, "기상청", "https://example.test/weather"
         ]
         merged = merge_manifest(existing, [self._record()], 2024)
         self.assertEqual(list(merged.columns), MANIFEST_COLUMNS)
