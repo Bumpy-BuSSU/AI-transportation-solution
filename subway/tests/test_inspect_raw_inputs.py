@@ -61,6 +61,11 @@ class InspectRawInputsTests(unittest.TestCase):
                 validation / "raw_inspection_summary.json",
             ]
             first = {p.name: p.read_bytes() for p in outputs}
+            import json
+            summary = json.loads(
+                (validation / "raw_inspection_summary.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(summary["status"], "RAW INSPECTION PASSED")
 
             manifest_path = root / "subway" / "data_manifest.csv"
             manifest = pd.read_csv(manifest_path, dtype=str, keep_default_na=False)
@@ -89,6 +94,17 @@ class InspectRawInputsTests(unittest.TestCase):
             ]
             self.assertEqual(len(matches), 1)
             self.assertEqual(matches.iloc[0]["severity"], "ERROR")
+            import json
+            summary = json.loads(
+                (
+                    root
+                    / "subway"
+                    / "data"
+                    / "validation"
+                    / "raw_inspection_summary.json"
+                ).read_text(encoding="utf-8")
+            )
+            self.assertEqual(summary["status"], "RAW INSPECTION FAILED")
 
 
 if __name__ == "__main__":
