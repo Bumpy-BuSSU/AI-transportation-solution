@@ -1,0 +1,12 @@
+schema_version: 1
+year: 2024
+metadata:
+  station_crs: null
+  station_crs_evidence: null
+senior_excess_policy:
+  status: unverified
+  count_threshold: null
+  rate_threshold: null
+  rate_denominator: null
+  concentration_rule: null
+  evidence: null
