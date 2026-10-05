@@ -96,8 +96,8 @@ def run_inspection(repo_root: Path, year: int) -> int:
         "file_count": len(inventory),
         "primary_file_count": sum(record.role == "primary" for record in inventory),
         "finding_counts": counts,
-        "status": "PIPELINE FAILED" if counts["ERROR"] else (
-            "PIPELINE PASSED WITH WARNINGS" if counts["WARNING"] else "PIPELINE PASSED"
+        "status": "RAW INSPECTION FAILED" if counts["ERROR"] else (
+            "RAW INSPECTION PASSED WITH WARNINGS" if counts["WARNING"] else "RAW INSPECTION PASSED"
         ),
     }
     _write_json(validation_dir / "raw_inspection_summary.json", summary)
