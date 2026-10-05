@@ -1,0 +1,6 @@
+# Stage 1 deterministic generated artifacts use LF on every platform.
+data_manifest.csv text eol=lf
+data/validation/raw_inventory.csv text eol=lf
+data/validation/raw_schema_snapshot.json text eol=lf
+data/validation/raw_inspection_report.csv text eol=lf
+data/validation/raw_inspection_summary.json text eol=lf
