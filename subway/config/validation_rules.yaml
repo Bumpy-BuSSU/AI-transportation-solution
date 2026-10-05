@@ -186,3 +186,6 @@ ridership:
         hour_bin: after_24
         hour_start: 24
         hour_end: null
+
+weather:
+  station_id: '108'
