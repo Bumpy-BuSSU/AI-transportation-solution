@@ -1,0 +1,15 @@
+datasets:
+  senior_ridership:
+    raw_dir: subway/data/raw/{year}/senior_ridership
+  total_ridership:
+    raw_dir: subway/data/raw/{year}/total_ridership
+  weather:
+    raw_dir: subway/data/raw/{year}/weather
+  station:
+    raw_dir: subway/data/raw/{year}/station
+  population:
+    raw_dir: subway/data/raw/{year}/population
+  boundary:
+    raw_dir: subway/data/raw/{year}/boundary
+  shelter:
+    raw_dir: subway/data/raw/{year}/shelter
