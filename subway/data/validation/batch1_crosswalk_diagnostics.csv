@@ -1,0 +1,9 @@
+station_code_raw,station_name_raw,affected_raw_rows,exception_code,candidate_lines,candidate_names,evidence_status,mapping_adopted,source_file
+223,교대(법원·검찰청),732,UNRESOLVED_CROSSWALK,"[""2""]","[""교대(법원.검찰청)""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+2535,종로3가(탑골공원),732,UNRESOLVED_CROSSWALK,"[""5""]","[""종로3가""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+2629,삼각지(전쟁기념관),732,UNRESOLVED_CROSSWALK,"[""6""]","[""삼각지""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+2823,남한산성입구(성남법원·검찰청),732,UNRESOLVED_CROSSWALK,"[""8""]","[""남한산성입구(성남법원.검찰청)""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+319,종로3가(탑골공원),732,UNRESOLVED_CROSSWALK,"[""3""]","[""종로3가""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+330,교대(법원·검찰청),732,UNRESOLVED_CROSSWALK,"[""3""]","[""교대(법원.검찰청)""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+409,불암산,732,UNRESOLVED_CROSSWALK,"[""4""]","[""당고개""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
+428,삼각지(전쟁기념관),732,UNRESOLVED_CROSSWALK,"[""4""]","[""삼각지""]",missing; candidate only; no alias adopted,False,subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv
