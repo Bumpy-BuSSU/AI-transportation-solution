@@ -1,4 +1,5 @@
 import io
+from pathlib import Path
 import unittest
 
 import pandas as pd
@@ -18,6 +19,45 @@ def stations(rows, dataset):
 
 class StationKeysTests(unittest.TestCase):
     def empty_aliases(self): return pd.DataFrame(columns=ALIAS_COLUMNS)
+
+    def reviewed_aliases(self):
+        return pd.read_csv(Path(__file__).resolve().parents[1]/'config/station_aliases.csv',dtype=str,keep_default_na=False)
+
+    def test_reviewed_blank_line_alias_resolves_multiple_codes_independently(self):
+        aliases=self.reviewed_aliases()
+        selected=aliases[aliases.station_name_raw.eq('교대(법원·검찰청)')]
+        self.assertEqual(len(selected),1)
+        self.assertEqual(selected.line.iloc[0],'')
+        senior=stations([('223','교대(법원·검찰청)',None),('330','교대(법원·검찰청)',None),
+                         ('223','Unreviewed',None)],'senior_ridership')
+        total=stations([('223','교대(법원.검찰청)','2'),('330','교대(법원.검찰청)','3')],'total_ridership')
+        result=build_senior_crosswalk(senior,total,aliases)
+        self.assertEqual(result.frame.line.iloc[:2].tolist(),['2','3'])
+        self.assertTrue(pd.isna(result.frame.line.iloc[2]))
+        self.assertNotIn('ALIAS_AMBIGUITY',{f.code for f in result.findings})
+        self.assertEqual(int(result.frame.alias_applied.sum()),2)
+        self.assertEqual(result.frame.station_name_raw.tolist(),senior.station_name_raw.tolist())
+        self.assertEqual(result.frame.source_row_id.tolist(),senior.source_row_id.tolist())
+        self.assertEqual(result.frame.source_file.tolist(),senior.source_file.tolist())
+        self.assertEqual(len(aliases),5)
+        self.assertTrue(aliases.verified.eq('true').all())
+        self.assertTrue(aliases.evidence.str.strip().ne('').all())
+        for evidence,line,code in [('', '', 'ALIAS_EVIDENCE_MISSING'),('reviewed','1','CODE_LINE_CONTRADICTION')]:
+            rejected=selected.copy(); rejected['evidence']=evidence; rejected['line']=line
+            bad=build_senior_crosswalk(senior.iloc[:2],total,rejected)
+            self.assertTrue(bad.frame.line.isna().all())
+            self.assertIn(code,{f.code for f in bad.findings})
+
+    def test_historical_names_share_frozen_2024_canonical_identity(self):
+        aliases=self.reviewed_aliases()
+        senior=stations([('409','당고개',None),('409','불암산',None)],'senior_ridership')
+        total=stations([('409','당고개','4')],'total_ridership')
+        result=build_senior_crosswalk(senior,total,aliases)
+        self.assertEqual(result.findings,[])
+        self.assertEqual(result.frame.station_name.tolist(),['당고개','당고개'])
+        self.assertEqual(result.frame.canonical_station_id.nunique(),1)
+        self.assertTrue(result.frame.canonical_station_id.notna().all())
+        self.assertEqual(result.frame.station_name_raw.tolist(),['당고개','불암산'])
 
     def test_header_only_csv_aliases(self):
         aliases=pd.read_csv(io.StringIO(','.join(ALIAS_COLUMNS)+'\n'),dtype=str,keep_default_na=False)

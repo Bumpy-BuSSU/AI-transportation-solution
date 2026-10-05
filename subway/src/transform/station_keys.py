@@ -81,7 +81,13 @@ def assign_station_ids(frame: pd.DataFrame) -> StageResult:
 
 
 def build_senior_crosswalk(senior: pd.DataFrame, total: pd.DataFrame, aliases: pd.DataFrame) -> StageResult:
-    """Assign only a unique code+canonical-name line. Return every senior observation."""
+    """Assign only a unique code+canonical-name line. Return every senior observation.
+
+    Identity labels are frozen to the 2024 total baseline. Reviewed historical
+    variants enter through explicit aliases, never display-name heuristics.
+    A rename date is evidence, not a reason to split a verified physical station
+    identity; station_name_raw and source-row provenance remain unchanged.
+    """
     left = _aliases_for(senior, 'senior_ridership', aliases).reset_index(drop=True)
     right = _aliases_for(total, 'total_ridership', aliases).reset_index(drop=True)
     left['station_code_raw'] = left['station_code_raw'].astype('string')

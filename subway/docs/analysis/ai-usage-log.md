@@ -16,3 +16,7 @@
 앞으로 주요 Codex Mission Prompt는 가능한 경우 원문을 보존하거나 제목·날짜·첨부 식별자 등 명확한 prompt reference를 남긴다. 과거 원문을 재구성하거나 창작하지 않는다. 이번 보정의 원문 reference는 사용자 첨부 **“Mission: Research-context correction before Stage 2 implementation”**, 2026-10-06, attachment ID `6a410799-1908-4927-bb78-513e8d7044a4`의 `붙여넣은 텍스트.txt`다. 이는 원문 참조이며 새로 만든 prompt 원문이 아니다.
 
 AI 제안, AI가 실행한 자동 검사, 인간의 승인·수동 검증은 서로 다른 증거다. 출처 의미·CRS·alias처럼 아직 확인되지 않은 사항은 AI가 제안하더라도 확인 완료로 기록하지 않는다.
+
+P-S2-B1A: **Task 3 crosswalk evidence resolution and Batch 1 hardening**. 원문 reference: 2026-10-06 사용자 첨부 “Mission: Stage 2 Batch 1A — Resolve Task 3 and Harden Batch 1”, attachment ID `0cc290f3-39e4-4b28-90f8-36bb2e8fe1eb`. 인간이 해당 Mission에서 8개 키의 source-name 관계와 서울특별시고시 제2024-521호 「도시철도 역명 개정 확정 고시」(2024-10-31)를 검토 근거로 제공하고 명시적 alias 채택을 지시했다. Codex는 두 Raw 파일의 같은 code 및 total 고유 line/이름을 자동 재검증하고, 나라장터 노원구 「불암산역·삼각지(전쟁기념관)역 역명개정 정비사업 과업지시서」(2025.4., 2쪽)의 고시 참조를 확인했다. 공식 supporting URL은 `station_aliases.csv`의 evidence에 기록한다. 종로3가 부역명 차이는 인간 검토 source alias이며 공식 개명이라고 주장하지 않는다.
+
+분석 identity의 canonical label은 **2024 total_ridership 명칭으로 고정**한다. 확인된 개명·부역명·문장부호 변형은 명시적 alias로만 같은 identity에 연결하며 Raw 명칭은 보존한다. 이는 현재 공식 표시 역명에 대한 주장이 아니다. Alias는 이름 관계별 5행·빈 line으로 기록하고, line은 각 code+canonical name의 total 고유 후보에서 구한다. Codex가 추가한 alias/ID 안정성 및 writer 정렬 테스트와 hash 검증은 자동 검사이며 인간의 수동 재실행으로 기록하지 않는다. Writer byte 재현성 범위는 summary에 기록한 동일 Python/pandas/NumPy/pyarrow/GeoPandas/Shapely 환경이다.
