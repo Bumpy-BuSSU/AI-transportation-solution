@@ -108,3 +108,10 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - ChatGPT: Task5 closure를 precision-review하고 Task9 구현을 승인했으며 strict spatial mapping / documented-exception 규칙을 정의했다. 첨부 Mission에 기록된 역할이다.
 - Codex: GIS 변환/PIP, RED→GREEN TDD18 tests, 실제258역 diagnostics,426/426 ADM_CD population-boundary 검증, Task5/6/8 회귀와 결정성/12 Raw 불변 검사를 수행했다. 전체140 tests PASS. Task10/11 미착수.
 - 결과:243 MAPPED/15 ZERO_MATCH. 인구 값은 mapped 역에만 연결하고 원본 core는 보존했다. CRS 및 시간 가정은 source-specific 확정으로 바꾸지 않았다. [증거](06-station-dong-mapping.md).
+
+## P-S2-T10 — extensible study-area E2E orchestration — 2026-10-07
+
+- ChatGPT: Task9 precision-review,15 ZERO_MATCH의 현재 서울 경계 밖 성격 확인, 인간과 현재 서울 실증 범위 논의, 서울을 영구 연구경계가 아닌 configurable profile로 설계하고 향후 지역 이동선택권 격차 확장 원칙과 Task10 제약을 정의했다. 첨부 Mission에 기록된 역할이다.
+- Human: Task9 승인2026-10-07; 서울을 CURRENT contest study area로 선택하고 향후 지역 확장을 열어 둘 것을 명시했다. Task10 결과 검토는 PENDING. 인간이 자동 테스트를 독립 실행했다고 기록하지 않는다.
+- Codex: E2E orchestration/TDD, profile/union scope 판정, 실제2024 두 실행 결정성, Raw12/역사 증거 불변, baseline 회귀와 staged/rollback/failed-summary 검증을 수행했다. 신규17/full157 tests PASS. 대용량 Parquet는 재현 로컬 산출물로 유지하고 exact hashes를 versioned QA에 기록했다.
+- 결과:243 IN/15 OUT/0 eligible unresolved, 전체274 master의 Task5 제외16은 unresolved로 유지; core3,988,480행 보존. 현재 서울 밖 core는 invalid 데이터로 표현하지 않는다. Task11 미착수. [Execution record](07-pipeline-orchestration.md).

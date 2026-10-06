@@ -62,3 +62,14 @@ Core274 대비 누적 제외31 identities, total-all6.458125%, senior7.898269%; 
 [Task9 증거](06-station-dong-mapping.md) 및 summary 참조. 173개 동 coverage는 전처리 QA뿐이다.
 Task9 기술 구현 COMPLETE / 인간 결과 검토 PENDING. Task10/11 NOT STARTED.
 EDA·회귀·가설검정·공간적 수요/접근성 해석은 수행하지 않았다.
+
+## P-S2-T10 — configurable current study scope and reproducible publication adopted
+
+Task9 HUMAN APPROVED2026-10-07. Task10 technical COMPLETE / 인간 결과 검토 PENDING.
+서울은 현재 실증 profile이며 source/core coverage는 더 넓다. Raw/config integrity와 기존 Tasks1–9를 연결하여
+full Task8 core를 유지한7 clean/4 processed/6 validation 제품을 생성한다.
+mapping_status와 독립 boundary-union study_area_status를 분리하고, 실제15 ZERO_MATCH 모두 현재 union 밖임을 확인했다.
+ASOS108은 연구지역 밖 역의 노출로 붙이지 않았다. staged publication/rollback/failed-summary와 같은 환경에서의 두 실행 결정성을 검증했다.
+CRS/snapshot 분석 가정, source exclusions 및 보조 인구 한계를 유지한다. 현재 primary/secondary 질문과 지역 확장 조건은
+[Task10 record](07-pipeline-orchestration.md) 참조. 이후 비교 지역의 동등한 데이터·기상 전략이 필요하며 현재 지역 간 결과는 없다.
+EDA·극한기온 분류·통계검정·접근성/이동선택권 지수는 수행하지 않았다. Task11 NOT STARTED.

@@ -348,3 +348,16 @@ Task9 technical COMPLETE under strict_point_in_polygon_with_documented_exception
 human review PENDING. Actual243 MAPPED/15 ZERO_MATCH. New18/full140 tests PASS, reversed output hashes equal,
 12 Raw hashes unchanged. Task10/11 NOT STARTED. No production publication or final Stage2 closeout.
 See [Task9 evidence](../../../subway/docs/analysis/06-station-dong-mapping.md).
+
+## Human-issued P-S2-T10 latest-Mission addendum — 2026-10-07
+
+The latest Task10 Mission supersedes earlier Task10 prompts. Task9 is HUMAN APPROVED2026-10-07.
+Keep the full transport core and separate source coverage/current configurable study area/future regional extension.
+Implement run_pipeline(repo_root,year) and main(argv), seven clean/four processed/six QA outputs, staging/rollback,
+failed-summary stale-success protection, same-environment determinism and separate accepted2024 regression assertions.
+Task9 technical ZERO_MATCH remains unchanged; study_area_status is independently derived from the whole validated union.
+Current243 IN/15 OUT, all15 zero matches verified outside union; Task5-excluded16 remain outside geometry and unresolved in the274 master.
+Future data sources/exposure strategies are not implemented. No analysis and no Task11 closeout.
+Actual2024 two runs exit0, no blockingERROR, full157 tests,12Raw/historical evidence unchanged.
+Task10 technical COMPLETE / human result review PENDING. Task11 NOT STARTED.
+See [Task10 execution](../../../subway/docs/analysis/07-pipeline-orchestration.md).
