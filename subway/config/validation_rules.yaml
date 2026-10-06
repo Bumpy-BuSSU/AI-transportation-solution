@@ -4,12 +4,15 @@ metadata:
   station_crs: null
   station_crs_evidence: null
 senior_excess_policy:
-  status: unverified
-  count_threshold: null
-  rate_threshold: null
-  rate_denominator: null
-  concentration_rule: null
-  evidence: null
+  status: adopted
+  count_threshold: 20
+  rate_threshold: 0.0001
+  rate_denominator: 'matched rows with valid canonical identity, compatible hour bounds, and nonnegative integer counts on both sides; includes excess rows'
+  profile_hour_threshold: 2
+  recurrence_date_threshold: 3
+  concentration_rule: 'ERROR if >=2 excess hour bins in one date/station/boarding profile OR same station/hour/boarding recurs on >=3 distinct dates'
+  evidence: 'P-S2-B3 actual preflight: 3/3987960 cells, 2 stations, 3 dates, 2 hour bins; two Hanam City Hall alighting 15_16 events on distinct dates; no complete multi-hour profile'
+  rationale: 'Operational quality screening, not statistical inference: 20 excess cells equals one full 20-bin source observation; 1 per 10000 valid cells is a material frequency budget. Two affected hours in one source profile flags a broader record mismatch; recurrence on three dates flags persistent station/hour behavior. Each threshold is an independent >= ERROR trigger. Sparse individual rows always remain exceptions with null derived values; WARNING does not certify source accuracy.'
 ridership:
   boarding_map:
     승차: boarding
