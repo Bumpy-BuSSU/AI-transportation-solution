@@ -119,7 +119,7 @@ A blocking/failed run returns nonzero, preserves diagnostic CSV/runtime logs, le
 and publishes a FAILED summary with empty output_hashes. Prior products are explicitly identified as last-successful files, not products of the failed run.
 Unknown year, missing Raw, baseline drift, blocking findings, live lock, staging failure and mid-publication I/O failure are tested.
 Reversed frame order yields identical hashes; fixture tests actually execute existing Tasks1–9 on two real transport identities and retain all reference sources.
-New Task10 tests:11 orchestration/writer +6 study-area =17; full suite157 PASS. The CRS-column writer defect was reproduced RED and fixed using GeoDataFrame type detection.
+New Task10 tests:12 orchestration/writer +6 study-area =18; full suite158 PASS. The CRS-column writer defect was reproduced RED and fixed using GeoDataFrame type detection.
 Same recorded environment only: Python3.11.9,pandas3.0.6,numpy2.4.6,
 pyarrow25.0.1,GeoPandas1.2.0,Shapely2.1.2,pyproj3.7.2,PROJ9.5.1.
 
@@ -144,3 +144,20 @@ run_pipeline.py; study_area transform; profile/baseline config; Task10/scope tes
 precise GeoDataFrame writer fix;6 canonical QA products; narrow.gitignore/.gitattributes; this execution record,
 report-map/methodology/AI usage and plan addendum. No Raw, adopted aliases, historical evidence or statistical analysis changes.
 Task10 COMPLETE / later human review PENDING. Task11 NOT STARTED.
+
+## Final independent review and bounded fix pass
+
+The independent reviewer checked all21 changed files and reran35 relevant tests, all16 output hashes,
+11 Parquet row counts,12 Raw hashes, the520 unmatched join rows and all15 independent union classifications.
+An Important finding reproduced absolute local paths in missing-schema preflight diagnostics.
+The added regression failed first, then passed after failure diagnostics normalize repository paths;
+complete original messages remain in ignored runtime logs. No success-product semantics changed.
+Deferred Minor: malformed plain pandas DataFrame boundary input accesses CRS before structured schema validation;
+valid GeoDataFrame inputs and the actual pipeline are unaffected.
+Review limits: full actual executions and full suite were verified by Codex, not independently repeated by the reviewer;
+adopted identities/CRS/temporal assumptions were preserved, not scientifically re-established;
+no new regional adapter, cross-version byte guarantee, power-loss/forced-termination/simultaneous-reader/
+rollback-failure guarantee or Task11 readiness is claimed. Final remote equality is verified by the implementer.
+Human Task10 review remains PENDING.
+
+Final fix-pass verification:158 tests PASS; actual2024 rerun exit0; all16 output hashes and summary bytes match both earlier actual runs. Raw inspection exit0 with ERROR/WARNING/INFO all0;12 Raw hashes, historical evidence and adopted configurations unchanged. Fresh core.autocrlf=true checkout matches all8 new LF config/QA files.

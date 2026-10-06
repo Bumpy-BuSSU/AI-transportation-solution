@@ -242,6 +242,16 @@ def _publish(repo,stage,paths):
 
 def _failed(repo,year,findings):
     validation=repo/'subway/data/validation';failure=validation/'pipeline_failure';failure.mkdir(parents=True,exist_ok=True)
+    # OSError repr may escape Windows separators; normalize before publication.
+    def portable(value):
+        value=value.replace('\\\\','/').replace('\\','/')
+        return value.replace(repo.as_posix()+'/', '').replace(repo.as_posix(), '.')
+    original=findings
+    findings=[Finding(f.severity,f.dataset_id,f.code,portable(f.message),portable(f.relative_path)) for f in original]
+    if findings!=original:
+        logdir=repo/'subway/logs';logdir.mkdir(parents=True,exist_ok=True)
+        with (logdir/f'pipeline_{year}.log').open('a',encoding='utf-8') as log:
+            log.write(json.dumps([asdict(f) for f in original],ensure_ascii=False)+'\n')
     _quality(findings).to_csv(failure/'data_quality_report.csv',index=False,encoding='utf-8',lineterminator='\n')
     payload=dict(year=year,status='PIPELINE FAILED',output_hashes={},clean_outputs={},processed_outputs={},validation_outputs=[],
         publication=dict(published=False,used_staging=True,prior_data_files='may remain from last successful generation; not results of this failed run'),

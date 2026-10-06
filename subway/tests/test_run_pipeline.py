@@ -103,6 +103,21 @@ class RunPipelineTests(unittest.TestCase):
         self.assertFalse(s['publication']['published']);self.assertEqual(before,{p:p.read_bytes() for p in before})
         self.assertTrue((self.repo/'subway/data/validation/pipeline_failure/data_quality_report.csv').exists())
 
+    def test_missing_schema_failure_diagnostics_are_portable(self):
+        self.assertEqual(run_pipeline(self.repo,2024),0)
+        (self.repo/'subway/data/validation/raw_schema_snapshot.json').unlink()
+        self.assertNotEqual(run_pipeline(self.repo,2024),0)
+        self.assertEqual(self.summary()['output_hashes'],{})
+        diagnostic=self.repo/'subway/data/validation/pipeline_failure/data_quality_report.csv'
+        quality=pd.read_csv(diagnostic)
+        self.assertIn('CONFIGURATION_ERROR',set(quality.code))
+        for path in [diagnostic,self.repo/'subway/data/validation/pipeline_summary.json']:
+            text=path.read_text(encoding='utf-8')
+            self.assertNotIn(str(self.repo),text)
+            self.assertNotIn(str(self.repo).replace('\\','\\\\'),text)
+            self.assertNotRegex(text,r'[A-Za-z]:[\\/]')
+        self.assertIn('subway/data/validation/raw_schema_snapshot.json',diagnostic.read_text(encoding='utf-8'))
+
     def test_unknown_year_fails_safely(self):
         self.assertNotEqual(run_pipeline(self.repo,2025),0);self.assertEqual(self.summary()['output_hashes'],{})
         self.assertFalse((self.repo/'subway/data/processed').exists())

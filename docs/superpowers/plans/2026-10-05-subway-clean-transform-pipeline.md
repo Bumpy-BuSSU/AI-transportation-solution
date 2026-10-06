@@ -358,6 +358,6 @@ failed-summary stale-success protection, same-environment determinism and separa
 Task9 technical ZERO_MATCH remains unchanged; study_area_status is independently derived from the whole validated union.
 Current243 IN/15 OUT, all15 zero matches verified outside union; Task5-excluded16 remain outside geometry and unresolved in the274 master.
 Future data sources/exposure strategies are not implemented. No analysis and no Task11 closeout.
-Actual2024 two runs exit0, no blockingERROR, full157 tests,12Raw/historical evidence unchanged.
+Actual2024 two runs exit0, no blockingERROR, full158 tests,12Raw/historical evidence unchanged.
 Task10 technical COMPLETE / human result review PENDING. Task11 NOT STARTED.
 See [Task10 execution](../../../subway/docs/analysis/07-pipeline-orchestration.md).
