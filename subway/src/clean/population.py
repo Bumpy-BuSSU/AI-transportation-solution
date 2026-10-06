@@ -81,7 +81,7 @@ def clean_population(frame,hierarchy,rules,source_file):
         units=group['단위'].astype('string')
         metadata_unit=rules['population'].get('unit')=='명' and bool(rules['population'].get('unit_evidence'))
         valid_units=units.eq('명') | (units.fillna('').eq('') & metadata_unit)
-        if bad.any() or not valid_units.all():
+        if bad.any() or not valid_units.fillna(False).all():
             error('INVALID_POPULATION',f'{gu}/{dong}: nonnegative integer people required',group);continue
         indexed=pd.Series(values.tolist(),index=ages)
         total=int(indexed['합계']);senior=sum(int(indexed[age]) for age in SENIOR_BANDS)

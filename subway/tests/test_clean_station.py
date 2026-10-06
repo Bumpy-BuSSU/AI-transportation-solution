@@ -35,4 +35,13 @@ class StationTests(unittest.TestCase):
         aliases.loc[0,'line']='2'
         self.assertNotIn('alias_matched',set(match_stations(ridership,station,aliases).frame.match_status))
 
+    def test_duplicate_station_identity_preserves_unmatched_both_sides(self):
+        stations=clean_stations(pd.concat([self.raw,self.raw],ignore_index=True),self.rules,'s').frame
+        ridership=pd.DataFrame({'line':['1','2'],'station_name':['서울역','없는역'],'station_code_raw':['150','200']})
+        result=match_stations(ridership,stations,pd.DataFrame(columns=ALIAS_COLUMNS))
+        self.assertIn('match_status',result.frame)
+        self.assertEqual(len(result.frame),4)
+        self.assertTrue(result.frame.station_name.eq('없는역').any())
+        self.assertFalse(result.frame.match_status.isin(['exact_matched','alias_matched']).any())
+
 if __name__=='__main__': unittest.main()

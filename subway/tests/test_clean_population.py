@@ -50,6 +50,14 @@ class PopulationTests(unittest.TestCase):
         rules['population'].update(unit='명',unit_evidence='fixture metadata')
         self.assertEqual(clean_population(f,h,rules,'p').findings,[])
 
+    def test_null_unit_without_metadata_is_blocking(self):
+        for value in [None,pd.NA]:
+            f,h,rules=self.fixture();f['단위']=value
+            result=clean_population(f,h,rules,'p')
+            self.assertTrue(any(x.code=='INVALID_POPULATION' for x in result.findings))
+            rules['population'].update(unit='명',unit_evidence='fixture metadata')
+            self.assertEqual(clean_population(f,h,rules,'p').findings,[])
+
     def test_full_groups_not_just_forward_fill_and_reordered_source(self):
         labels=['합계','관악구','신사동','낙성대동','강남구','신사동','압구정동']
         f=pd.DataFrame({'동별':labels,'source_row_id':range(1,8),'source_block_id':range(1,8)})

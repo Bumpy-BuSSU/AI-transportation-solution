@@ -31,8 +31,8 @@ def clean_boundary(frame,rules,source_file):
     report('DUPLICATE_ADMIN_CODE',out.adm_cd.duplicated(keep=False),'ADM_CD must be unique')
     report('NULL_GEOMETRY',out.geometry.isna(),'geometry missing')
     report('EMPTY_GEOMETRY',out.geometry.is_empty,'geometry empty')
-    report('INVALID_GEOMETRY',out.geometry.notna() & ~out.geometry.is_valid,'geometry invalid; no repair')
-    report('GEOMETRY_TYPE',out.geometry.notna() & ~out.geometry.geom_type.isin(contract['geometry_types']),'geometry type')
+    report('INVALID_GEOMETRY',~out.geometry.isna() & ~out.geometry.is_valid,'geometry invalid; no repair')
+    report('GEOMETRY_TYPE',~out.geometry.isna() & ~out.geometry.geom_type.isin(contract['geometry_types']),'geometry type')
     # Verified Task 6 hierarchy may supply an explicit ADM_CD -> gu/dong map.
     hierarchy=rules.get('boundary_hierarchy')
     if hierarchy is None:

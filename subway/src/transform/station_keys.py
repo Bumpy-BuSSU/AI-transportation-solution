@@ -164,14 +164,14 @@ def match_stations(ridership: pd.DataFrame, stations: pd.DataFrame, aliases: pd.
             right.loc[list(indexes),'alias_applied']=True
             right.loc[list(indexes),'alias_evidence']=rows.iloc[0].evidence
     left=ridership[['line','station_name','station_code_raw']].drop_duplicates().copy()
-    if left.duplicated(['line','station_name']).any():
+    left_conflict=left.duplicated(['line','station_name'],keep=False)
+    right_conflict=right.duplicated(['line','station_name'],keep=False)
+    if left_conflict.any():
         findings.append(Finding('ERROR','station','RIDERSHIP_IDENTITY_CONFLICT','multiple raw codes per canonical identity'))
-    if right.duplicated(['line','station_name']).any():
+    if right_conflict.any():
         findings.append(Finding('ERROR','station','STATION_IDENTITY_CONFLICT','multiple coordinate rows per canonical identity'))
-        bad=right.copy();bad['exception_code']='STATION_IDENTITY_CONFLICT'
-        return StageResult(right,findings,bad)
-    valid_left=left.line.notna() & left.station_name.notna() & left.line.astype('string').str.strip().ne('') & left.station_name.astype('string').str.strip().ne('')
-    valid_right=right.line.notna() & right.station_name.notna() & right.line.astype('string').str.strip().ne('') & right.station_name.astype('string').str.strip().ne('')
+    valid_left=~left_conflict & left.line.notna() & left.station_name.notna() & left.line.astype('string').str.strip().ne('') & left.station_name.astype('string').str.strip().ne('')
+    valid_right=~right_conflict & right.line.notna() & right.station_name.notna() & right.line.astype('string').str.strip().ne('') & right.station_name.astype('string').str.strip().ne('')
     merged=left.loc[valid_left].merge(right.loc[valid_right],on=['line','station_name'],how='outer',suffixes=('_ridership','_station'),indicator=True)
     merged['match_status']=merged['_merge'].astype('string').map({'left_only':'ridership_only','right_only':'station_only','both':'exact_matched'})
     merged.loc[merged['_merge'].eq('both') & merged.alias_applied.fillna(False),'match_status']='alias_matched'
