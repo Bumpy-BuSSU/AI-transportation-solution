@@ -84,7 +84,7 @@ def clean_direct_population(frame, boundary, rules, source_file):
     codes = b.ADM_CD.astype('string')
     if (len(b) != contract['expected_dong'] or codes.duplicated().any()
             or not codes.str.fullmatch(r'11\d{6}', na=False).all()
-            or not b.BASE_DATE.astype('string').eq('20240630').all()):
+            or not b.BASE_DATE.astype('string').eq('20240630').fillna(False).all()):
         error('BOUNDARY_KEY_CONTRACT', 'unique complete Q2 SGIS keys required')
         return result()
     b['prefix'] = codes.str[:5]

@@ -7,3 +7,15 @@ data/validation/raw_inspection_summary.json text eol=lf
 
 # Preserve the exact human-approved official export bytes, including BOM/newlines.
 data/raw/2024/population_direct_65_plus/201_DT_201004_O020003_2024Q2_20261006.csv -text
+
+# P-S2-2RB deterministic acceptance artifacts and unchanged senior alias bytes.
+config/station_aliases.csv text eol=lf
+data/validation/batch2rb_baseline_extension_summary.json text eol=lf
+data/validation/batch2rb_population_authority_summary.json text eol=lf
+data/validation/batch2rb_population_clean.csv text eol=lf
+data/validation/batch2rb_population_cross_validation.csv text eol=lf
+data/validation/batch2rb_station_authority_summary.json text eol=lf
+data/validation/batch2rb_station_identity_audit.csv text eol=lf
+config/datasets.yaml text eol=lf
+config/source_contracts_2024.yaml text eol=lf
+config/validation_rules.yaml text eol=lf

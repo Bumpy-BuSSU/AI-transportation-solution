@@ -99,6 +99,13 @@ class DirectPopulationTests(unittest.TestCase):
             self.assertTrue(any(x.severity=='ERROR' for x in self.clean(bad).findings))
         self.assertTrue(any(x.severity=='ERROR' for x in self.clean(f,self.boundary.iloc[:-1]).findings))
 
+    def test_boundary_reference_date_null_cannot_pass_q2_contract(self):
+        for value in [None,pd.NA,'20240930']:
+            b=self.boundary.copy();b.loc[0,'BASE_DATE']=value
+            result=self.clean(boundary=b)
+            self.assertTrue(any(x.code=='BOUNDARY_KEY_CONTRACT' and x.severity=='ERROR' for x in result.findings))
+            self.assertTrue(result.frame.empty)
+
     def test_cleaner_rechecks_period_unit_required_headers_and_provenance(self):
         f=self.reader(self.path,self.contract)
         cases=[f.drop(columns=self.contract['senior_column'])]

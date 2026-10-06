@@ -1,5 +1,7 @@
 import hashlib
 import json
+import subprocess
+import tempfile
 from pathlib import Path
 import unittest
 import pandas as pd
@@ -15,6 +17,17 @@ class BaselineExtensionTests(unittest.TestCase):
         self.assertIn('population_direct_65_plus', REQUIRED_DATASET_IDS)
         self.assertEqual(len(load_dataset_config(ROOT/'subway/config/datasets.yaml',2024)),8)
         self.assertEqual(preflight(ROOT,2024),[])
+
+    def test_git_checkout_preserves_new_artifact_and_senior_alias_bytes(self):
+        names=[p.relative_to(ROOT).as_posix() for p in (ROOT/'subway/data/validation').glob('batch2rb*')]
+        names+=['subway/config/station_aliases.csv','subway/config/datasets.yaml','subway/config/source_contracts_2024.yaml','subway/config/validation_rules.yaml',RAW]
+        with tempfile.TemporaryDirectory() as tmp:
+            prefix=Path(tmp).as_posix()+'/'
+            subprocess.run(['git','-c','core.autocrlf=true','checkout-index','--prefix='+prefix,'--',*names],cwd=ROOT,check=True,capture_output=True)
+            for name in names:
+                with self.subTest(path=name):
+                    indexed=subprocess.check_output(['git','show',':'+name],cwd=ROOT)
+                    self.assertEqual((Path(tmp)/name).read_bytes(),indexed)
 
     def test_exact_new_raw_and_original_eleven_hashes(self):
         path=ROOT/RAW

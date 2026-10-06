@@ -26,7 +26,7 @@ now adopted within the approved scope: 55 station aliases, three transfer
 groups, strict official code-parent/boundary attribute-set corroboration,
 426 direct clean rows and independent 400-dong source comparison. The old
 26 incomplete age-band dongs stay unchanged. Source SHA and reversed-row
-deterministic CSV checks pass, with 100 unit tests and actual Task 8/4/7
+deterministic CSV checks pass, with 102 unit tests and actual Task 8/4/7
 regression. These are data-preparation checks, not statistical inference.
 Point-in-Polygon remains unimplemented; Task 9 NOT STARTED. Detailed gates and
 method limits: [Batch 2R-B record](03-approved-authority-adoption.md).

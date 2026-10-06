@@ -263,7 +263,7 @@
     }
   ],
   "regression": {
-    "full_unit_tests": 100,
+    "full_unit_tests": 102,
     "historical_2ra_evidence_unchanged": true,
     "original_raw_hashes": {
       "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",

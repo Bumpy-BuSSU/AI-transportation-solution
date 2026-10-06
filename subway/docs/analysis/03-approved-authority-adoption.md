@@ -126,7 +126,7 @@ artifacts, full regression and original Raw integrity all passed.
 Executed commands use Python 3.11.9, pandas 3.0.6, numpy 2.4.6, pyarrow 25.0.1,
 GeoPandas 1.2.0 and Shapely 2.1.2:
 
-- `python -m unittest discover -s subway/tests -v`: 83 baseline, **100 PASS**
+- `python -m unittest discover -s subway/tests -v`: 83 baseline, **102 PASS**
   after implementation. Station additions: five RED failures before adoption;
   baseline extension: two RED failures; direct reader/clean/comparison: nine
   RED failures. Negative behavior and historical source tests pass together.
@@ -159,3 +159,73 @@ clean-output checks using the repository's recorded source contract.
 **Task 9 NOT STARTED. Tasks 10 and 11 NOT STARTED.** No station Point-in-Polygon,
 population-to-station join, shelter proximity or station CRS conversion.
 No analysis results, causal interpretation or policy conclusions are claimed.
+
+
+## Final review hardening and Windows checkout proof
+
+A read-only whole-change review independently re-derived the station and
+population CSVs and their exact committed bytes. Final checks identified two
+confirmed defects, both reproduced RED before their scoped fixes:
+
+- With `core.autocrlf=true`, temporary `git checkout-index` converted the six
+  new acceptance files and four published-hash config files to CRLF. For
+  example population_clean changed from SHA `9d7e0115d7da96711d54a9cca009d52428cb2c3b0b80978b535724f9e78d96cd`
+  to `c4abd22a5d420bd239f9f82bb997dd65ca35141e70807d9b78a9820ee0bf3f34`.
+  Exact per-file `text eol=lf` attributes now preserve index bytes on checkout;
+  the original five artifact LF attributes remain unchanged. All ten files,
+  plus exact new Raw bytes, pass the temporary-checkout byte comparison.
+- Nullable `BASE_DATE` equality could be skipped by pandas `.all()` and pass
+  the direct cleaner's Q2 boundary contract. Explicit null-to-false validation
+  now rejects null and wrong dates; actual valid Raw and population outputs
+  remain unchanged.
+
+Both new regression tests pass and the final full suite is **102/102 PASS**.
+The six acceptance artifacts were regenerated and checked again; only final
+verification test-count metadata changed. No structural refactor or new
+functionality was added. Remaining Task 5 resolutions, future Tasks 9/10/11,
+and re-adjudication of already approved evidence stay outside this approval;
+source mappings and access wording were checked against the binding Mission.
+
+
+## Scoped changed files
+
+36 files changed from the Mission starting HEAD; the empty Raw inspection report is unchanged.
+
+```text
+docs/subway/2024-raw-schema-baseline.md
+docs/superpowers/plans/2026-10-05-subway-clean-transform-pipeline.md
+subway/.gitattributes
+subway/config/datasets.yaml
+subway/config/source_contracts_2024.yaml
+subway/config/station_aliases.csv
+subway/config/validation_rules.yaml
+subway/data/raw/2024/population_direct_65_plus/201_DT_201004_O020003_2024Q2_20261006.csv
+subway/data/validation/batch2rb_baseline_extension_summary.json
+subway/data/validation/batch2rb_population_authority_summary.json
+subway/data/validation/batch2rb_population_clean.csv
+subway/data/validation/batch2rb_population_cross_validation.csv
+subway/data/validation/batch2rb_station_authority_summary.json
+subway/data/validation/batch2rb_station_identity_audit.csv
+subway/data/validation/raw_inspection_summary.json
+subway/data/validation/raw_inventory.csv
+subway/data/validation/raw_schema_snapshot.json
+subway/data_manifest.csv
+subway/docs/analysis/00-report-map.md
+subway/docs/analysis/01-raw-data-baseline.md
+subway/docs/analysis/03-approved-authority-adoption.md
+subway/docs/analysis/ai-usage-log.md
+subway/docs/analysis/methodology-log.md
+subway/src/clean/population_direct.py
+subway/src/clean/station.py
+subway/src/ingest/population_direct.py
+subway/src/ingest/schema_inspector.py
+subway/src/transform/station_keys.py
+subway/src/utils/paths.py
+subway/src/validate/pipeline_validation.py
+subway/tests/test_baseline_extension.py
+subway/tests/test_inspect_raw_inputs.py
+subway/tests/test_paths.py
+subway/tests/test_population_direct.py
+subway/tests/test_station_authority.py
+subway/tests/test_station_keys.py
+```
