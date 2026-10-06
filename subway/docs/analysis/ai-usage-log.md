@@ -124,3 +124,12 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - Codex: repository-local 기술 종료 문서와 현재 report map/methodology/AI 기록을 정리했다. 전체158 tests,2024 E2E 및 Raw inspection을 단일 최종 패스로 실행하고, 승인 Task10 baseline의12Raw/config/16output hashes·summary bytes·11Parquet 행 수·Tasks5/6/8/9/10 counts·문서 링크·변경 범위를 검증했다.
 - 결과: Stage2 preprocessing COMPLETE / Task11 COMPLETE. Pipeline exit0, ERROR0/WARNING16/INFO2; Raw inspection exit0 및finding0. IN243/OUT15/eligible unresolved0,master unresolved16;full transport core 보존. Production code 변경 없음. EDA/극한기온 분류/통계검정/회귀/공간 해석/정책 분석/시각화는 시작하지 않았다.
 - 현재 승인 기록은 이전 Task9/10의 당시 PENDING 기록을 덮어쓰지 않는다. 정확한 방법·한계·보고서 문장·후속 계약은 [canonical Stage2 closeout](../../../docs/subway/2024-clean-transform-baseline.md)을 참조한다. 최종5쪽 보고서나 정책결론을 작성하지 않았다.
+
+
+## P-S3A-EDA — focused 2024 subway EDA / 2026-10-07
+
+- Human: Stage2 종료를 승인하고 substantive analysis 시작을 승인했다. Codex 사용 한도 중단 후 WIP를 같은 브랜치에 checkpoint commit/push하여 ChatGPT가 이어서 검토할 수 있게 했다. 자동 테스트를 인간이 독립 재실행했다고 기록하지 않는다.
+- ChatGPT: Stage2 closeout을 precision-review한 뒤 outcome-independent focused EDA Mission을 설계했다. WIP commit `2422ab46edf0c224249c1f70ee9c75280c4ff40e`의 코드·CSV·summary·5개 PNG를 원격 검토했다. 중단 직전 제기된 `before_06` 표시 문제는 checkpoint에 hour_order 로직과 회귀 테스트가 이미 반영되어 있고, versioned hourly CSV/PNG에서도 `before_06 → ... → after_24` 순서가 확인됨을 재검증했다. 이 원격 검토는 로컬 전체 test suite의 독립 재실행이 아니다.
+- Codex: pure EDA builder, runner, 9 focused tests, weather-only quantile diagnostics, current-area sample accounting, 11개 기술 table과 5개 descriptive figure를 구현·생성했다. 중단 전 focused tests 9개 PASS를 보고했으며, 결과 해석이나 threshold/model 채택은 수행하지 않았다.
+- 결과: current 서울 sample 243역/3,557,520행, valid age-comparison 3,557,519행, 서울 표본 senior>total 1셀. 366일 mean/max/min 기온 완전 관측, exact 10–16 구간 지원. extreme threshold/H1-H2 검정/regression/policy conclusion은 모두 미수행이며 사람 검토 gate를 유지한다.
+- 후속: 최종 local focused/full regression과 Git clean 확인 후 Stage3A human review를 닫는다. 이후 threshold·모형 사양은 EDA 결과와 별도로 사전 고정한다.

@@ -102,3 +102,24 @@ Panel/Count Regression, PPML/Poisson, GAM/spline, Fixed Effects, interaction spe
 sensitivity analysis는 **CANDIDATE**다. fit·분포진단·극한기온 분류·검정·추정은 수행하지 않았고
 이번 closeout으로 adopted가 되지 않는다. 현재 질문·10~16시 가설·trip purpose 해석 한계는 유지한다.
 Shelter proximity/accessibility와 지역 비교도 미구현이다. Task11 COMPLETE; EDA/statistical analysis NOT STARTED.
+
+
+## P-S3A-EDA — focused descriptive methods implemented / 2026-10-07
+
+Stage 3A에서 아래 기술적 방법만 구현·산출물 수준에서 채택한다. 이는 통계모형 채택이나 가설검정이 아니다.
+
+| 방법 | 상태 | 실제 범위·근거 |
+|---|---|---|
+| Current-study-area sample construction | adopted for EDA | `IN_CURRENT_STUDY_AREA` + 유효 mapped identity로 243역/3,557,520행; full Stage2 core는 불변 |
+| Deterministic ASOS108 date join | adopted for EDA | 2024-01-01~12-31 366일 unique date, many-to-one join; 현재 서울 표본에만 사용 |
+| Exact 10–16 daytime indicator | adopted as pre-specified definition | 기존 `10_11`~`15_16` 6개 구간; 결과를 본 뒤 창구 변경하지 않음 |
+| Distribution/count diagnostics | adopted for EDA | senior/non-senior zero rate, mean/variance, quantiles, variance/mean ratio |
+| Weather-only percentile diagnostics | adopted for EDA | mean/max/min 기온 분위수와 strict tail day 수; extreme cutoff로 채택하지 않음 |
+| Weather-only equal-frequency temperature bins | adopted for descriptive EDA | 이용량과 무관하게 기상값만으로 10분위 bin; 동률 edge collapse |
+| Hour/station descriptive aggregation | adopted for EDA | 시간대 연령 구조 및 243역 이질성; station-specific temperature effect는 미추정 |
+
+실제 count diagnostics는 senior 평균 119.86, variance/mean 147.87, zero 2.47%; non-senior 평균 748.57, variance/mean 1,977.24, zero 0.50%다. 이는 단순 Poisson 등분산 가정이 자료의 기술적 분산 구조와 맞지 않음을 보여주지만, PPML의 채택/기각 자체를 뜻하지 않는다. 역별 senior share는 평균 15.76%, SD 약 6.25%p, 범위 약 3.09~46.14%로 이질성이 크다.
+
+평일/주말 일평균 차이가 커서 calendar control이 후속 사양에서 필요하다. 기온-이용량 분위 프로파일은 선형 단조 관계로 보이지 않으므로 spline/GAM 또는 비선형 기온 사양을 후보로 유지한다. 다만 이는 season/calendar 미조정 EDA이므로 함수형 선택은 다음 사전 명세 단계에서 고정한다.
+
+**계속 candidate:** extreme cutoff, PPML/Poisson, Negative Binomial, GAM/spline, Fixed Effects 조합, cluster-robust SE, `Extreme × Senior`, `Extreme × Senior × Daytime`, sensitivity thresholds. Stage3A에서는 어떠한 모형도 fit하지 않았다.

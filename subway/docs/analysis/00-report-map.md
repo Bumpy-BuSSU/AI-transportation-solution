@@ -1,6 +1,6 @@
 # 개인 subway 분석보고서 근거 지도
 
-이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. EDA·극한기온 분류·통계 분석·공간 해석·시각화·정책 분석은 미착수다. 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
+이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. Stage 3A focused EDA 산출물은 생성되었고 사람 검토 및 최종 회귀 gate가 남아 있다. 극한기온 기준 채택·가설검정·회귀·정책 분석은 미착수다. 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
 
 ## 현재 working research questions
 
@@ -24,9 +24,9 @@
 | 수집 및 전처리 | Raw baseline, Stage 1 코드·tests, [Stage 2 계획](../../../docs/superpowers/plans/2026-10-05-subway-clean-transform-pipeline.md) | **Stage 2 전처리 COMPLETE**. [종료 baseline](../../../docs/subway/2024-clean-transform-baseline.md), [canonical QA](../../data/validation/pipeline_summary.json), Tasks 9/10 사람 승인 및 Task11 최종 검증으로 근거 연결 |
 | 분석 방법론 | [방법론 로그](methodology-log.md) | schema inspection·SHA-256·재현성 및 승인된 전처리 adopted. 통계모형은 candidate |
 | AI 서비스·범위·주요 프롬프트 | [AI 사용 기록](ai-usage-log.md) | ChatGPT/Codex 역할과 주요 지시 요약 기록. 인간 검증은 증거가 있는 범위만 기록 |
-| 분석 결과 | 아직 없음 | 미완료. Stage 1 검사 성공을 연구 결과로 대체하지 않음 |
+| 분석 결과 | [Stage 3A focused EDA](08-focused-eda.md), `subway/results/tables/`, `subway/results/figures/` | 기술 EDA 산출물 생성. 표본·분포·시간대·역 이질성의 기술통계만 존재하며 가설검정·통계적 효과 추정은 아직 없음 |
 | 정책 제안·기대효과 | 아직 없음 | 미완료. 분석 후 작성 |
-| 결과 이미지 | 아직 없음 | 미완료. EDA/시각화는 이후 분석 Stage |
+| 결과 이미지 | Stage 3A 기술 EDA 그림 5개 | 기술적 탐색 그림이며 최종 보고서 채택 여부는 사람 검토 후 결정. 추론적 결과 그림은 아직 없음 |
 | GitHub 재현 코드 | 저장소의 `subway/tools/inspect_raw_inputs.py`, `subway/tests/`, 기술 baseline | Stage1 및 `python subway/run_pipeline.py --year 2024` 재현 가능. Task11 종료 검증 완료; [종료 baseline](../../../docs/subway/2024-clean-transform-baseline.md)의 환경·hash·계약 참조 |
 
 현재 근거가 없는 항목에는 결과·정책·수치·그림을 만들어 넣지 않는다. 각 후속 Stage 종료 시 해당 문서와 검증 결과를 연결한다.
@@ -63,3 +63,14 @@ exact input/config/output hashes 및 summary bytes는 승인 Task10 baseline과 
 EDA 결과, 가설검정 결과, 통계 추정치, charts, 정책 제안, 기대효과는 **모두 미완료**다.
 최종5쪽 보고서나 정책결론을 작성하지 않았다. 서울의 향후 실증 결과를 현재 지역 간 격차나
 trip purpose·탄소감축 인과효과로 표현하지 않는다. 합의된 primary/secondary 질문은 유지한다.
+
+
+## P-S3A-EDA focused descriptive analysis — 2026-10-07
+
+Stage 2 승인 산출물만 사용해 현재 서울 실증 표본을 구성했다. 원래 core 3,988,480행·274 identity 중 현재 연구지역 243 identity / 3,557,520행이 EDA base에 들어갔다. 공간범위에서 430,960행이 제외되며, 그중 219,600행은 현재 서울 경계 밖 15 identity, 211,360행은 Task5 공간 미확정 16 identity다. core 자체는 수정하지 않는다. 현재 서울 표본은 모두 matched이며 senior>total 1셀만 연령 비교 통계에서 제외하여 valid age-comparison 3,557,519행을 사용한다.
+
+서울 ASOS108은 366일 모두 mean/max/min 기온이 존재한다. 10–16시는 기존 20개 hour bin 중 `10_11`~`15_16` 여섯 구간으로 정확히 구현 가능함을 확인했다. 기술적으로 고령 이용은 비고령보다 10–16시에 더 집중된 시간대 구조를 보이지만, 이는 극한기온 효과가 아니다. 기온 분위수별 일 이용량 프로파일은 양 극단에서 낮아지는 비선형 형태를 보여 이후 비선형 함수형을 검토할 근거가 있으나, 계절·요일을 조정하지 않은 기술통계이므로 효과·인과로 해석하지 않는다.
+
+Count 분포는 senior/non-senior 모두 평균 대비 분산이 매우 크고, 역별 연간 이용량 및 senior share도 큰 이질성이 있다. 이는 이후 count-model 분산 가정과 station fixed effects 필요성을 검토할 근거다. 주말 일평균 이용량은 평일보다 뚜렷하게 낮아 calendar adjustment가 필요하다. 극한기온 cutoff, PPML/Poisson/NB/GAM, FE 조합, cluster SE는 아직 채택하지 않는다.
+
+세부 근거: [08-focused-eda.md](08-focused-eda.md). 현재 WIP artifact summary는 `human_eda_review=PENDING`, `extreme_threshold_status=NOT ADOPTED`, `hypothesis_test=NOT PERFORMED`, `regression=NOT FITTED`를 유지한다.
