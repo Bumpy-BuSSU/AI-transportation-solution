@@ -194,8 +194,20 @@ def match_stations(ridership: pd.DataFrame, stations: pd.DataFrame, aliases: pd.
         if not invalid.empty:
             invalid=invalid.copy();invalid['match_status']=status
             merged=pd.concat([merged,invalid],ignore_index=True,sort=False)
+    matched=merged.match_status.isin(['exact_matched','alias_matched'])
+    left_code=merged['station_code_raw_ridership'].astype('string')
+    right_code=merged['station_code_raw_station'].astype('string')
+    merged['source_code_conflict']=matched & (left_code.isna() | right_code.isna()
+        | left_code.str.strip().eq('') | right_code.str.strip().eq('')
+        | left_code.ne(right_code).fillna(True))
+    conflicts=merged.loc[merged.source_code_conflict].copy()
+    if not conflicts.empty:
+        conflicts['exception_code']='SOURCE_CODE_CONFLICT'
+        findings.append(Finding('ERROR','station','SOURCE_CODE_CONFLICT',
+                                f'{len(conflicts)} name/line matches have incompatible external codes; spatial eligibility blocked'))
     bad=merged[merged.match_status.isin(['ridership_only','station_only'])].copy()
     if len(bad):
         bad['exception_code']='UNRESOLVED_STATION_IDENTITY'
         findings.append(Finding('ERROR','station','UNRESOLVED_STATION_IDENTITY',f'{len(bad)} unmatched identities; no implicit aliases adopted'))
-    return StageResult(merged.drop(columns=['_merge']),findings,bad)
+    exceptions=pd.concat([bad,conflicts],ignore_index=True,sort=False)
+    return StageResult(merged.drop(columns=['_merge']),findings,exceptions)

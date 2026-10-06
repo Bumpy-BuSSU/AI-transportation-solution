@@ -39,7 +39,7 @@ class StationKeysTests(unittest.TestCase):
         self.assertEqual(result.frame.station_name_raw.tolist(),senior.station_name_raw.tolist())
         self.assertEqual(result.frame.source_row_id.tolist(),senior.source_row_id.tolist())
         self.assertEqual(result.frame.source_file.tolist(),senior.source_file.tolist())
-        self.assertEqual(len(aliases),5)
+        self.assertEqual(int(aliases.dataset_id.eq('senior_ridership').sum()),5)
         self.assertTrue(aliases.verified.eq('true').all())
         self.assertTrue(aliases.evidence.str.strip().ne('').all())
         for evidence,line,code in [('', '', 'ALIAS_EVIDENCE_MISSING'),('reviewed','1','CODE_LINE_CONTRADICTION')]:

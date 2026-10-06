@@ -211,3 +211,37 @@ population:
     상계3.4동: 상계3·4동
     상계6.7동: 상계6·7동
     중계2.3동: 중계2·3동
+
+station_coordinate_review:
+  verified_transfer_groups:
+  - members:
+    - - '2'
+      - '200'
+      - 까치산
+    - - '5'
+      - '2519'
+      - 까치산
+    verified: true
+    evidence: KRIC dataset32 S1105 까치산 transfer S1102; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32;
+      official KRIC transfer explanation https://www.kric.go.kr/jsp/board/portal/sub05/knp/railCommonSenceDetail.jsp?p_id1=A010031131&p_id2=182
+  - members:
+    - - '3'
+      - '321'
+      - 충무로
+    - - '4'
+      - '423'
+      - 충무로
+    verified: true
+    evidence: KRIC dataset32 I1103/I1104 충무로 mutual transfer; same road address 퇴계로
+      지하214; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32
+  - members:
+    - - '6'
+      - '2647'
+      - 태릉입구
+    - - '7'
+      - '2719'
+      - 태릉입구
+    verified: true
+    evidence: KRIC dataset32 S1106/S1107 태릉입구 mutual transfer; same road address 동일로
+      지하992-1; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32; physical relation
+      only; station source code disagreement remains a separate identity blocker

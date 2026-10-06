@@ -38,6 +38,15 @@ def clean_stations(frame, rules, source_file):
     report('DUPLICATE_IDENTITY',out.duplicated(['line','station_name'],keep=False),'line/name duplicate or conflicting coordinates')
     duplicate_coordinates=out.duplicated(['latitude','longitude'],keep=False)
     reviews=rules.get('station_coordinate_review',{}).get('verified_transfer_groups',[])
+    # A partially present approved group is a source identity problem even
+    # if its remaining coordinate is unique. Absent groups do not apply.
+    all_members=out[['line','station_code_raw','station_name_raw']].astype(str)
+    for review in reviews:
+        expected={tuple(str(v) for v in member) for member in review.get('members',[])}
+        present=all_members.apply(lambda row:tuple(row) in expected,axis=1)
+        actual=set(all_members.loc[present].itertuples(index=False,name=None))
+        if actual and actual!=expected:
+            report('TRANSFER_GROUP_INCOMPLETE',present,'approved transfer member set is incomplete')
     for _,group in out.loc[duplicate_coordinates].groupby(['latitude','longitude'],dropna=False):
         members=group[['line','station_code_raw','station_name_raw']].astype(str)
         actual=set(members.itertuples(index=False,name=None))
