@@ -133,3 +133,11 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - Codex: pure EDA builder, runner, 9 focused tests, weather-only quantile diagnostics, current-area sample accounting, 11개 기술 table과 5개 descriptive figure를 구현·생성했다. 중단 전 focused tests 9개 PASS를 보고했으며, 결과 해석이나 threshold/model 채택은 수행하지 않았다.
 - 결과: current 서울 sample 243역/3,557,520행, valid age-comparison 3,557,519행, 서울 표본 senior>total 1셀. 366일 mean/max/min 기온 완전 관측, exact 10–16 구간 지원. extreme threshold/H1-H2 검정/regression/policy conclusion은 모두 미수행이며 사람 검토 gate를 유지한다.
 - 후속: 최종 local focused/full regression과 Git clean 확인 후 Stage3A human review를 닫는다. 이후 threshold·모형 사양은 EDA 결과와 별도로 사전 고정한다.
+
+
+## P-S3B-SPEC — confirmatory specification freeze / 2026-10-07
+
+- Human: Stage3A 결과와 로컬 focused 9 tests / full 167 tests / EDA 정상 실행을 확인하고 Stage3A를 승인했다. Codex 한도 소진으로 이후 Stage3B 구현을 ChatGPT가 이어서 수행하도록 승인했다.
+- ChatGPT: Stage3A EDA를 근거로 citywide daily weather exposure와 추론단위를 정렬해 pseudo-replication을 피하고, boarding primary, exact10–16, weather-only p90/p10 primary와 p95/p05 sensitivity, PPML/date-cluster, Holm family를 결과 보기 전에 동결했다. 이 specification commit 이전에는 model result를 생성하지 않는다.
+- Codex: Stage3B에는 사용하지 않음(사용 한도 소진).
+- 현재 상태: specification/config/table-construction contract 작성 단계. coefficient/p-value/hypothesis decision은 아직 생성하지 않았다.

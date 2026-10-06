@@ -1,0 +1,82 @@
+schema_version: 1
+reference_year: 2024
+study_area_id: seoul_2024
+stage3a_human_approved_on: '2026-10-07'
+
+primary_event: boarding
+age_comparison_rule: common_valid_cells
+temperature_source: seoul_asos108_daily
+
+daytime:
+  start_hour: 10
+  end_hour: 16
+  bins:
+    - 10_11
+    - 11_12
+    - 12_13
+    - 13_14
+    - 14_15
+    - 15_16
+
+hot_primary:
+  variable: temperature_max
+  quantile: 0.90
+  threshold_c: 32.75
+  operator: ge
+
+cold_primary:
+  variable: temperature_min
+  quantile: 0.10
+  threshold_c: -3.05
+  operator: le
+
+hot_sensitivity:
+  variable: temperature_max
+  quantile: 0.95
+  threshold_c: 33.675
+  operator: ge
+
+cold_sensitivity:
+  variable: temperature_min
+  quantile: 0.05
+  threshold_c: -4.8
+  operator: le
+
+primary_model:
+  family: ppml
+  inference_unit: daily_age_group
+  date_fixed_effects: true
+  age_month_interactions: true
+  age_day_of_week_interactions: true
+  covariance: cluster_date
+
+h2_model:
+  family: ppml
+  inference_unit: daily_age_group_daytime
+  date_fixed_effects: true
+  full_lower_order_extreme_daytime_interactions: true
+  age_daytime_month_interactions: true
+  age_daytime_day_of_week_interactions: true
+  covariance: cluster_date
+
+multiple_testing:
+  method: holm
+  alpha: 0.05
+  tests:
+    - h1_hot_senior_differential
+    - h1_cold_senior_differential
+    - h2_hot_daytime_amplification
+    - h2_cold_daytime_amplification
+
+robustness:
+  threshold_sensitivity: p95_hot_p05_cold
+  event_direction_sensitivity: alighting
+  log_ratio_benchmark:
+    family: ols
+    covariance: hac
+    maxlags: 7
+
+interpretation:
+  trip_purpose_identified: false
+  causal_policy_effect_identified: false
+  interregional_gap_identified: false

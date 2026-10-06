@@ -123,3 +123,23 @@ Stage 3A에서 아래 기술적 방법만 구현·산출물 수준에서 채택�
 평일/주말 일평균 차이가 커서 calendar control이 후속 사양에서 필요하다. 기온-이용량 분위 프로파일은 선형 단조 관계로 보이지 않으므로 spline/GAM 또는 비선형 기온 사양을 후보로 유지한다. 다만 이는 season/calendar 미조정 EDA이므로 함수형 선택은 다음 사전 명세 단계에서 고정한다.
 
 **계속 candidate:** extreme cutoff, PPML/Poisson, Negative Binomial, GAM/spline, Fixed Effects 조합, cluster-robust SE, `Extreme × Senior`, `Extreme × Senior × Daytime`, sensitivity thresholds. Stage3A에서는 어떠한 모형도 fit하지 않았다.
+
+
+## P-S3B — confirmatory specification frozen pre-fit / 2026-10-07
+
+Stage3A HUMAN APPROVED 후 결과를 보기 전에 다음 사양을 **adopted for confirmatory testing**으로 동결한다.
+
+- 추론 단위: citywide daily weather exposure와 맞춘 H1 `date×age`, H2 `date×age×daytime`
+- primary event: boarding only; alighting only는 sensitivity
+- primary extreme: max-temp p90 32.75°C 이상, min-temp p10 -3.05°C 이하
+- severe sensitivity: max-temp p95 33.675°C 이상, min-temp p05 -4.8°C 이하
+- daytime: 원래 10_11~15_16 6개 bin
+- primary family: PPML
+- H1: date FE + age-specific month/DOW structure + `senior×hot/cold`
+- H2: date FE + age/daytime lower-order 및 month/DOW differential structure + `senior×extreme×daytime`
+- covariance: cluster by date
+- multiple testing: four two-sided primary tests, Holm, alpha=0.05
+- robustness: p95/p05, alighting, OLS log-ratio HAC(7)
+
+Stage3A의 과산포는 PPML을 자동 기각하는 근거로 사용하지 않는다. 역별 고정 이질성은 고정된 243역을 daily citywide aggregate로 쓰는 H1/H2 primary에서 station FE로 재확장하지 않고, 후속 Secondary2에서 별도 분석한다.
+실제 model fit/result는 아직 없음. 상세 계약: [09-confirmatory-specification.md](09-confirmatory-specification.md).

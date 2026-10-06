@@ -1,6 +1,6 @@
 # 개인 subway 분석보고서 근거 지도
 
-이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. Stage 3A focused EDA 산출물은 생성되었고 사람 검토 및 최종 회귀 gate가 남아 있다. 극한기온 기준 채택·가설검정·회귀·정책 분석은 미착수다. 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
+이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. Stage 3A focused EDA는 HUMAN APPROVED 2026-10-07. Stage 3B confirmatory specification을 결과 보기 전에 동결하는 중이며, 가설검정·회귀 결과·정책 분석은 아직 없다. 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
 
 ## 현재 working research questions
 
@@ -74,3 +74,14 @@ Stage 2 승인 산출물만 사용해 현재 서울 실증 표본을 구성했�
 Count 분포는 senior/non-senior 모두 평균 대비 분산이 매우 크고, 역별 연간 이용량 및 senior share도 큰 이질성이 있다. 이는 이후 count-model 분산 가정과 station fixed effects 필요성을 검토할 근거다. 주말 일평균 이용량은 평일보다 뚜렷하게 낮아 calendar adjustment가 필요하다. 극한기온 cutoff, PPML/Poisson/NB/GAM, FE 조합, cluster SE는 아직 채택하지 않는다.
 
 세부 근거: [08-focused-eda.md](08-focused-eda.md). 현재 WIP artifact summary는 `human_eda_review=PENDING`, `extreme_threshold_status=NOT ADOPTED`, `hypothesis_test=NOT PERFORMED`, `regression=NOT FITTED`를 유지한다.
+
+
+## P-S3B specification freeze — 2026-10-07
+
+Stage3A HUMAN APPROVED 2026-10-07. 로컬 focused 9 tests / full 167 tests OK 및 EDA 정상 실행을 사람 검토 근거로 사용한다.
+[confirmatory specification](09-confirmatory-specification.md)과 `subway/config/confirmatory_analysis_2024.yaml`에 H1/H2 사양을 결과 생성 전에 고정한다.
+
+핵심 계약은 citywide 일별 ASOS108 exposure에 맞춘 daily aggregation, boarding primary / alighting sensitivity,
+hot p90(`temperature_max>=32.75`) / cold p10(`temperature_min<=-3.05`) primary,
+p95/p05 sensitivity, exact 10–16 daytime, PPML + date-cluster inference, 네 개 primary test의 Holm 보정이다.
+이 단계에서는 coefficient/p-value/가설판정이 아직 없다. Secondary2 공간 이질성도 시작하지 않는다.
