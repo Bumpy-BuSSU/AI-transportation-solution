@@ -1,0 +1,474 @@
+{
+  "batch": "Stage2 Batch2 Tasks4-7 only",
+  "batch1_regression": {
+    "crosswalk": {
+      "line_assignment_coverage": 1.0,
+      "raw_rows": 199398,
+      "senior_aliases": 5,
+      "unique_key_statuses": {
+        "alias_matched": 8,
+        "exact_matched": 265
+      }
+    },
+    "senior_ridership": {
+      "long_rows": 3987960,
+      "raw_rows": 199398,
+      "ridership_sum": 462981953
+    },
+    "total_ridership": {
+      "long_rows": 3988480,
+      "raw_rows": 199424,
+      "ridership_sum": 3302748460
+    }
+  },
+  "config_hashes": {
+    "subway/config/source_contracts_2024.yaml": "06afddf9d669f948184a1f06cb462cd5e19804843932e675e35ef0429cef7e10",
+    "subway/config/station_aliases.csv": "c3181cf850c8f69f5a26dca4bc27cf4f1c30b76eb67c7ff65f947dee2fd5aa98",
+    "subway/config/validation_rules.yaml": "3cae58b5da173cc8f9e96106a6a3f3212b6ed1d36f93e3c2665630b7e922e10e"
+  },
+  "determinism_scope": "same recorded writer/library environment; stable unique sort keys; nulls last",
+  "diagnostic_hashes": {
+    "batch2_population_diagnostics.csv": "c62d3716cedf86c4e8ed8d9ddbe157209fef3510bca4502b833b31e776fd0e8f",
+    "batch2_station_diagnostics.csv": "c0237b5007c6395254e6c06d96b7b3a51ad7372b0a0422cf314aeae3fe1241b6"
+  },
+  "diagnostic_reversed_row_reproducibility": "PASS",
+  "environment": {
+    "geopandas": "1.2.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "python": "3.11.9",
+    "shapely": "2.1.2"
+  },
+  "human_acceptance": "pending; Task8 requires human review; Task8+ not started",
+  "manifest_sha256": "9598c9f6c7c1585a1304a0d9204f4759512fdeb075547eb4525009fd942e8383",
+  "population": {
+    "blocked_dong": 26,
+    "blocking_reason": "selected Q2 elderly cells use literal - in 26 dongs; table-specific zero/missing semantics not verified; no imputation",
+    "clean_valid_dong": 400,
+    "code_evidence": "https://sgis.mods.go.kr/developer/html/newOpenApi/api/dataApi/addressBoundary.html",
+    "complete_population_65_plus": 1723230,
+    "complete_population_total": 9274911,
+    "distinct_labels": 451,
+    "duplicate_dong_rows": [
+      {
+        "adm_cd": "11210680",
+        "dong": "신사동",
+        "gu": "관악구"
+      },
+      {
+        "adm_cd": "11230510",
+        "dong": "신사동",
+        "gu": "강남구"
+      }
+    ],
+    "explicit_name_variants": {
+      "금호2.3가동": "금호2·3가동",
+      "면목3.8동": "면목3·8동",
+      "상계3.4동": "상계3·4동",
+      "상계6.7동": "상계6·7동",
+      "종로1.2.3.4가동": "종로1·2·3·4가동",
+      "종로5.6가동": "종로5·6가동",
+      "중계2.3동": "중계2·3동"
+    },
+    "findings": [
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강남구/도곡1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강남구/삼성1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강동구/둔촌1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강북구/수유1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "관악구/서원동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "광진구/중곡3동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "구로구/구로3동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "노원구/하계2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "도봉구/쌍문4동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "동대문구/답십리2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "마포구/망원1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "마포구/서교동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "서초구/반포본동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "성동구/응봉동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "영등포구/신길7동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "용산구/효창동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/가회동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/교남동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/숭인2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/이화동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/종로5·6가동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/창신1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/창신2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/창신3동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "중구/광희동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "중구/을지로동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "HIERARCHY_COVERAGE",
+        "dataset_id": "population",
+        "message": "verified gu/dong coverage differs from target",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      }
+    ],
+    "hierarchy_evidence": "https://stat.eseoul.go.kr/statHtml/statHtml.do?con=&orgId=201&tblId=DT_201003_A010006",
+    "item_evidence": "official selectable 계 item; downloaded metadata names the table/source/unit but gives no arithmetic formula",
+    "partial_totals_only": true,
+    "raw_rows": 8136,
+    "selected_q2_dash_cells": 32,
+    "share_max": 0.3755568328782871,
+    "share_min": 0.08143466117889167,
+    "source_blocks": 452,
+    "status": "BLOCKED",
+    "verified_dong": 426,
+    "verified_gu": 25
+  },
+  "raw_hashes": {
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.dbf": "f1191dd2ae5ca1f5fd1e3977cb3e6150630ad6d066a977935ea42fb317088b74",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.prj": "0c549431311685a7f58ce669878c50db7b4d77d5b27e4a3c942067b8654bbe48",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shp": "1f88299a67d115f3fa1321ffedd2c219e70cfbe74da052c7de3c265c87ea0a22",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shx": "99b202c58f50075c1d1e68e7cc4bd3baf64676669fe9681ebaf6d1438d640455",
+    "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls": "462ae9c5916fd3c8adac8250bf14d5b2e358988f0bd1b17c996604a25d320abc",
+    "subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv": "3a21980c02827ff2a97c6bdb824313f2dbeb87e61989af21daab7bc30c2bead7",
+    "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv": "acba50585ee981d56502fc9a1f09b4be9f57edeedda00507015bd590eb6bc97b",
+    "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv": "30e2eb633ac78904029b69fb0b9c48d3aee74b1493e93469af42837697421d08",
+    "subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv": "2cb197ee17b5ed95c7c54ae05a3688a336ee0d0908416c8ab7af905e1296ff72",
+    "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv": "b8826c28c9dabd0ab66fcc775e651eb1e2764bd1f1f3b9748f164592b7e8aade"
+  },
+  "raw_inspection": {
+    "command": "python subway/tools/inspect_raw_inputs.py --year 2024",
+    "error": 0,
+    "exit_code": 0,
+    "info": 0,
+    "warning": 0
+  },
+  "spatial": {
+    "boundary": {
+      "crs": "EPSG:5179",
+      "empty": 0,
+      "findings": [],
+      "gu_count": 25,
+      "missing": 0,
+      "rows": 426,
+      "valid": 426
+    },
+    "shelter": {
+      "crs": "EPSG:5186",
+      "findings": [
+        {
+          "code": "TEMPORAL_UNCERTAINTY",
+          "dataset_id": "shelter",
+          "message": "downloaded rows do not establish a 2024 shelter census",
+          "relative_path": "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv",
+          "severity": "WARNING"
+        }
+      ],
+      "reference_date": null,
+      "rows": 412,
+      "valid_coordinates": 412
+    },
+    "status": "COMPLETE"
+  },
+  "starting_head": "87811b24ba0d0a95083e79f54ad0cf98ed8db804",
+  "station": {
+    "after_counts": {
+      "exact_matched": 205,
+      "ridership_only": 69,
+      "station_only": 71
+    },
+    "alias_adopted": 0,
+    "before_counts": {
+      "exact_matched": 205,
+      "ridership_only": 69,
+      "station_only": 71
+    },
+    "blocking_reasons": [
+      "station CRS unverified for Task 9",
+      "69 ridership-only and 71 station-only identities need evidence review",
+      "2025 coordinate temporal applicability unresolved"
+    ],
+    "candidate_identity_rows": 135,
+    "candidate_mismatch_classes": {
+      "adjunct_name": 146,
+      "code_supported_name_change": 8,
+      "station_suffix": 4
+    },
+    "candidate_relations": 158,
+    "findings": [
+      {
+        "code": "DUPLICATE_COORDINATE",
+        "dataset_id": "station",
+        "message": "duplicate coordinate pair; review source identities: 8",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "ERROR"
+      },
+      {
+        "code": "CRS_UNVERIFIED",
+        "dataset_id": "station",
+        "message": "source does not explicitly establish coordinate CRS; Task 9 blocked",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "TEMPORAL_UNCERTAINTY",
+        "dataset_id": "station",
+        "message": "coordinate reference snapshot is not proven applicable to 2024",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "UNRESOLVED_STATION_IDENTITY",
+        "dataset_id": "station",
+        "message": "140 unmatched identities; no implicit aliases adopted",
+        "relative_path": "",
+        "severity": "ERROR"
+      }
+    ],
+    "reference_dates": [
+      "2025-08-14"
+    ],
+    "source_rows": 276,
+    "station_crs": null,
+    "status": "BLOCKED",
+    "unmatched_without_candidate": 5
+  },
+  "task4_status": "COMPLETE",
+  "task5_status": "BLOCKED",
+  "task6_status": "BLOCKED",
+  "task7_status": "COMPLETE",
+  "unit_tests": {
+    "command": "python -m unittest discover -s subway/tests -v",
+    "count": 68,
+    "result": "PASS"
+  },
+  "weather": {
+    "blank_counts": {
+      "humidity_mean": 0,
+      "precipitation": 206,
+      "snow_depth_max": 338,
+      "snow_new_max": 350,
+      "temperature_max": 0,
+      "temperature_mean": 0,
+      "temperature_min": 0,
+      "wind_max": 2,
+      "wind_mean": 3
+    },
+    "clean_missing_counts": {
+      "humidity_mean": 0,
+      "precipitation": 206,
+      "snow_depth_max": 338,
+      "snow_new_max": 350,
+      "temperature_max": 0,
+      "temperature_mean": 0,
+      "temperature_min": 0,
+      "wind_max": 2,
+      "wind_mean": 3
+    },
+    "findings": [
+      {
+        "code": "OBSERVATION_MISSING",
+        "dataset_id": "weather",
+        "message": "일강수량(mm): 206",
+        "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "OBSERVATION_MISSING",
+        "dataset_id": "weather",
+        "message": "최대 풍속(m/s): 2",
+        "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "OBSERVATION_MISSING",
+        "dataset_id": "weather",
+        "message": "평균 풍속(m/s): 3",
+        "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "OBSERVATION_MISSING",
+        "dataset_id": "weather",
+        "message": "일 최심신적설(cm): 350",
+        "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "OBSERVATION_MISSING",
+        "dataset_id": "weather",
+        "message": "일 최심적설(cm): 338",
+        "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+        "severity": "WARNING"
+      }
+    ],
+    "literal_zero_counts": {
+      "humidity_mean": 0,
+      "precipitation": 50,
+      "snow_depth_max": 0,
+      "snow_new_max": 0,
+      "temperature_max": 1,
+      "temperature_mean": 0,
+      "temperature_min": 2,
+      "wind_max": 0,
+      "wind_mean": 0
+    },
+    "missing_policy": "blank -> missing; literal numeric zero -> zero; no filling or classifications",
+    "rows": 366,
+    "station_ids": [
+      "108"
+    ],
+    "unique_dates": 366
+  }
+}
