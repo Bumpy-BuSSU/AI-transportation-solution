@@ -160,7 +160,22 @@ def match_stations(ridership: pd.DataFrame, stations: pd.DataFrame, aliases: pd.
             if rows.station_name.map(_name).nunique()!=1 or rows.evidence.fillna('').str.strip().eq('').any() or rows.station_name.map(_name).eq('').any():
                 findings.append(Finding('ERROR','station','ALIAS_CONFIGURATION_ERROR',f'{line}/{name}: ambiguous or unsupported alias'))
                 continue
-            right.loc[list(indexes),'station_name']=_name(rows.iloc[0].station_name)
+            target=_name(rows.iloc[0].station_name)
+            source=right.loc[list(indexes)]
+            candidates=ridership.loc[ridership.line.astype(str).eq(str(line))
+                                     & ridership.station_name.map(_name).eq(target),
+                                     ['line','station_name','station_code_raw']].drop_duplicates()
+            code=source.iloc[0].station_code_raw
+            source_code_rows=right[right.line.astype(str).eq(str(line)) & right.station_code_raw.eq(code)]
+            competing=ridership[ridership.line.astype(str).eq(str(line)) & ridership.station_code_raw.eq(code)]
+            if (len(source)!=1 or len(source_code_rows)!=1 or len(candidates)!=1
+                    or pd.isna(code) or not str(code).strip()
+                    or str(candidates.iloc[0].station_code_raw)!=str(code)
+                    or len(competing[['line','station_name','station_code_raw']].drop_duplicates())!=1):
+                findings.append(Finding('ERROR','station','STATION_ALIAS_CODE_CONTRADICTION',
+                                        f'{line}/{name}: alias lacks unique compatible source code/name identities'))
+                continue
+            right.loc[list(indexes),'station_name']=target
             right.loc[list(indexes),'alias_applied']=True
             right.loc[list(indexes),'alias_evidence']=rows.iloc[0].evidence
     left=ridership[['line','station_name','station_code_raw']].drop_duplicates().copy()

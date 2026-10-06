@@ -44,4 +44,43 @@ class StationTests(unittest.TestCase):
         self.assertTrue(result.frame.station_name.eq('없는역').any())
         self.assertFalse(result.frame.match_status.isin(['exact_matched','alias_matched']).any())
 
+    def transfer_fixture(self):
+        raw=pd.concat([self.raw,self.raw],ignore_index=True)
+        raw.loc[1,['호선','고유역번호(외부역코드)']]=['4','426']
+        group={'members':[['1','150','서울역'],['4','426','서울역']],
+               'evidence':'official transfer fixture', 'verified':True}
+        rules=dict(self.rules,station_coordinate_review={'verified_transfer_groups':[group]})
+        return raw,rules
+
+    def test_verified_transfer_coordinates_are_info_only(self):
+        raw,rules=self.transfer_fixture()
+        result=clean_stations(raw,rules,'s')
+        self.assertFalse(any(f.code=='DUPLICATE_COORDINATE' for f in result.findings))
+        self.assertTrue(any(f.code=='VERIFIED_TRANSFER_COORDINATE' and f.severity=='INFO' for f in result.findings))
+        self.assertTrue(result.exceptions.empty)
+
+    def test_transfer_evidence_cannot_clear_unrelated_or_same_identity_duplicates(self):
+        raw,rules=self.transfer_fixture()
+        cases=[]
+        unrelated=raw.copy();unrelated.loc[1,'역명']='다른역';cases.append((unrelated,rules))
+        cases.append((pd.concat([raw,raw.iloc[[0]]],ignore_index=True),rules))
+        cases.append((raw,self.rules))
+        for verified,evidence in [(False,'official'),(True,''),(True,None),(True,float('nan')),(True,False),(True,0)]:
+            bad_rules=__import__('copy').deepcopy(rules)
+            bad_rules['station_coordinate_review']['verified_transfer_groups'][0].update(verified=verified,evidence=evidence)
+            cases.append((raw,bad_rules))
+        for frame,configuration in cases:
+            with self.subTest(frame=frame[['호선','역명']].values.tolist()):
+                result=clean_stations(frame,configuration,'s')
+                self.assertTrue(any(f.code=='DUPLICATE_COORDINATE' and f.severity=='ERROR' for f in result.findings))
+
+    def test_station_alias_rejects_code_contradiction_and_competing_code_identity(self):
+        station=clean_stations(self.raw,self.rules,'s').frame
+        aliases=pd.DataFrame([['station','1','서울역','서울','reviewed fixture','true']],columns=ALIAS_COLUMNS)
+        for keys in [pd.DataFrame({'line':['1'],'station_name':['서울'],'station_code_raw':['999']}),
+                     pd.DataFrame({'line':['1','1'],'station_name':['서울','다른역'],'station_code_raw':['150','150']})]:
+            result=match_stations(keys,station,aliases)
+            self.assertNotIn('alias_matched',set(result.frame.match_status))
+            self.assertTrue(any(f.code=='STATION_ALIAS_CODE_CONTRADICTION' for f in result.findings))
+
 if __name__=='__main__': unittest.main()

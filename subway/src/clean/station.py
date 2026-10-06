@@ -36,7 +36,27 @@ def clean_stations(frame, rules, source_file):
         parsed=pd.to_datetime(text.where(text.str.fullmatch(r'\d{4}-\d{2}-\d{2}',na=False)),format='%Y-%m-%d',errors='coerce')
         report('INVALID_SOURCE_DATE',parsed.isna(),source)
     report('DUPLICATE_IDENTITY',out.duplicated(['line','station_name'],keep=False),'line/name duplicate or conflicting coordinates')
-    report('DUPLICATE_COORDINATE',out.duplicated(['latitude','longitude'],keep=False),'duplicate coordinate pair; review source identities')
+    duplicate_coordinates=out.duplicated(['latitude','longitude'],keep=False)
+    reviews=rules.get('station_coordinate_review',{}).get('verified_transfer_groups',[])
+    for _,group in out.loc[duplicate_coordinates].groupby(['latitude','longitude'],dropna=False):
+        members=group[['line','station_code_raw','station_name_raw']].astype(str)
+        actual=set(members.itertuples(index=False,name=None))
+        # A reviewed physical transfer relation applies only to its complete,
+        # unique, different-line member set. Extra/duplicate rows fail closed.
+        if (group[['latitude','longitude']].isna().any().any()
+                or len(actual)!=len(group) or group.line.nunique()!=len(group)
+                or group.duplicated(['line','station_name'],keep=False).any()):
+            continue
+        verified=any(review.get('verified') is True
+                     and isinstance(review.get('evidence'),str)
+                     and review['evidence'].strip()
+                     and actual=={tuple(str(v) for v in member) for member in review.get('members',[])}
+                     for review in reviews)
+        if verified:
+            duplicate_coordinates.loc[group.index]=False
+            findings.append(Finding('INFO','station','VERIFIED_TRANSFER_COORDINATE',
+                                    f'verified physical transfer member rows: {len(group)}',source_file))
+    report('DUPLICATE_COORDINATE',duplicate_coordinates,'unverified or conflicting coordinate pair; review source identities')
     findings.extend([Finding('WARNING','station','CRS_UNVERIFIED','source does not explicitly establish coordinate CRS; Task 9 blocked',source_file),
                      Finding('WARNING','station','TEMPORAL_UNCERTAINTY','coordinate reference snapshot is not proven applicable to 2024',source_file)])
     return StageResult(out,findings,pd.concat(parts,ignore_index=True) if parts else pd.DataFrame())
