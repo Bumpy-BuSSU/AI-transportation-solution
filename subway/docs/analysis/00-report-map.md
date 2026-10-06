@@ -1,6 +1,6 @@
 # 개인 subway 분석보고서 근거 지도
 
-이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. Stage 3A focused EDA는 HUMAN APPROVED 2026-10-07. Stage 3B는 사전 동결 H1/H2 PPML·지정 sensitivity 실행 COMPLETE / 사람 결과 검토 PENDING이다. 네 primary test의 Holm 기각은0/4이며 정책결론과 Secondary2 공간분석은 없다. 최신 [H1/H2 근거](10-confirmatory-h1-h2.md). 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
+이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. Stage 3A focused EDA는 HUMAN APPROVED 2026-10-07. Stage 3B는 사전 동결 H1/H2 PPML·지정 sensitivity 실행 COMPLETE / **HUMAN APPROVED 2026-10-07**이다. 네 primary test의 Holm 기각은0/4이며 정책결론과 Secondary2 공간분석은 없다. 최신 [H1/H2 근거](10-confirmatory-h1-h2.md). 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
 
 ## 현재 working research questions
 
@@ -94,3 +94,12 @@ Primary boarding, p90hot32.75°C / p10cold-3.05°C, daytime10–16, date-cluster
 모든 primary pointwise95% CI가0을포함하고 Holm 기각0/4이다. H1/H2는현재사양에서 NOT SUPPORTED이며 차이가없다는증명은아니다.
 추정치·불확실성·p95/p05·alighting·HAC(7) 전체는 [결과 기록](10-confirmatory-h1-h2.md), [canonical family](../../results/models/confirmatory_test_family.csv)에 연결한다.
 이전 no-model-result 기록은 당시 이력이다. H1/H2 결과는생성했지만 최종 contest report·정책제안·기대효과·trip purpose·인과결론은작성하지않았다. Secondary2는미착수다. 사람결과검토 PENDING.
+
+
+## P-S3B-HUMAN-APPROVAL — 2026-10-07
+
+사용자는 ChatGPT의 원격 정밀검토 후 Stage3B frozen H1/H2 결과를 승인했다.
+승인된 해석은 현재 사전 사양에서 primary four-test family의 Holm 기각이 0/4이며 H1/H2가 **NOT SUPPORTED**라는 점까지다.
+이는 연령차가 없다는 증명도, 반대방향 효과가 입증되었다는 뜻도 아니다.
+정책제안·trip purpose·인과적 shelter-seeking·탄소감축·지역 간 격차 결론은 여전히 미승인/미도출이며,
+Secondary2 공간 이질성은 다음 별도 Stage로 남긴다.

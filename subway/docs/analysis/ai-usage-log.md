@@ -158,3 +158,11 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - Codex: clean상태에서fast-forward pull후기존코드를검토하고 focused11 OK→confirmatory exit0→full178 OK(한번)를실행했다. Production code/config 수정없이6PPML·지정sensitivity/HAC와4-test Holm을검증하고 기존12Raw/Stage2/Stage3A hash불변·공통유효셀집계·보고된CI/IRR/p를확인했다.
 - Historical first failure:11tests/11ERROR는model fit전config validation오류였다. Fix는문자열따옴표추가뿐이며 scientific spec UNCHANGED, pre-fix result contamination NONE. 과거실패를처음부터성공한것처럼지우지않는다.
 - 결과:primary Holm기각0/4; H1/H2 현재사양 NOT SUPPORTED. 유리한결과를위해threshold/control/event/model을조정하지않았다. 사람결과검토 PENDING; Secondary2와정책분석은시작하지않았다. [결과근거](10-confirmatory-h1-h2.md).
+
+
+## P-S3B-HUMAN-APPROVAL — 2026-10-07
+
+- Human: ChatGPT의 원격 정밀검토 후 Stage3B H1/H2 기술 결과와 제한적 해석을 승인했다.
+- ChatGPT: final commit `d7fe7aadaa80de3831b1cfde6d566ba87d516bc7`의 코드·model outputs·summary·result document·effect figure를 검토하고 blocking issue가 없다고 판단했다. 네 primary test 모두 Holm 비기각이며 현재 동결 사양에서 H1/H2를 NOT SUPPORTED로 해석하되, 차이 없음의 증명이나 반대 효과 입증으로 확대하지 않도록 제한했다.
+- Codex: 사전 동결 사양을 변경하지 않고 Stage3B 실행·검증·결과 commit을 완료했다.
+- 승인 범위 밖: Secondary2 공간 이질성, 정책 권고, trip purpose, causal shelter-seeking, carbon reduction, inter-regional inequality.

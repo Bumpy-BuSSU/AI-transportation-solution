@@ -152,3 +152,21 @@ PPML/date FE·동결age/month/DOW/daytime 구조·date-cluster SE·4-test Holm·
 H1 citywide date×age732rows, H2 date×age×daytime1,464rows; common-valid underlying cells,366date clusters다.6PPML full-rank/converged이며 네 primary Holm 기각0/4다.
 앞선candidate/no-fit 문구는 당시단계의기록이다. 이번결과로 alternate NB/GAM/spline/새 FE/추가threshold를채택하지않았다. 사람결과검토는 PENDING이다.
 수치·pointwise CI·raw/Holm p·모든 sensitivity와 해석한계는 [H1/H2 record](10-confirmatory-h1-h2.md)를 따른다. 정책인과·trip purpose·Secondary2 공간분석은실행하지않았다.
+
+
+## P-S3B-HUMAN-APPROVAL — frozen H1/H2 result accepted / 2026-10-07
+
+사전 동결 사양으로 실행한 H1/H2 PPML·지정 sensitivity 결과를 인간이 승인했다.
+Primary four-test family는 Holm 기각 0/4이며, 모든 primary pointwise 95% CI가 0을 포함한다.
+따라서 현재 사양에서 H1 hot/cold age differential 및 H2 hot/cold daytime amplification은 **NOT SUPPORTED**로 채택한다.
+이는 영효과의 증명이나 반대방향 효과의 확정이 아니다.
+
+채택 상태:
+- daily exposure-aligned aggregation: adopted
+- boarding primary / alighting sensitivity: adopted
+- p90/p10 primary and p95/p05 sensitivity: adopted
+- PPML + date-cluster covariance: adopted for H1/H2
+- four-test Holm correction: adopted
+- HAC(7) log-ratio benchmark: adopted as robustness
+- Secondary2 spatial heterogeneity: NOT STARTED
+- policy/causal/trip-purpose inference: NOT ADOPTED

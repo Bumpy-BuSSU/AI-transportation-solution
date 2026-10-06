@@ -1,6 +1,6 @@
 # Stage 3B: frozen H1/H2 confirmatory results
 
-기록일: 2026-10-07. **기술 실행 COMPLETE / 사람 결과 검토 PENDING**.
+기록일: 2026-10-07. **기술 실행 COMPLETE / HUMAN APPROVED 2026-10-07**.
 Stage2 COMPLETE/HUMAN APPROVED, Stage3A HUMAN APPROVED 2026-10-07를 기반으로 한다.
 Primary 결과와 반대·불확실한 결과 및 모든 사전 지정 sensitivity를 함께 보고한다.
 
@@ -120,4 +120,8 @@ summary의 boarding/alighting_sample.model_status=NOT_FITTED는 **table-construc
 Station CRS/snapshot 가정·21개 code 경고·16개 공간 제외·15개 서울 밖 역의 한계는 [Stage2 baseline](../../../docs/subway/2024-clean-transform-baseline.md)을 따른다. 지금 자료로 trip purpose, individual behavior, rider residence, causal shelter-seeking, carbon reduction, inter-regional inequality를 추론하지 않는다.
 현재 primary 결과로는 “고령자가 더위/추위를 피하기 위해 지하철을 탔다” 또는 명확한 연령별 차이가 관찰되었다고 결론내리지 않는다. 최대 해석 가능 범위와 현재 근거를 구분하며 정책권고는 작성하지 않았다.
 
-**No scientific specification changed after results. No threshold tuned. No spatial Secondary2 started. No trip-purpose or causal policy conclusion.** 사람의 H1/H2 결과 검토 후 별도 지시를 기다리며 여기서 중단한다.
+**No scientific specification changed after results. No threshold tuned. No spatial Secondary2 started. No trip-purpose or causal policy conclusion.**
+
+## HUMAN APPROVAL — 2026-10-07
+
+사용자는 ChatGPT의 원격 코드·결과·문서 정밀검토 후 Stage 3B H1/H2 결과를 승인했다. 승인 범위는 사전 동결된 H1/H2 confirmatory 결과와 그 해석 한계까지이며, 정책결론·Secondary 2 공간분석·trip-purpose 또는 인과 해석을 승인한 것이 아니다. 현재 결론은 네 primary test 모두 Holm 보정 후 기각되지 않아 **H1/H2 NOT SUPPORTED under the frozen specification**이며, 이는 차이가 없다는 증명이 아니다.
