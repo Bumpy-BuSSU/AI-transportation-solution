@@ -34,3 +34,8 @@ config/spatial_eligibility_2024.yaml text eol=lf
 data/validation/task5_spatial_eligibility.csv text eol=lf
 data/validation/task5_spatial_eligibility_summary.json text eol=lf
 data/validation/task5_spatial_exclusions.csv text eol=lf
+
+# P-S2-T9 deterministic mapping evidence.
+data/validation/task9_station_dong_map.csv text eol=lf
+data/validation/task9_station_dong_exceptions.csv text eol=lf
+data/validation/task9_spatial_summary.json text eol=lf
