@@ -232,3 +232,9 @@ are unchanged. New audit reports have explicit LF attributes to preserve
 their recorded hashes on Windows checkouts. Existing attribute lines are
 preserved. See `04-station-spatial-authority-audit.md` for fresh full-suite,
 Raw/preflight/Task8/Task4/7 and integrity results.
+
+Final independent review found one evidence wording discrepancy: the10
+unapproved display pairs have official current KRIC full ridership names,
+while the relation to the Seoul bare names remains unverified. That text
+was corrected without changing classification/mapping/adoption. One added
+RED→GREEN test protects the distinction; the final suite is108/108 PASS.

@@ -22,7 +22,7 @@ KRIC fields are null/unavailable;2026 support fields are independently named.
 
 | Command/check | Fresh result |
 |---|---|
-| `python -m unittest discover -s subway/tests -v` | 107 tests PASS (102 original +5 audit gates) |
+| `python -m unittest discover -s subway/tests -v` | 108 tests PASS (102 original +6 audit gates) |
 | `python subway/tools/inspect_raw_inputs.py --year 2024` (twice) | both exit0;8 datasets /12 files;ERROR/WARNING/INFO all0 |
 | `git diff --exit-code -- subway/data_manifest.csv subway/data/validation/raw_inventory.csv subway/data/validation/raw_schema_snapshot.json subway/data/validation/raw_inspection_report.csv subway/data/validation/raw_inspection_summary.json` | exit0 after repeated inspection |
 | `preflight(repo,2024)` | empty findings |
@@ -42,7 +42,7 @@ EPSG5179 and412 shelter points EPSG5186. Task6's accepted426-dong output,
 400-dong comparison and all primary/supplementary contracts are unchanged.
 
 Audit-gate tests were first run and failed with the missing audit module,
-then all5 passed. Audit support code is separate from unchanged analysis
+then all5 passed; the final evidence wording correction added one RED→GREEN test. Audit support code is separate from unchanged analysis
 modules and never assigns a source or CRS. No Raw or semantic config changes
 are made. Seven narrowly scoped LF attributes protect new deterministic
 report bytes at checkout; all existing attributes remain in place.
@@ -61,10 +61,10 @@ authority summary plus unchanged exact inputs/config/output hashes.
 - `batch2rc_coordinate_comparison.csv`: `3ab771137bcd43023fa2a4edf2d6558c88029769a8a20dfbce09fe1064e8c948`
 - `batch2rc_kric_candidate_summary.json`: `b91f39c13b62c625e0c48c4fe09241d261d645defa9d25607551cfe1a337d4a4`
 - `batch2rc_line6_code_audit.csv`: `4e3d3b1358c5124259f9a9168303bb0ff05ee3cd81a79e8646f22d9cdad00879`
-- `batch2rc_spatial_source_proposal.md`: `77f221b7fa47c85bbcfedfcfc93a0cc27437e5d16574e60e1c11a2d22be6c3df`
+- `batch2rc_spatial_source_proposal.md`: `d29aad3a1d077704b41526ca877bf3aab4e39aebafba747d7ae139218571eb36`
 - `batch2rc_station_candidate_mapping.csv`: `d4dc9f56b8ae49838a73929fddcc93aead3e481960990c2d7eea7761aabbd694`
 - `batch2rc_temporal_audit.csv`: `e3a925bf245ea9e553919b698f0ddac13aab42f8366761790f62783841d62058`
-- `batch2rc_unmatched_identity_audit.csv`: `32b0b726c9bd5a5513dd824557969f550a3c48021d3504c33cf63aaea72afeff`
+- `batch2rc_unmatched_identity_audit.csv`: `96791324cf4579577b39f4b8d6279781bc5b4cb2b0cac691e518371750e70023`
 
 ## Rulings and limits
 
@@ -96,3 +96,27 @@ authority summary plus unchanged exact inputs/config/output hashes.
 - `subway/data/validation/batch2rc_station_candidate_mapping.csv`
 - `subway/data/validation/batch2rc_temporal_audit.csv`
 - `subway/data/validation/batch2rc_unmatched_identity_audit.csv`
+
+## Final independent review and checkout check
+
+One fresh read-only whole-change review checked all14 files and independently
+verified274/21/30 membership, comparison counts, official datum wording,
+input pins and published hashes. It found no Critical or Important issues
+and one Minor evidence-text discrepancy. Codex re-graded that factual
+wording as requiring correction for research-evidence fidelity, fixed it
+with an additional RED→GREEN test, regenerated affected evidence/hashes,
+and confirmed108 full-suite PASS. The classifications and authority gates
+remain unchanged. No second review was dispatched.
+
+Seven audit report files pass exact HEAD/index/current/fresh
+`git -c core.autocrlf=true checkout-index -a --prefix=<temporary>/`
+byte equality and LF-only checks. After commit, Raw inspection remains
+exit0, `git diff --exit-code` is0 and `git status --short` is empty.
+Actual Raw also re-confirms 까치울14 all-zero rows and Amsa pre-opening
+18rows/9dates/261total/78nonzero cells. No observation interpretation is added.
+
+Reviewed scope limits: undiscovered official archives remain possible;
+actual coordinate/location and annual validity remain blockers rather than
+unproven correctness claims; deliberately prepared filesystem links are
+outside this fixed temporary-output audit workflow; remote push/SHA is an
+execution check to complete separately. No scope limit authorizes adoption.

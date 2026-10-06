@@ -1,6 +1,7 @@
 """Audit gates: current support must never become historical authority."""
 import unittest
 from subway.tools.audit_station_candidate import historical_gate,resolve_name,comparison_statistics
+from subway.tools.audit_station_candidate import unapproved_display_evidence
 
 class StationCandidateAuditTests(unittest.TestCase):
     def test_row_reference_cannot_substitute_for_export_date(self):
@@ -24,5 +25,11 @@ class StationCandidateAuditTests(unittest.TestCase):
         result=comparison_statistics([{'latitude_difference':0.00001,'longitude_difference':0.0}])
         self.assertEqual(result['exact_count'],0)
         self.assertEqual(result['nonexact_count'],1)
+    def test_full_kric_name_does_not_verify_bare_seoul_relation(self):
+        text=unapproved_display_evidence('고려대(종암)','고려대')
+        self.assertIn('KRIC full ridership name=고려대(종암)',text)
+        self.assertIn('Seoul bare name=고려대',text)
+        self.assertIn('relationship remains unverified',text)
+        self.assertIn('codes cannot prove relation',text)
 
 if __name__=='__main__':unittest.main()

@@ -9,6 +9,7 @@ import argparse,hashlib,json
 from collections import defaultdict,deque
 import pandas as pd
 from subway.tools.audit_station_candidate import historical_gate,resolve_name,comparison_statistics
+from subway.tools.audit_station_candidate import unapproved_display_evidence
 
 BASE='054b5d09754801413789377909ec7f45cf278ca8'
 KRIC_URL='https://data.kric.go.kr/rips/M_01_01/detail.do?id=32'
@@ -146,7 +147,11 @@ def main():
     for r in audit[audit.match_status.isin(['ridership_only','station_only'])].to_dict('records'):
         line,name=r['line'],r['station_name'];pair='';category='';evidence='';decision='unresolved';row={}
         if line=='6' and (name in unreviewed or name in unreviewed.values()):
-            pair=unreviewed.get(name,next((k for k,v in unreviewed.items() if v==name),''));category='display_name_unverified';evidence='official current KRIC supplies bare name/address; explicit adjunct relation not found; code conflict cannot prove relation'
+            pair=unreviewed.get(name,next((k for k,v in unreviewed.items() if v==name),''));category='display_name_unverified'
+            full_name=name if name in unreviewed else pair
+            bare_name=unreviewed[full_name]
+            assert len(kric[kric.line.eq(line)&kric['역사명'].eq(full_name)])==1
+            evidence=unapproved_display_evidence(full_name,bare_name)
         elif line=='6' and (name in proposed.values() or (line,name) in proposed):
             pair=proposed[(line,name)] if (line,name) in proposed else next(k[1] for k,v in proposed.items() if v==name)
             category='official_display_relation_proposal';decision='name relation verified; adoption/code/spatial still blocked';evidence=RENAME_URL+' rows54/55 (2013-12-26); no alias config change'

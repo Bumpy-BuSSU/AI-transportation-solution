@@ -17,6 +17,12 @@ def resolve_name(line: str, name: str, relations: dict) -> tuple[str, str]:
     """Only explicit, line-scoped relations; never strip adjuncts or offset codes."""
     return relations.get((str(line), name), (name, 'exact name'))
 
+def unapproved_display_evidence(ridership_name: str, seoul_name: str) -> str:
+    """State full-name support without approving a bare-source-name relation."""
+    return (f'official current KRIC full ridership name={ridership_name}/address; '
+            f'Seoul bare name={seoul_name}; explicit relationship remains unverified; '
+            'conflicting source codes cannot prove relation')
+
 def comparison_statistics(rows: list[dict]) -> dict:
     """Degree differences are descriptive; no tolerance or distance/CRS claim."""
     lat=[abs(float(r['latitude_difference'])) for r in rows]
