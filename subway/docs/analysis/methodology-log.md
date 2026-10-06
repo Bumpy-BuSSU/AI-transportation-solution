@@ -1,6 +1,6 @@
 # 개인 subway 방법론 기록
 
-작성일: 2026-10-06. `adopted`는 실제 수행·검증된 범위만 의미한다. Stage 2 전처리 기법은 구현·검증 후에만 adopted로 갱신한다.
+초기 작성일: 2026-10-06. `adopted`는 실제 수행·검증된 범위만 의미한다. 첫 표와 이전 Tasks 섹션은 당시 기록이다. **최신 상태는 아래 P-S2-T11**을 따른다: Tasks9/10 HUMAN APPROVED 2026-10-07, Stage2 preprocessing COMPLETE. 통계 기법은 여전히 candidate다.
 
 | 방법명 | 목적 | 선택 이유 | 상태 | 검증 근거 | 주의사항 |
 |---|---|---|---|---|---|
@@ -73,3 +73,32 @@ ASOS108은 연구지역 밖 역의 노출로 붙이지 않았다. staged publica
 CRS/snapshot 분석 가정, source exclusions 및 보조 인구 한계를 유지한다. 현재 primary/secondary 질문과 지역 확장 조건은
 [Task10 record](07-pipeline-orchestration.md) 참조. 이후 비교 지역의 동등한 데이터·기상 전략이 필요하며 현재 지역 간 결과는 없다.
 EDA·극한기온 분류·통계검정·접근성/이동선택권 지수는 수행하지 않았다. Task11 NOT STARTED.
+
+
+## P-S2-T11 — adopted preprocessing baseline / 2026-10-07
+
+Stage2 preprocessing COMPLETE; Task9/10 HUMAN APPROVED 2026-10-07.
+현재 근거: [canonical technical closeout](../../../docs/subway/2024-clean-transform-baseline.md),
+[pipeline summary](../../data/validation/pipeline_summary.json), [quality report](../../data/validation/data_quality_report.csv).
+Codex 최종 단일 검증은158 tests OK, pipeline/Raw inspection exit0이다. 인간의 독립 실행으로 기록하지 않는다.
+
+| 실제 채택 방법 | 상태 | 검증·사용 범위 |
+|---|---|---|
+| Raw schema inspection | adopted | 현재8datasets/12files 및 계약 검사; Raw inspection findings0 |
+| SHA-256 provenance/integrity | adopted | 12Raw·config·제품 hashes 및 원본 불변; 출처 타당성의 증명은 아님 |
+| Same-environment deterministic reproduction | adopted | Task10 두 실제 실행, Task11 승인 baseline과16output hashes/summary byte 일치; 교차 버전 보장 아님 |
+| Wide-to-long ridership | adopted | 원래20hour bins·승차/하차·source provenance 보존 |
+| Explicit station alias/crosswalk | adopted | 승인 alias·identity·transfer evidence 및 cardinality 검증 |
+| Full outer senior/total integration | adopted | 3,988,480core/3,987,960matched/520total-only; 원량 보존 |
+| Safe non_senior/senior_share | adopted | 유효 matched와senior<=total에만 차이; total>0에만 share;3예외 원값 보존·파생값null |
+| Direct official65+ population authority | adopted | 426direct PRIMARY; 기존400exact 보조 비교/26불완전 미보정 |
+| Explicit spatial eligibility | adopted | 274master 보존;258eligible/16공간 제외;21code 충돌warning |
+| Strict Point-in-Polygon / CRS transformation | adopted | 승인EPSG4326가정→5179;243mapped/15zero;repair/nearest 없음 |
+| ADM_CD population-boundary bijection | adopted | 426/426PASS;인구9,619,861/65+1,785,286; mapped 역에만 부착 |
+| Configurable study-area union classification | adopted | independent union243IN/15OUT;16excluded unresolved; source/core와서울 실증범위 분리 |
+| Staged deterministic publication | adopted | single writer/ordinary I/O rollback/summary-last;실패nonzero·빈output hashes;전원중단transaction 보장 아님 |
+
+Panel/Count Regression, PPML/Poisson, GAM/spline, Fixed Effects, interaction specifications 및
+sensitivity analysis는 **CANDIDATE**다. fit·분포진단·극한기온 분류·검정·추정은 수행하지 않았고
+이번 closeout으로 adopted가 되지 않는다. 현재 질문·10~16시 가설·trip purpose 해석 한계는 유지한다.
+Shelter proximity/accessibility와 지역 비교도 미구현이다. Task11 COMPLETE; EDA/statistical analysis NOT STARTED.

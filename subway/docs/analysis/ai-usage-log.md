@@ -115,3 +115,12 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - Human: Task9 승인2026-10-07; 서울을 CURRENT contest study area로 선택하고 향후 지역 확장을 열어 둘 것을 명시했다. Task10 결과 검토는 PENDING. 인간이 자동 테스트를 독립 실행했다고 기록하지 않는다.
 - Codex: E2E orchestration/TDD, profile/union scope 판정, 실제2024 두 실행 결정성, Raw12/역사 증거 불변, baseline 회귀와 staged/rollback/failed-summary 검증을 수행했다. 신규18/full158 tests PASS. 대용량 Parquet는 재현 로컬 산출물로 유지하고 exact hashes를 versioned QA에 기록했다.
 - 결과:243 IN/15 OUT/0 eligible unresolved, 전체274 master의 Task5 제외16은 unresolved로 유지; core3,988,480행 보존. 현재 서울 밖 core는 invalid 데이터로 표현하지 않는다. Task11 미착수. [Execution record](07-pipeline-orchestration.md).
+
+
+## P-S2-T11 — technical closeout and report-ready baseline / 2026-10-07
+
+- Human: Task10을2026-10-07 승인하고 Stage2 closeout Mission을 전달했다. Task9도2026-10-07 승인 상태다. 인간이 Codex 자동 검증을 독립 재실행했다는 증거는 없으며 그런 실행을 주장하지 않는다.
+- ChatGPT: 이번 Mission에 기록된 역할로, Task10 code/artifacts/documentation을 원격 검토하여 blocking issue가 없다고 판단하고 configurable 현재 서울 study-area 설계를 수용했다. Stage2 종료 및 보고서 근거 계약을 설계했다. 이번 closeout은 그 인간 승인 후 실행했다.
+- Codex: repository-local 기술 종료 문서와 현재 report map/methodology/AI 기록을 정리했다. 전체158 tests,2024 E2E 및 Raw inspection을 단일 최종 패스로 실행하고, 승인 Task10 baseline의12Raw/config/16output hashes·summary bytes·11Parquet 행 수·Tasks5/6/8/9/10 counts·문서 링크·변경 범위를 검증했다.
+- 결과: Stage2 preprocessing COMPLETE / Task11 COMPLETE. Pipeline exit0, ERROR0/WARNING16/INFO2; Raw inspection exit0 및finding0. IN243/OUT15/eligible unresolved0,master unresolved16;full transport core 보존. Production code 변경 없음. EDA/극한기온 분류/통계검정/회귀/공간 해석/정책 분석/시각화는 시작하지 않았다.
+- 현재 승인 기록은 이전 Task9/10의 당시 PENDING 기록을 덮어쓰지 않는다. 정확한 방법·한계·보고서 문장·후속 계약은 [canonical Stage2 closeout](../../../docs/subway/2024-clean-transform-baseline.md)을 참조한다. 최종5쪽 보고서나 정책결론을 작성하지 않았다.
