@@ -11,6 +11,7 @@ REQUIRED_DATASET_IDS = {
     "weather",
     "station",
     "population",
+    "population_direct_65_plus",
     "boundary",
     "shelter",
 }

@@ -48,7 +48,7 @@ def _schema_matches(schema: dict, contract: dict) -> bool:
         actual = schema['sheets'][contract['selected_sheet']]
         if not isinstance(actual, dict):
             raise ValueError('sheet schema must be a mapping')
-    for key in ['columns', 'row_count', 'title_row_count']:
+    for key in ['columns', 'row_count', 'title_row_count', 'reference_period_header']:
         if key in contract and actual.get(key) != contract[key]:
             return False
     for key in ['encoding', 'crs', 'geometry_types', 'worksheet_names']:
@@ -119,6 +119,8 @@ def preflight(repo_root: Path, year: int) -> list[Finding]:
                 findings.append(Finding('ERROR', dataset_id, 'CONTRACT_FILE_MISMATCH', 'required primary file differs'))
                 continue
             record = primary[0]
+            if contract.get('sha256') and record.sha256 != contract['sha256']:
+                findings.append(Finding('ERROR', dataset_id, 'APPROVED_HASH_MISMATCH', 'Raw differs from explicitly approved source bytes', record.relative_path))
             relative_path = f"{datasets[dataset_id]['raw_dir']}/{record.relative_path}"
             rows = manifest[(manifest['dataset_id'] == dataset_id) & (manifest['year'] == str(year)) & (manifest['raw_path'] == relative_path)]
             if len(rows) != 1 or rows.iloc[0]['sha256'] != record.sha256:

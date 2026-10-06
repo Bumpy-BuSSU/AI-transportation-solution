@@ -4,3 +4,6 @@ data/validation/raw_inventory.csv text eol=lf
 data/validation/raw_schema_snapshot.json text eol=lf
 data/validation/raw_inspection_report.csv text eol=lf
 data/validation/raw_inspection_summary.json text eol=lf
+
+# Preserve the exact human-approved official export bytes, including BOM/newlines.
+data/raw/2024/population_direct_65_plus/201_DT_201004_O020003_2024Q2_20261006.csv -text

@@ -9,7 +9,11 @@ datasets:
     raw_dir: subway/data/raw/{year}/station
   population:
     raw_dir: subway/data/raw/{year}/population
+    source_role: validation_supplementary
   boundary:
     raw_dir: subway/data/raw/{year}/boundary
   shelter:
     raw_dir: subway/data/raw/{year}/shelter
+  population_direct_65_plus:
+    raw_dir: subway/data/raw/{year}/population_direct_65_plus
+    source_role: primary

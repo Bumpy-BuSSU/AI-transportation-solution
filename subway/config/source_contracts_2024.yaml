@@ -163,3 +163,51 @@ contracts:
       - "일 최심적설(cm)"
     notes:
       - "강수·적설 빈값의 의미는 Stage 1에서 결정하지 않으며 0으로 자동 대체하지 않는다."
+
+  population_direct_65_plus:
+    primary_file: 201_DT_201004_O020003_2024Q2_20261006.csv
+    format: csv
+    encoding: utf-8-sig
+    title_row_count: 1
+    columns:
+    - A 동별
+    - 001 세대 (14STD05266 세대)
+    - 002 계 (14210.MT0047 명)
+    - 002001 남자
+    - 002002 여자
+    - 003 한국인 (14999671.ga028 명)
+    - 003001 남자
+    - 003002 여자
+    - 006 65세이상고령자 (14999671.ga028 명)
+    row_count: 452
+    reference_period_header:
+    - A 동별
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    reference_period: 2024 Q2
+    reference_date: '2024-06-30'
+    unit: 명
+    sha256: e48f83ca75f7f92a5a83e39834440c0f3149ace1113c3533102797e4d0338d76
+    source_role: primary
+    table_id: DT_201004_O020003
+    geography_column: A 동별
+    total_column: 002 계 (14210.MT0047 명)
+    senior_column: 006 65세이상고령자 (14999671.ga028 명)
+    expected_gu: 25
+    expected_dong: 426
+    source_url: https://stat.eseoul.go.kr/statHtml/statHtml.do?orgId=201&tblId=DT_201004_O020003&conn_path=I2
+    notes:
+    - Approved P-S2-2RB extension of original 7 datasets / 11 files; direct aggregate,
+      no age-band imputation.
+    - One Seoul total, 25 gu and 426 dong; code lengths 3/6/9 retain explicit parents,
+      never treated as SGIS codes.
+    - Both adopted measure headers explicitly state people (명); 65+ includes foreigners
+      per official metadata.
+    - Statistical symbols remain nonnumeric; all required dong measure cells must be
+      numeric.

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+import csv
 import xml.etree.ElementTree as ET
 
 import geopandas as gpd
@@ -20,7 +21,16 @@ def _inspect_csv(path: Path) -> dict[str, object]:
     for encoding in CSV_ENCODINGS:
         try:
             frame = pd.read_csv(path, encoding=encoding)
+            with path.open(encoding=encoding, newline='') as stream:
+                first = next(csv.reader(stream), [])
+            extra = {}
+            # Seoul quarterly exports carry a period row above measure headers.
+            # Keep both levels in the snapshot so period drift is observable.
+            if first and first[0] == 'A 동별' and all(re.fullmatch(r'Q\d{6} \d{4} [1-4]/4', value) for value in first[1:]):
+                frame = pd.read_csv(path, encoding=encoding, header=1)
+                extra = {'title_row_count': 1, 'reference_period_header': first}
             return {
+                **extra,
                 "format": "csv",
                 "encoding": encoding,
                 "columns": [str(c) for c in frame.columns],
