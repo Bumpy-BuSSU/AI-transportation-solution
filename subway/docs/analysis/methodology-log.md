@@ -30,3 +30,23 @@ deterministic CSV checks pass, with 102 unit tests and actual Task 8/4/7
 regression. These are data-preparation checks, not statistical inference.
 Point-in-Polygon remains unimplemented; Task 9 NOT STARTED. Detailed gates and
 method limits: [Batch 2R-B record](03-approved-authority-adoption.md).
+
+
+## P-S2-2RD implemented-method update — 2026-10-07
+
+Station spatial eligibility is now adopted as a separate data-preparation
+contract. All274 Task8 identities receive one status; core observations remain
+intact. Only ELIGIBLE /ELIGIBLE_CODE_WARNING can enter the future spatial
+subset. Exclusions are deterministic, with all/matched total and senior
+denominators and observed loss reported separately. Source codes are preserved
+and21 conflicts remain provenance warnings, not reconciled identifiers.
+
+EPSG4326 is an approved analytical assumption; source-specific datum remains
+unverified. SNAPSHOT_STABILITY_ASSUMPTION expresses multiple equal snapshots,
+not continuous2024 observation. Known Amsa opening2024-08-10 is explicit;
+Amsa has no accepted coordinate and is excluded. The three approved physical
+transfer groups remain accepted; unresolved Magok/Balsan collision remains
+excluded. These checks are not statistical inference or source repair.
+Task5 COMPLETE means eligibility contract finalized with exclusions, not all
+source problems fixed. Task9 Point-in-Polygon, CRS transformation and shelter
+proximity remain NOT STARTED. Detailed evidence: [Task5 closure](05-station-spatial-eligibility.md).

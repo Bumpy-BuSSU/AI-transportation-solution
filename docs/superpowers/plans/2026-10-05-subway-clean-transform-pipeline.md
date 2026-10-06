@@ -320,3 +320,19 @@ Exactly 55 station aliases and three transfer groups are adopted; Task 5 still
 BLOCKED for unmatched/code/coordinate/CRS/temporal reasons. Task 9, Task 10 and
 Task 11 remain NOT STARTED and are not authorized by this addendum.
 See [authority adoption evidence](../../../subway/docs/analysis/03-approved-authority-adoption.md).
+
+
+## Human-approved P-S2-2RD Task5 completion-definition addendum — 2026-10-07
+
+This addendum supersedes the earlier Task5 requirement for resolving all source
+identities/CRS/temporal uncertainty before completion. Task5 now closes when
+every actual Task8 identity has one defensible eligibility/exclusion status,
+core rows are preserved, and losses/assumptions/source limits are quantified.
+The human approves EPSG4326 only as an analytical assumption and snapshot
+coordinate equality only as a stability assumption. Source metadata, codes,
+approved aliases and Raw remain unchanged. Current evidence:274 statuses,
+237 ELIGIBLE,21 ELIGIBLE_CODE_WARNING,16 excluded; full122 tests PASS and actual
+Task8/4/7 regression. Task5 COMPLETE under
+eligibility_based_with_documented_exclusions. Task9/10/11 NOT STARTED; no
+geometry/transformation/Point-in-Polygon/proximity work is performed.
+See [Task5 contract evidence](../../../subway/docs/analysis/05-station-spatial-eligibility.md).

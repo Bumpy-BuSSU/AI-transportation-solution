@@ -77,3 +77,27 @@ approved station aliases, five senior aliases, three transfer groups, QA
 policy, twelve Raw files and Task6/8 outcomes remain unchanged. Task5
 **BLOCKED**; Task6/8 **COMPLETE**; Task9/10/11 **NOT STARTED**.
 See [spatial authority audit](04-station-spatial-authority-audit.md).
+
+
+## P-S2-2RD — Task5 closure by documented spatial eligibility (2026-10-07)
+
+Human decision: stop pursuing perfect source resolution; retain all problematic
+stations in core ridership, exclude unresolved/problematic identities only from
+the spatial subset, quantify loss and retain source limitations. No further
+historical KRIC search or Task9 was authorized.
+
+ChatGPT precision-reviewed and accepted Batch2R-C, approved eligibility-based
+Task5 closure, EPSG4326 as an analytical assumption supported by the official
+national station standard (not verified source metadata), and practical
+snapshot stability with residual temporal uncertainty.
+
+Codex implemented the separate deterministic eligibility contract, observed
+RED→GREEN tests, executed actual4million-row Task8/Task4/7 regression, quantified
+status counts and all/matched observation exclusion shares, and verified exact
+Raw/config/history integrity and reversed-order report hashes. A failing
+actual assertion exposed an overstrict exact-KRIC-label gate for line6
+삼각지; the previously audited official 병기 relationship now corroborates
+identity without changing the Seoul alias or reconciling codes. No human
+manual rerun is claimed. Full122 tests PASS; Task5 COMPLETE under
+eligibility_based_with_documented_exclusions; Task6/8 COMPLETE;
+Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibility.md).
