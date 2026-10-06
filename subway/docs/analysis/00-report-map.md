@@ -29,3 +29,8 @@
 | GitHub 재현 코드 | 저장소의 `subway/tools/inspect_raw_inputs.py`, `subway/tests/`, 기술 baseline | Stage 1 명령 재현 가능. Stage 2 `run_pipeline.py` 미구현. 최종보고서에 배포 시 확인된 repository/commit 링크 추가 |
 
 현재 근거가 없는 항목에는 결과·정책·수치·그림을 만들어 넣지 않는다. 각 후속 Stage 종료 시 해당 문서와 검증 결과를 연결한다.
+
+
+- [P-S2-2RC station spatial authority audit](04-station-spatial-authority-audit.md):
+  historical KRIC acquisition limits, official WGS84 standard, separate
+  current support diagnostics and conditional source proposal; Task5 BLOCKED.

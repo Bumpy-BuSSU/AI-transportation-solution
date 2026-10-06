@@ -54,3 +54,26 @@ Codex는 로컬 원본 재계산, 공식 파일/컬럼/API/과거 버전 조사,
 ChatGPT precision-reviewed remote Batch 2R-A, approved exactly 55 reviewed station aliases, exactly three physical-transfer coordinate groups and DT_201004_O020003 source-contract adoption; it explicitly did not approve Task 9 or station CRS. The human supplied this authority and retains final project approval. No independent human rerun of Codex tests is claimed.
 
 Codex implemented only those authoritative configurations, corrected the official-rename evidence contradiction without changing its mapping, preserved blocking code-conflict flags, and migrated Task 6 to the exact approved direct aggregate. Codex executed TDD/regression, 102 passing tests, actual 426/400/26 checks, original Raw integrity, the 8-dataset/12-file baseline extension, deterministic acceptance artifacts and unchanged Task 8/4/7 accounting. The old age source and historical 400/26 diagnostics remain validation/supplementary evidence; missing individual age bands were not manufactured. Task 5 remains BLOCKED; Task 6 COMPLETE; Task 9/10/11 NOT STARTED. See [authority adoption record](03-approved-authority-adoption.md) for gates, provenance and limits.
+
+
+## P-S2-2RC — Task 5 spatial station authority audit (2026-10-07)
+
+ChatGPT precision-reviewed Batch 2R-B, accepted Task 6 COMPLETE, identified
+the official national station standard as a candidate, and designed the
+separation of analytical identity / source code / spatial eligibility.
+Codex audited official public sources, preserved exact local audit bytes,
+found explicit station-specific WGS84 definitions in the 2024 standard,
+and generated reproducible 274-identity, 21-code-conflict, 14/16-unmatched,
+coordinate and temporal diagnostics plus a conditional source-contract
+proposal. The portal2024 label does not authenticate the downloaded2026
+bytes; exact KRIC2024/2023 exports were not acquired. Current2026 support is
+never counted as authoritative2024 coverage. Codex executed RED→GREEN audit
+gate tests and fresh integrity/regression checks, not human manual reruns.
+
+The human has **NOT approved** a replacement station spatial source, a CRS
+assumption or Task9. Official WGS84 standard evidence resolves the datum
+research question but no CRS/source configuration is changed. The 55
+approved station aliases, five senior aliases, three transfer groups, QA
+policy, twelve Raw files and Task6/8 outcomes remain unchanged. Task5
+**BLOCKED**; Task6/8 **COMPLETE**; Task9/10/11 **NOT STARTED**.
+See [spatial authority audit](04-station-spatial-authority-audit.md).

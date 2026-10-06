@@ -19,3 +19,12 @@ data/validation/batch2rb_station_identity_audit.csv text eol=lf
 config/datasets.yaml text eol=lf
 config/source_contracts_2024.yaml text eol=lf
 config/validation_rules.yaml text eol=lf
+
+# P-S2-2RC deterministic audit evidence; no source adoption.
+data/validation/batch2rc_coordinate_comparison.csv text eol=lf
+data/validation/batch2rc_kric_candidate_summary.json text eol=lf
+data/validation/batch2rc_line6_code_audit.csv text eol=lf
+data/validation/batch2rc_spatial_source_proposal.md text eol=lf
+data/validation/batch2rc_station_candidate_mapping.csv text eol=lf
+data/validation/batch2rc_temporal_audit.csv text eol=lf
+data/validation/batch2rc_unmatched_identity_audit.csv text eol=lf
