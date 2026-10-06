@@ -117,3 +117,20 @@ Aggregate ridership은 이동 목적, 개인행동, 승객 거주지를 식별�
 이 specification/config/test commit을 먼저 만든 후에만 실제 모델 fitting 코드를 실행한다.
 실제 fit 이전에는 coefficient, p-value, hypothesis result artifact를 생성하지 않는다.
 통계 사양 변경이 필요하면 구현자가 임의 수정하지 않고 사람 검토로 되돌린다.
+
+
+## 12. Pre-fit implementation correction — YAML scalar serialization
+
+첫 local confirmatory test 실행에서 모든 11개 테스트가 model fitting 이전 config validation 단계에서
+`frozen confirmatory setting changed: daytime.bins`로 차단되었다.
+
+원인은 PyYAML이 따옴표 없는 `10_11` 같은 YAML plain scalar를 문자열이 아니라 숫자형 scalar로 해석한
+**serialization defect**였다. 연구 사양 자체의 daytime 정의는 변경하지 않았다.
+
+수정:
+- `10_11`~`15_16` 여섯 값에 YAML 문자열 따옴표만 추가
+- threshold, event, model, covariance, multiple-testing, sensitivity 사양은 모두 불변
+- 첫 실행은 config validation에서 중단되어 coefficient/p-value/model result가 생성되지 않음
+
+따라서 원래 `SPEC_FREEZE_SHA=f5433eb98d96d8098c265de0859282dcc53046f1`의 연구 사양 의미는 유지되며,
+이번 수정은 pre-fit parser/serialization correction으로 기록한다.

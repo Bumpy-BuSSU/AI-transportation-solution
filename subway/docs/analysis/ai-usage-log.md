@@ -141,3 +141,11 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - ChatGPT: Stage3A EDA를 근거로 citywide daily weather exposure와 추론단위를 정렬해 pseudo-replication을 피하고, boarding primary, exact10–16, weather-only p90/p10 primary와 p95/p05 sensitivity, PPML/date-cluster, Holm family를 결과 보기 전에 동결했다. 이 specification commit 이전에는 model result를 생성하지 않는다.
 - Codex: Stage3B에는 사용하지 않음(사용 한도 소진).
 - 현재 상태: specification/config/table-construction contract 작성 단계. coefficient/p-value/hypothesis decision은 아직 생성하지 않았다.
+
+
+## P-S3B-PREFIT-FIX — daytime YAML serialization / 2026-10-07
+
+- Human: ChatGPT 구현을 pull한 뒤 confirmatory focused tests를 실행했다. 11개 모두 같은 config-validation 오류로 중단된 로그를 제공했다.
+- ChatGPT: traceback을 검토해 model fit 이전의 YAML scalar parsing defect로 진단했다. 따옴표 없는 `10_11`~`15_16`이 PyYAML에서 문자열이 아닌 숫자 scalar로 해석되는 문제를 수정했다.
+- Scientific specification: **변경 없음**. exact10–16 bins, p90/p10 thresholds, PPML, clustering, Holm, sensitivity 모두 그대로다.
+- Result contamination: 없음. 첫 실행은 config validation에서 차단되어 coefficient/p-value/model result가 생성되지 않았다.
