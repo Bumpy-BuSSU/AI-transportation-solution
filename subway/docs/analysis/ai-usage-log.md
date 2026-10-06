@@ -149,3 +149,12 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - ChatGPT: traceback을 검토해 model fit 이전의 YAML scalar parsing defect로 진단했다. 따옴표 없는 `10_11`~`15_16`이 PyYAML에서 문자열이 아닌 숫자 scalar로 해석되는 문제를 수정했다.
 - Scientific specification: **변경 없음**. exact10–16 bins, p90/p10 thresholds, PPML, clustering, Holm, sensitivity 모두 그대로다.
 - Result contamination: 없음. 첫 실행은 config validation에서 차단되어 coefficient/p-value/model result가 생성되지 않았다.
+
+
+## P-S3B-RESUME — frozen H1/H2 execution after YAML fix / 2026-10-07
+
+- Human: Stage3A를승인했고 첫 local focused validation을실행해11ERROR 로그를제공했다. YAML pre-fit 수정후이번 Codex 재개 Mission을승인했다. 이번11/full178 자동검증을인간이독립재실행했다고주장하지않는다.
+- ChatGPT: H1/H2 사양을결과전동결하고 초기Stage3B 코드구현후 YAML 문자열serialization defect를진단·수정했다. SPEC_FREEZE_SHA f5433eb98d96d8098c265de0859282dcc53046f1, 최초implementation e91af4e959eae4d1b8380c985370cf928b5368b9, pre-fit fix596f0dbe00951a7444f30fc4fa41e88a529e6e8e.
+- Codex: clean상태에서fast-forward pull후기존코드를검토하고 focused11 OK→confirmatory exit0→full178 OK(한번)를실행했다. Production code/config 수정없이6PPML·지정sensitivity/HAC와4-test Holm을검증하고 기존12Raw/Stage2/Stage3A hash불변·공통유효셀집계·보고된CI/IRR/p를확인했다.
+- Historical first failure:11tests/11ERROR는model fit전config validation오류였다. Fix는문자열따옴표추가뿐이며 scientific spec UNCHANGED, pre-fix result contamination NONE. 과거실패를처음부터성공한것처럼지우지않는다.
+- 결과:primary Holm기각0/4; H1/H2 현재사양 NOT SUPPORTED. 유리한결과를위해threshold/control/event/model을조정하지않았다. 사람결과검토 PENDING; Secondary2와정책분석은시작하지않았다. [결과근거](10-confirmatory-h1-h2.md).

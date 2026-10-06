@@ -143,3 +143,12 @@ Stage3A HUMAN APPROVED 후 결과를 보기 전에 다음 사양을 **adopted fo
 
 Stage3A의 과산포는 PPML을 자동 기각하는 근거로 사용하지 않는다. 역별 고정 이질성은 고정된 243역을 daily citywide aggregate로 쓰는 H1/H2 primary에서 station FE로 재확장하지 않고, 후속 Secondary2에서 별도 분석한다.
 실제 model fit/result는 아직 없음. 상세 계약: [09-confirmatory-specification.md](09-confirmatory-specification.md).
+
+
+## P-S3B-RESULT — frozen confirmatory methods executed / 2026-10-07
+
+사전 동결SPEC f5433eb… 및pre-fit serialization fix596f0db…로 실제 H1/H2를 실행했다. Scientific specification 변경 없음.
+PPML/date FE·동결age/month/DOW/daytime 구조·date-cluster SE·4-test Holm·boarding primary·p95/p05/alighting sensitivity·OLS log-ratio HAC(7)는 **실제 수행됨**으로 기록한다.
+H1 citywide date×age732rows, H2 date×age×daytime1,464rows; common-valid underlying cells,366date clusters다.6PPML full-rank/converged이며 네 primary Holm 기각0/4다.
+앞선candidate/no-fit 문구는 당시단계의기록이다. 이번결과로 alternate NB/GAM/spline/새 FE/추가threshold를채택하지않았다. 사람결과검토는 PENDING이다.
+수치·pointwise CI·raw/Holm p·모든 sensitivity와 해석한계는 [H1/H2 record](10-confirmatory-h1-h2.md)를 따른다. 정책인과·trip purpose·Secondary2 공간분석은실행하지않았다.

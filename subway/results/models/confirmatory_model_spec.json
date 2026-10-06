@@ -1,0 +1,63 @@
+{
+  "benchmark": {
+    "covariance": "hac",
+    "family": "ols",
+    "maxlags": 7
+  },
+  "covariance": "cluster_date",
+  "daytime": {
+    "bins": [
+      "10_11",
+      "11_12",
+      "12_13",
+      "13_14",
+      "14_15",
+      "15_16"
+    ],
+    "end_hour": 16,
+    "start_hour": 10
+  },
+  "h1_design": "date FE + senior + senior×month FE + senior×DOW FE + senior×hot + senior×cold",
+  "h1_inference_unit": "date_x_age_group",
+  "h2_design": "date FE + senior/daytime/lower-order + senior/daytime×month/DOW differentials + extreme lower-order + senior×extreme×daytime",
+  "h2_inference_unit": "date_x_age_group_x_daytime",
+  "multiple_testing": {
+    "alpha": 0.05,
+    "method": "holm",
+    "tests": [
+      "h1_hot_senior_differential",
+      "h1_cold_senior_differential",
+      "h2_hot_daytime_amplification",
+      "h2_cold_daytime_amplification"
+    ]
+  },
+  "primary_cold": {
+    "operator": "le",
+    "quantile": 0.1,
+    "threshold_c": -3.05,
+    "variable": "temperature_min"
+  },
+  "primary_event": "boarding",
+  "primary_hot": {
+    "operator": "ge",
+    "quantile": 0.9,
+    "threshold_c": 32.75,
+    "variable": "temperature_max"
+  },
+  "sensitivity_cold": {
+    "operator": "le",
+    "quantile": 0.05,
+    "threshold_c": -4.8,
+    "variable": "temperature_min"
+  },
+  "sensitivity_hot": {
+    "operator": "ge",
+    "quantile": 0.95,
+    "threshold_c": 33.675,
+    "variable": "temperature_max"
+  },
+  "spec_freeze_sha": "f5433eb98d96d8098c265de0859282dcc53046f1",
+  "statistical_interpretation": "age-differential association under frozen citywide daily exposure; not causal trip-purpose evidence",
+  "study_area_id": "seoul_2024",
+  "year": 2024
+}
