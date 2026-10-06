@@ -49,3 +49,12 @@ data/validation/exceptions_ridership.csv text eol=lf
 data/validation/exceptions_station.csv text eol=lf
 data/validation/exceptions_spatial.csv text eol=lf
 data/validation/pipeline_summary.json text eol=lf
+
+# Stage3A deterministic tables.
+results/tables/eda_*.csv text eol=lf
+results/tables/eda_summary.json text eol=lf
+
+# Source hashes must survive Windows fresh checkout.
+run_eda.py text eol=lf
+src/analysis/eda.py text eol=lf
+src/analysis/figures.py text eol=lf

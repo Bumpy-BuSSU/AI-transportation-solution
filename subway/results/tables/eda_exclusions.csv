@@ -1,0 +1,4 @@
+stage,reason,rows,stations
+current_study_area,OUTSIDE_CURRENT_STUDY_AREA,219600,15
+current_study_area,UNRESOLVED_STUDY_AREA_STATUS,211360,16
+valid_age_comparison,SENIOR_EXCEEDS_TOTAL,1,1

@@ -232,3 +232,7 @@ subway/logs/*.log
 /subway/data/.pipeline.lock
 /subway/data/validation/pipeline_failure/
 /subway/data/validation/pipeline_summary.failed.tmp
+
+# Reproducible Stage3A local base and staging (hashes in EDA summary).
+/subway/data/analysis/*.parquet
+/subway/data/.eda-staging-*/

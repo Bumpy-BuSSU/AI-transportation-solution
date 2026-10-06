@@ -1,0 +1,5 @@
+stage,rows,stations,excluded_from_previous,reason
+current_study_area,3557520,243,430960,exclude only from current analysis scope; full core unchanged
+matched,3557520,243,0,unmatched kept in base; excluded from age-comparison metrics
+original_core,3988480,274,0,all approved Stage2 observations
+valid_age_comparison,3557519,243,1,excess/invalid matched kept in base; derived null preserved
