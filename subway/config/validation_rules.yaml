@@ -189,3 +189,22 @@ ridership:
 
 weather:
   station_id: '108'
+
+population:
+  unit: 명
+  unit_evidence: 'Raw 메타정보 ○단위=명; data-sheet unit cells are blank'
+  expected_gu: 25
+  expected_dong: 426
+  hierarchy_evidence: 'https://stat.eseoul.go.kr/statHtml/statHtml.do?con=&orgId=201&tblId=DT_201003_A010006'
+  code_evidence: 'https://sgis.mods.go.kr/developer/html/newOpenApi/api/dataApi/addressBoundary.html'
+  gu_names: [종로구, 중구, 용산구, 성동구, 광진구, 동대문구, 중랑구, 성북구, 강북구, 도봉구, 노원구, 은평구, 서대문구, 마포구, 양천구, 강서구, 구로구, 금천구, 영등포구, 동작구, 관악구, 서초구, 강남구, 송파구, 강동구]
+  # Seven explicit source typography relationships; corroborated by full gu
+  # membership sets and SGIS parent codes, never a general punctuation rule.
+  boundary_name_aliases:
+    종로1.2.3.4가동: 종로1·2·3·4가동
+    종로5.6가동: 종로5·6가동
+    금호2.3가동: 금호2·3가동
+    면목3.8동: 면목3·8동
+    상계3.4동: 상계3·4동
+    상계6.7동: 상계6·7동
+    중계2.3동: 중계2·3동
