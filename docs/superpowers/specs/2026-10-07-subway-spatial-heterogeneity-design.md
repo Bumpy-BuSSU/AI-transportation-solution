@@ -2,7 +2,7 @@
 
 - Date: 2026-10-07
 - Branch: `subway/preprocessing-pipeline`
-- Design status: **HUMAN-APPROVED IN CHAT / WRITTEN SPEC FOR REVIEW**
+- Design status: **HUMAN APPROVED 2026-10-07**
 - Prerequisite: Stage 3B H1/H2 **HUMAN APPROVED 2026-10-07**
 - Stage 3B result: four primary H1/H2 tests Holm-nonrejected; H1/H2 **NOT SUPPORTED under the frozen specification**
 - Scope: Secondary 2 only
