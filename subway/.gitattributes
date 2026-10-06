@@ -28,3 +28,9 @@ data/validation/batch2rc_spatial_source_proposal.md text eol=lf
 data/validation/batch2rc_station_candidate_mapping.csv text eol=lf
 data/validation/batch2rc_temporal_audit.csv text eol=lf
 data/validation/batch2rc_unmatched_identity_audit.csv text eol=lf
+
+# P-S2-2RD frozen analytical eligibility contract and reports.
+config/spatial_eligibility_2024.yaml text eol=lf
+data/validation/task5_spatial_eligibility.csv text eol=lf
+data/validation/task5_spatial_eligibility_summary.json text eol=lf
+data/validation/task5_spatial_exclusions.csv text eol=lf

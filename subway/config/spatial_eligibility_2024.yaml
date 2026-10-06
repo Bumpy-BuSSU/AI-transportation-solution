@@ -1,0 +1,47 @@
+metadata:
+  mission: P-S2-2RD
+  approved_date: '2026-10-07'
+  completion_mode: eligibility_based_with_documented_exclusions
+  scope: Task5 analytical eligibility only; no Task9 spatial operations
+analysis_crs: EPSG:4326
+crs_status: ANALYTICAL_ASSUMPTION
+crs_evidence: >-
+  analysis assumption supported by official national station-data standard;
+  not source-specific CRS explicitly verified. Batch2R-C official 2024
+  공공데이터 제공 표준 section42 도시철도역사정보 items10 역위도/11 역경도
+  explicitly specifies WGS84; longitude=x latitude=y geographic degrees.
+  https://www.data.go.kr/bbs/rcr/selectRecsroom.do?originId=PDS_0000000001227&atchFileId=FILE_000000003049184
+  standard SHA256=d3d464f6a9dd9f6dfd3ff61fec966c95ccce8aec085c234ba3af9e665d3c67cd
+temporal_status: SNAPSHOT_STABILITY_ASSUMPTION
+temporal_evidence: >-
+  Official same-source snapshots labelled2023-10-31,2024-10-31,2025-08-14
+  corroborate identical coordinates for existing276source rows; practical
+  pre-existing-station spatial stability assumption approved by human;
+  not continuous-observation proof, not verified unchanged throughout2024.
+  Historical2023/2024 file SHA256=9da58a78b07852906b9b9c75c539770d8a50a16c0cb5b8c21b23383327f85ce6;
+  residual temporal uncertainty retained; see Batch2R-C temporal audit.
+known_coordinate_absences:
+  - line: '7'
+    station_name: 까치울
+    evidence: >-
+      Task8 exact line7/까치울 identity corroborated by current official KRIC
+      S1107/3753/인천교통공사/address, but no accepted adopted Seoul coordinate
+      mapping; current KRIC coordinate is not substituted. Batch2R-C audit.
+  - line: '8'
+    station_name: 암사역사공원
+    evidence: >-
+      Task8 exact line8/암사역사공원 identity corroborated by current official
+      KRIC S1108/0809/서울교통공사/address, but no accepted adopted Seoul
+      coordinate mapping; current KRIC coordinate is not substituted.
+known_openings:
+  - line: '8'
+    station_name: 암사역사공원
+    date: '2024-08-10'
+    evidence: >-
+      official passenger service start2024-08-10;
+      https://scpm.seoul.go.kr/seoul-policy/evt0064;
+      known opening exception, not snapshot stability; pre-opening Raw
+      observations retained without asserting test rides.
+spatial_subset_statuses: [ELIGIBLE, ELIGIBLE_CODE_WARNING]
+core_policy: preserve all Task8 observations; return spatial subset separately
+unresolved_policy: no new aliases, code offset, coordinate substitution, averaging or Raw rewriting
