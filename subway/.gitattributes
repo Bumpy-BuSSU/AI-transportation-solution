@@ -39,3 +39,13 @@ data/validation/task5_spatial_exclusions.csv text eol=lf
 data/validation/task9_station_dong_map.csv text eol=lf
 data/validation/task9_station_dong_exceptions.csv text eol=lf
 data/validation/task9_spatial_summary.json text eol=lf
+
+# P-S2-T10 current pipeline config and deterministic validation products.
+config/study_area_2024.yaml text eol=lf
+config/pipeline_baseline_2024.yaml text eol=lf
+data/validation/data_quality_report.csv text eol=lf
+data/validation/join_report.csv text eol=lf
+data/validation/exceptions_ridership.csv text eol=lf
+data/validation/exceptions_station.csv text eol=lf
+data/validation/exceptions_spatial.csv text eol=lf
+data/validation/pipeline_summary.json text eol=lf

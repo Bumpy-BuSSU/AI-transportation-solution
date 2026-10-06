@@ -3,6 +3,7 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 
 import pandas as pd
 import numpy as np
+from geopandas import GeoDataFrame
 
 from subway.src.utils.hashing import sha256_file
 
@@ -80,7 +81,7 @@ def write_artifacts(output_dir: Path, frames: dict[str, pd.DataFrame], summary: 
             frame.to_csv(path, index=False, encoding='utf-8', lineterminator='\n')
         else:
             options = dict(compression='snappy', version='2.6', use_dictionary=False, write_statistics=True, row_group_size=65536)
-            if hasattr(frame, 'crs'):
+            if isinstance(frame, GeoDataFrame):
                 frame.to_parquet(path, index=False, schema_version='1.0.0', **options)
             else:
                 frame.to_parquet(path, index=False, engine='pyarrow', **options)

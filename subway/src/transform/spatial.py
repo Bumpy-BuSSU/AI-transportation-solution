@@ -31,30 +31,36 @@ def build_station_master(eligibility: pd.DataFrame) -> StageResult:
     return StageResult(out,[],pd.DataFrame())
 
 
-def _boundary_error(boundary):
+def _boundary_error(boundary,contract=None):
+    if contract is None:
+        from pathlib import Path
+        import yaml
+        contract=yaml.safe_load((Path(__file__).resolve().parents[2]/'config/study_area_2024.yaml').read_text(encoding='utf-8'))['boundary_contract']
+    if not isinstance(contract,dict) or not {'row_count','crs','code_pattern','base_date'}.issubset(contract):
+        return 'BOUNDARY_CONTRACT','explicit boundary profile contract required'
     required={'ADM_CD','ADM_NM','BASE_DATE','geometry'}
     if not isinstance(boundary,gpd.GeoDataFrame) or boundary.columns.duplicated().any() or not required.issubset(boundary):
         return 'BOUNDARY_SCHEMA','Q2 boundary fields and GeoDataFrame required'
-    if boundary.crs is None or boundary.crs.to_epsg()!=5179:return 'BOUNDARY_CRS','explicit EPSG:5179 required'
-    if len(boundary)!=426:return 'BOUNDARY_COUNT','426 administrative dongs required'
+    if boundary.crs is None or boundary.crs.to_string()!=contract['crs']:return 'BOUNDARY_CRS','explicit configured boundary CRS required'
+    if len(boundary)!=contract['row_count']:return 'BOUNDARY_COUNT','configured administrative-dong count required'
     codes=boundary.ADM_CD.astype('string')
-    if codes.duplicated().any() or not codes.str.fullmatch(r'11\d{6}',na=False).all():
-        return 'BOUNDARY_KEYS','unique Seoul ADM_CD required'
-    if not boundary.BASE_DATE.astype('string').eq('20240630').fillna(False).all():return 'BOUNDARY_DATE','20240630 required'
+    if codes.duplicated().any() or not codes.str.fullmatch(contract['code_pattern'],na=False).all():
+        return 'BOUNDARY_KEYS','unique configured ADM_CD required'
+    if not boundary.BASE_DATE.astype('string').eq(str(contract['base_date'])).fillna(False).all():return 'BOUNDARY_DATE','configured boundary date required'
     if (boundary.geometry.isna().any() or boundary.geometry.is_empty.any()
             or not boundary.geometry.is_valid.all() or not boundary.geometry.geom_type.isin(['Polygon','MultiPolygon']).all()):
         return 'BOUNDARY_GEOMETRY','nonnull nonempty valid polygons required; no repair'
     return None
 
 
-def map_stations_to_dongs(stations: pd.DataFrame, boundary: gpd.GeoDataFrame) -> StageResult:
+def map_stations_to_dongs(stations: pd.DataFrame, boundary: gpd.GeoDataFrame, *, boundary_contract=None) -> StageResult:
     master=build_station_master(stations)
     if master.findings:return master
     out=master.frame[master.frame.spatial_status.isin(ELIGIBLE_STATUSES)].copy().reset_index(drop=True)
-    for field in ['ADM_CD','gu','dong','boundary_base_date','x_5179','y_5179']:
+    for field in ['ADM_CD','gu','dong','boundary_base_date',f'x_{boundary.crs.to_epsg() if boundary.crs else 5179}',f'y_{boundary.crs.to_epsg() if boundary.crs else 5179}']:
         out[field]=pd.NA
     out['mapping_status']='ERROR';out['candidate_ADM_CD']='';out['mapping_reason']='';out['mapping_evidence']=''
-    error=_boundary_error(boundary)
+    error=_boundary_error(boundary,boundary_contract)
     if error:
         failed=_failure(boundary,*error)
         out['mapping_reason']=error[0];out['mapping_evidence']=error[1]
@@ -72,10 +78,10 @@ def map_stations_to_dongs(stations: pd.DataFrame, boundary: gpd.GeoDataFrame) ->
             findings.append(Finding('ERROR','task9',code,f'{message}: {int(mask.sum())}'))
             out.loc[mask,'mapping_reason']=code;out.loc[mask,'mapping_evidence']=message
     accepted=valid & policy
-    points=gpd.GeoSeries(gpd.points_from_xy(lon.loc[accepted],lat.loc[accepted]),index=out.index[accepted],crs=4326).to_crs(5179)
+    points=gpd.GeoSeries(gpd.points_from_xy(lon.loc[accepted],lat.loc[accepted]),index=out.index[accepted],crs=4326).to_crs(boundary.crs)
     polygons=boundary.sort_values('ADM_CD',kind='stable')
     for index,point in points.items():
-        out.loc[index,['x_5179','y_5179']]=[point.x,point.y]
+        out.loc[index,[f'x_{boundary.crs.to_epsg() if boundary.crs else 5179}',f'y_{boundary.crs.to_epsg() if boundary.crs else 5179}']]=[point.x,point.y]
         within=polygons[polygons.geometry.contains(point)]
         candidates=within
         if len(within)==1:status='MAPPED';reason='UNIQUE_STRICT_WITHIN'
@@ -86,11 +92,11 @@ def map_stations_to_dongs(stations: pd.DataFrame, boundary: gpd.GeoDataFrame) ->
             reason='TOUCHES_POLYGON_BOUNDARY' if len(candidates) else 'NO_STRICT_WITHIN_OR_TOUCH'
         out.loc[index,['mapping_status','mapping_reason','candidate_ADM_CD','mapping_evidence']]=[
             status,reason,'|'.join(candidates.ADM_CD.astype(str)),
-            'longitude=x latitude=y; EPSG:4326 analytical assumption -> EPSG:5179; strict contains; non-within touches checked; no repair/fallback']
+            f'longitude=x latitude=y; EPSG:4326 analytical assumption -> {boundary.crs.to_string()}; strict contains; non-within touches checked; no repair/fallback']
         if status=='MAPPED':
             row=within.iloc[0]
             out.loc[index,['ADM_CD','gu','dong','boundary_base_date']]=[str(row.ADM_CD),row.get('gu',pd.NA),row.ADM_NM,str(row.BASE_DATE)]
-    for field in ['x_5179','y_5179']:out[field]=pd.to_numeric(out[field],errors='coerce').astype('Float64')
+    for field in [f'x_{boundary.crs.to_epsg() if boundary.crs else 5179}',f'y_{boundary.crs.to_epsg() if boundary.crs else 5179}']:out[field]=pd.to_numeric(out[field],errors='coerce').astype('Float64')
     exceptions=out[out.mapping_status.ne('MAPPED')].copy()
     exceptions['exception_code']=exceptions.mapping_status
     for status in MAPPING_STATUSES[1:]:
@@ -99,16 +105,16 @@ def map_stations_to_dongs(stations: pd.DataFrame, boundary: gpd.GeoDataFrame) ->
     return StageResult(out,findings,exceptions)
 
 
-def map_population_to_boundary(population: pd.DataFrame,boundary: gpd.GeoDataFrame) -> StageResult:
-    error=_boundary_error(boundary)
+def map_population_to_boundary(population: pd.DataFrame,boundary: gpd.GeoDataFrame, *, boundary_contract=None) -> StageResult:
+    error=_boundary_error(boundary,boundary_contract)
     if error:return _failure(boundary,*error)
     required={'adm_cd','gu','dong',*POPULATION_FIELDS}
     if population.columns.duplicated().any() or not required.issubset(population) or not {'gu','dong'}.issubset(boundary):
         return _failure(population,'POPULATION_SCHEMA','verified ADM_CD/gu/dong/population fields and boundary hierarchy required')
     p=population.copy(deep=True);p['adm_cd']=p.adm_cd.astype('string')
     b=boundary.copy(deep=True);b['ADM_CD']=b.ADM_CD.astype('string')
-    if len(p)!=426 or p.adm_cd.isna().any() or p.adm_cd.duplicated().any() or set(p.adm_cd)!=set(b.ADM_CD):
-        return _failure(p,'POPULATION_BOUNDARY_BIJECTION','426/426 unique exact ADM_CD set equality required')
+    if len(p)!=len(b) or p.adm_cd.isna().any() or p.adm_cd.duplicated().any() or set(p.adm_cd)!=set(b.ADM_CD):
+        return _failure(p,'POPULATION_BOUNDARY_BIJECTION','complete unique exact population/boundary ADM_CD set equality required')
     values={c:pd.to_numeric(p[c],errors='coerce') for c in POPULATION_FIELDS}
     for c in POPULATION_FIELDS[:2]:
         numbers=values[c]
@@ -131,7 +137,7 @@ def map_population_to_boundary(population: pd.DataFrame,boundary: gpd.GeoDataFra
     return StageResult(out.sort_values('ADM_CD',kind='stable').reset_index(drop=True),[],pd.DataFrame())
 
 
-def enrich_station_population(mapping: pd.DataFrame,population_boundary: gpd.GeoDataFrame) -> StageResult:
+def enrich_station_population(mapping: pd.DataFrame,population_boundary: gpd.GeoDataFrame, *, boundary_contract=None) -> StageResult:
     """Attach verified population only after unique ADM_CD mapping."""
     if not {'ADM_CD','mapping_status','canonical_station_id'}.issubset(mapping) or not {'ADM_CD',*POPULATION_FIELDS}.issubset(population_boundary):
         return _failure(mapping,'ENRICHMENT_SCHEMA','mapping and verified population boundary fields required')

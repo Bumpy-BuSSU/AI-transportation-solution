@@ -1,0 +1,70 @@
+exception_id,exception_code,canonical_station_id,line,station_name,source_row_id,station_code_raw,latitude,longitude,reason
+eligibility:000000,TASK5_SPATIAL_EXCLUSION,"station:[""5"",""마곡""]",5,마곡,126.0,2515,37.562182,126.82693,UNRESOLVED_SOURCE_COORDINATE_COLLISION
+eligibility:000001,TASK5_SPATIAL_EXCLUSION,"station:[""5"",""발산""]",5,발산,127.0,2516,37.562182,126.82693,UNRESOLVED_SOURCE_COORDINATE_COLLISION
+eligibility:000002,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""고려대(종암)""]",6,고려대(종암),,2641,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000003,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""광흥창(서강)""]",6,광흥창(서강),,2625,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000004,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""녹사평(용산구청)""]",6,녹사평(용산구청),,2630,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000005,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""대흥(서강대앞)""]",6,대흥(서강대앞),,2626,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000006,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""봉화산(서울의료원)""]",6,봉화산(서울의료원),,2648,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000007,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""상월곡(한국과학기술연구원)""]",6,상월곡(한국과학기술연구원),,2643,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000008,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""새절(신사)""]",6,새절(신사),,2617,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000009,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""안암(고대병원앞)""]",6,안암(고대병원앞),,2640,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000010,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""월곡(동덕여대)""]",6,월곡(동덕여대),,2642,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000011,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""월드컵경기장(성산)""]",6,월드컵경기장(성산),,2620,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000012,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""증산(명지대앞)""]",6,증산(명지대앞),,2618,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000013,TASK5_SPATIAL_EXCLUSION,"station:[""6"",""화랑대(서울여대입구)""]",6,화랑대(서울여대입구),,2647,,,NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY
+eligibility:000014,TASK5_SPATIAL_EXCLUSION,"station:[""7"",""까치울""]",7,까치울,,2753,,,NO_ACCEPTED_COORDINATE
+eligibility:000015,TASK5_SPATIAL_EXCLUSION,"station:[""8"",""암사역사공원""]",8,암사역사공원,,2810,,,NO_ACCEPTED_COORDINATE
+match:000000,UNRESOLVED_STATION_IDENTITY,,2,까치산,61.0,,37.53181,126.846706,source/match diagnostics retained; see eligibility provenance
+match:000001,UNRESOLVED_STATION_IDENTITY,,3,충무로,74.0,,37.561302,126.995473,source/match diagnostics retained; see eligibility provenance
+match:000002,UNRESOLVED_STATION_IDENTITY,,6,고려대,208.0,,37.59034,127.03626,source/match diagnostics retained; see eligibility provenance
+match:000003,UNRESOLVED_STATION_IDENTITY,,6,고려대(종암),,2641,,,source/match diagnostics retained; see eligibility provenance
+match:000004,UNRESOLVED_STATION_IDENTITY,,6,광흥창,192.0,,37.547464,126.931971,source/match diagnostics retained; see eligibility provenance
+match:000005,UNRESOLVED_STATION_IDENTITY,,6,광흥창(서강),,2625,,,source/match diagnostics retained; see eligibility provenance
+match:000006,UNRESOLVED_STATION_IDENTITY,,6,녹사평,197.0,,37.53469,126.98665,source/match diagnostics retained; see eligibility provenance
+match:000007,UNRESOLVED_STATION_IDENTITY,,6,녹사평(용산구청),,2630,,,source/match diagnostics retained; see eligibility provenance
+match:000008,UNRESOLVED_STATION_IDENTITY,,6,대흥,193.0,,37.547732,126.942214,source/match diagnostics retained; see eligibility provenance
+match:000009,UNRESOLVED_STATION_IDENTITY,,6,대흥(서강대앞),,2626,,,source/match diagnostics retained; see eligibility provenance
+match:000010,UNRESOLVED_STATION_IDENTITY,,6,봉화산,215.0,,37.617293,127.091375,source/match diagnostics retained; see eligibility provenance
+match:000011,UNRESOLVED_STATION_IDENTITY,,6,봉화산(서울의료원),,2648,,,source/match diagnostics retained; see eligibility provenance
+match:000012,UNRESOLVED_STATION_IDENTITY,,6,상월곡,210.0,,37.606392,127.048509,source/match diagnostics retained; see eligibility provenance
+match:000013,UNRESOLVED_STATION_IDENTITY,,6,상월곡(한국과학기술연구원),,2643,,,source/match diagnostics retained; see eligibility provenance
+match:000014,UNRESOLVED_STATION_IDENTITY,,6,새절,184.0,,37.591148,126.913613,source/match diagnostics retained; see eligibility provenance
+match:000015,UNRESOLVED_STATION_IDENTITY,,6,새절(신사),,2617,,,source/match diagnostics retained; see eligibility provenance
+match:000016,UNRESOLVED_STATION_IDENTITY,,6,신내,216.0,,37.612571,127.104326,source/match diagnostics retained; see eligibility provenance
+match:000017,UNRESOLVED_STATION_IDENTITY,,6,안암,207.0,,37.586261,127.02903,source/match diagnostics retained; see eligibility provenance
+match:000018,UNRESOLVED_STATION_IDENTITY,,6,안암(고대병원앞),,2640,,,source/match diagnostics retained; see eligibility provenance
+match:000019,UNRESOLVED_STATION_IDENTITY,,6,연신내,182.0,,37.618596,126.920519,source/match diagnostics retained; see eligibility provenance
+match:000020,UNRESOLVED_STATION_IDENTITY,,6,월곡,209.0,,37.60192,127.041492,source/match diagnostics retained; see eligibility provenance
+match:000021,UNRESOLVED_STATION_IDENTITY,,6,월곡(동덕여대),,2642,,,source/match diagnostics retained; see eligibility provenance
+match:000022,UNRESOLVED_STATION_IDENTITY,,6,월드컵경기장,187.0,,37.569439,126.899077,source/match diagnostics retained; see eligibility provenance
+match:000023,UNRESOLVED_STATION_IDENTITY,,6,월드컵경기장(성산),,2620,,,source/match diagnostics retained; see eligibility provenance
+match:000024,UNRESOLVED_STATION_IDENTITY,,6,증산,185.0,,37.583989,126.909785,source/match diagnostics retained; see eligibility provenance
+match:000025,UNRESOLVED_STATION_IDENTITY,,6,증산(명지대앞),,2618,,,source/match diagnostics retained; see eligibility provenance
+match:000026,UNRESOLVED_STATION_IDENTITY,,6,화랑대,214.0,,37.619875,127.084106,source/match diagnostics retained; see eligibility provenance
+match:000027,UNRESOLVED_STATION_IDENTITY,,6,화랑대(서울여대입구),,2647,,,source/match diagnostics retained; see eligibility provenance
+match:000028,UNRESOLVED_STATION_IDENTITY,,7,까치울,,2753,,,source/match diagnostics retained; see eligibility provenance
+match:000029,UNRESOLVED_STATION_IDENTITY,,8,암사역사공원,,2810,,,source/match diagnostics retained; see eligibility provenance
+match:000030,SOURCE_CODE_CONFLICT,,6,공덕,194.0,2627,37.543592,126.951664,source/match diagnostics retained; see eligibility provenance
+match:000031,SOURCE_CODE_CONFLICT,,6,구산,183.0,2616,37.611223,126.917246,source/match diagnostics retained; see eligibility provenance
+match:000032,SOURCE_CODE_CONFLICT,,6,돌곶이,211.0,2644,37.610522,127.056419,source/match diagnostics retained; see eligibility provenance
+match:000033,SOURCE_CODE_CONFLICT,,6,동묘앞,204.0,2637,37.572275,127.015666,source/match diagnostics retained; see eligibility provenance
+match:000034,SOURCE_CODE_CONFLICT,,6,디지털미디어시티,186.0,2619,37.577005,126.898643,source/match diagnostics retained; see eligibility provenance
+match:000035,SOURCE_CODE_CONFLICT,,6,마포구청,188.0,2621,37.563535,126.903326,source/match diagnostics retained; see eligibility provenance
+match:000036,SOURCE_CODE_CONFLICT,,6,망원,189.0,2622,37.556031,126.910129,source/match diagnostics retained; see eligibility provenance
+match:000037,SOURCE_CODE_CONFLICT,,6,버티고개,200.0,2633,37.547933,127.006948,source/match diagnostics retained; see eligibility provenance
+match:000038,SOURCE_CODE_CONFLICT,,6,보문,206.0,2639,37.585293,127.019377,source/match diagnostics retained; see eligibility provenance
+match:000039,SOURCE_CODE_CONFLICT,,6,삼각지,196.0,2629,37.535563,126.973996,source/match diagnostics retained; see eligibility provenance
+match:000040,SOURCE_CODE_CONFLICT,,6,상수,191.0,2624,37.547704,126.92292,source/match diagnostics retained; see eligibility provenance
+match:000041,SOURCE_CODE_CONFLICT,,6,석계,212.0,2645,37.614937,127.065922,source/match diagnostics retained; see eligibility provenance
+match:000042,SOURCE_CODE_CONFLICT,,6,신당,203.0,2636,37.566174,127.016158,source/match diagnostics retained; see eligibility provenance
+match:000043,SOURCE_CODE_CONFLICT,,6,약수,201.0,2634,37.554087,127.010237,source/match diagnostics retained; see eligibility provenance
+match:000044,SOURCE_CODE_CONFLICT,,6,이태원,198.0,2631,37.534485,126.994369,source/match diagnostics retained; see eligibility provenance
+match:000045,SOURCE_CODE_CONFLICT,,6,창신,205.0,2638,37.579772,127.015246,source/match diagnostics retained; see eligibility provenance
+match:000046,SOURCE_CODE_CONFLICT,,6,청구,202.0,2635,37.560221,127.013776,source/match diagnostics retained; see eligibility provenance
+match:000047,SOURCE_CODE_CONFLICT,,6,태릉입구,213.0,2646,37.617319,127.074741,source/match diagnostics retained; see eligibility provenance
+match:000048,SOURCE_CODE_CONFLICT,,6,한강진,199.0,2632,37.53956,127.001729,source/match diagnostics retained; see eligibility provenance
+match:000049,SOURCE_CODE_CONFLICT,,6,합정,190.0,2623,37.549033,126.913546,source/match diagnostics retained; see eligibility provenance
+match:000050,SOURCE_CODE_CONFLICT,,6,효창공원앞,195.0,2628,37.539279,126.961348,source/match diagnostics retained; see eligibility provenance
+source:000000,DUPLICATE_COORDINATE,,5,마곡,126.0,2515,37.562182,126.82693,source/match diagnostics retained; see eligibility provenance
+source:000001,DUPLICATE_COORDINATE,,5,발산,127.0,2516,37.562182,126.82693,source/match diagnostics retained; see eligibility provenance

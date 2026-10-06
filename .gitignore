@@ -224,3 +224,11 @@ __marimo__/
 
 # Subway runtime logs
 subway/logs/*.log
+
+# Reproducible subway pipeline products (hashes recorded in validation summary).
+/subway/data/clean/*.parquet
+/subway/data/processed/*.parquet
+/subway/data/.pipeline-staging-*/
+/subway/data/.pipeline.lock
+/subway/data/validation/pipeline_failure/
+/subway/data/validation/pipeline_summary.failed.tmp

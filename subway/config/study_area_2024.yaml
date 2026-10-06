@@ -1,0 +1,16 @@
+schema_version: 1
+reference_year: 2024
+study_area_id: seoul_2024
+study_area_label: Seoul Special City
+current_empirical_scope: Seoul is the current validated case study; transport core coverage remains broader.
+boundary_dataset_id: boundary
+population_dataset_id: population_direct_65_plus
+weather_dataset_id: weather
+climate_response_dataset_id: shelter
+weather_scope: Validated Seoul ASOS 108 input; no exposure assignment to stations outside the current study area.
+boundary_contract:
+  row_count: 426
+  crs: EPSG:5179
+  code_pattern: '11\d{6}'
+  base_date: '20240630'
+future_extension: Comparable boundaries, population, transport, climate-response layers and a validated regional weather assignment are required; no other region is currently implemented.
