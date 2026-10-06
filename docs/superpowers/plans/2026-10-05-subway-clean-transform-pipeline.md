@@ -304,3 +304,19 @@ self.assertEqual(raw_before_hashes, raw_after_hashes)
 Coverage: 7clean은Task2/4/5/6/7, 4processed는Task8/9, Gate0–3/reports는Task1/8/9/10, CLI/provenance/reproducibility는Task10, closeout은Task11. 미확정 source evidence는Task3/5/6/9에 blocking으로 배치했다. Review Focus 5항목은 owner test에 대응하며 공통 StageResult/signature는 동일하다. 코드 예시의 result·fixture 변수는 해당 RED 단계에서 구성한다.
 
 이번 Mission은 여기서 종료한다. 계획 리뷰와 별도 구현 시작 지시 전에는 Stage2 코드·alias값·CRS확정값·clean/processed 산출물을 만들지 않는다.
+
+
+## P-S2-2RB authority addendum — 2026-10-06
+
+The approved baseline now extends the original 7 datasets/11 files with the
+exact DT_201004_O020003 Raw source: **8 datasets/12 files**. Task 6's approved
+primary population contract is `population_direct_65_plus`: direct Q2 계 and
+65세이상고령자, not summing incomplete old age bands. `population` remains
+validation/supplementary and its historical 400 complete/26 incomplete dongs
+remain evidence. Task 6 COMPLETE after exact 426 boundary keys, 400 equality,
+26 direct coverage, deterministic outputs and full regression. The old plan's
+age-band primary calculation is superseded only by this approved contract.
+Exactly 55 station aliases and three transfer groups are adopted; Task 5 still
+BLOCKED for unmatched/code/coordinate/CRS/temporal reasons. Task 9, Task 10 and
+Task 11 remain NOT STARTED and are not authorized by this addendum.
+See [authority adoption evidence](../../../subway/docs/analysis/03-approved-authority-adoption.md).

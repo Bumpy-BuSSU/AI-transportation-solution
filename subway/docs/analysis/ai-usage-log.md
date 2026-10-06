@@ -47,3 +47,10 @@ P-S2-2RA: **Task 5/6 blocker evidence resolution before spatial mapping**. 원�
 Codex는 로컬 원본 재계산, 공식 파일/컬럼/API/과거 버전 조사, 별칭 gate 검증, 중복 좌표 RED→GREEN 테스트, 실제 Task 8/Task 4/7 회귀 및 인구 후보 400동 독립 대조를 수행했다. 자동 검사와 Codex의 증거 판정을 인간의 직접 source 열람이나 수동 검증으로 기록하지 않는다. 전체 station 후보 158개를 일괄 승인하지 않았으며 line-6 코드/이름 모순과 마곡/발산 좌표 충돌을 보존한다. 공식 대체 좌표는 감사 후보에 한정한다.
 
 인구 후보는 2024Q2 25구·426동·required missing 0, 기존 유효 400동의 total/65+ 각각 exact 400·mismatch 0이다. 공식 메타정보의 분기 말 기준 및 65+ 외국인 포함을 기록한다. 신규 인구 source contract는 **인간 미승인**이고 교체 제안 후 중지한다. station 55개 명시적 alias 및 환승 3그룹 검토안은 실제 gate를 통과했으나 automatic approval review가 권위 설정 반영을 두 차례 거부하며 명시적 재승인을 요구하여, 채택하지 않고 제안으로만 보존했다. 기존 senior 5행 및 설정/Raw는 유지한다. 인간은 **Task 9 및 새로운 인구 소스를 승인하지 않았다**. Tasks 9/10/11 **NOT STARTED**. 상세 근거·한계·소스 계약 제안은 `02-spatial-input-blocker-review.md`와 Batch 2R diagnostics에 기록한다.
+
+
+## P-S2-2RB — approved station evidence and direct-65+ population source adoption (2026-10-06)
+
+ChatGPT precision-reviewed remote Batch 2R-A, approved exactly 55 reviewed station aliases, exactly three physical-transfer coordinate groups and DT_201004_O020003 source-contract adoption; it explicitly did not approve Task 9 or station CRS. The human supplied this authority and retains final project approval. No independent human rerun of Codex tests is claimed.
+
+Codex implemented only those authoritative configurations, corrected the official-rename evidence contradiction without changing its mapping, preserved blocking code-conflict flags, and migrated Task 6 to the exact approved direct aggregate. Codex executed TDD/regression, 100 passing tests, actual 426/400/26 checks, original Raw integrity, the 8-dataset/12-file baseline extension, deterministic acceptance artifacts and unchanged Task 8/4/7 accounting. The old age source and historical 400/26 diagnostics remain validation/supplementary evidence; missing individual age bands were not manufactured. Task 5 remains BLOCKED; Task 6 COMPLETE; Task 9/10/11 NOT STARTED. See [authority adoption record](03-approved-authority-adoption.md) for gates, provenance and limits.

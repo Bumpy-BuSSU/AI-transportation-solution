@@ -64,3 +64,17 @@ Stage 2 계획의 사전 해결 목록을 따른다. 통계모형, EDA 결과, �
 > 분석 전 지하철 승하차, 기상, 역사 좌표, 등록인구, 행정동 경계 및 쉼터 등 7종 Raw의 실제 스키마와 출처를 기록하였다. 구성 파일을 포함한 11개 파일의 SHA-256을 고정하고 반복 검사에서 원본과 검사 산출물의 무결성 및 재현성을 확인하였다.
 
 > 인구 입력은 동일 조건의 SpreadsheetML 데이터 sheet를 사용하였다. 행정동 인구 집계와 역-행정동 결합은 별도 전처리 단계에서 검증하며, 역 좌표 CRS와 일부 자료의 기준시점은 미확정 사항으로 관리한다.
+
+
+## Approved baseline extension — P-S2-2RB, 2026-10-06
+
+The original Stage 1 baseline remains **7 datasets / 11 immutable Raw files**.
+The human approved `population_direct_65_plus` / one exact official CSV as an
+eighth dataset: current extended baseline **8 datasets / 12 files**. Original
+hashes and historical records remain unchanged. This source is Task 6 PRIMARY;
+the old age-band population remains VALIDATION / SUPPLEMENTARY. The original
+26 incomplete age-band dongs are not repaired; direct aggregates supply all
+426 Q2 dong values, independently matching the complete old 400 exactly.
+See [Batch 2R-B authority record](03-approved-authority-adoption.md) and
+`batch2rb_baseline_extension_summary.json` / `batch2rb_population_authority_summary.json`.
+Task 5 BLOCKED; Task 6 COMPLETE; Task 9/10/11 NOT STARTED.

@@ -180,3 +180,17 @@ Population은 손상된 CSV를 수선하지 않고 동일 조건 SpreadsheetML e
 Windows에서는 LF 정책 적용 후 index stat cache에 과거 CRLF 크기가 남아, 실제 바이트가 index blob과 같아도 status가 M으로 표시되었다. 지정된 generated artifact 5개에만 `git add`를 수행해 blob/mode/content 변화 없이 stat cache를 갱신했다. 해당 재현성 수정으로 tracked file의 의미적 내용은 변경되지 않았다. `subway/.gitattributes`의 5개 `text eol=lf` 정책은 유지한다.
 
 Stage 2 authoritative inputs는 `subway/config/source_contracts_2024.yaml`, `subway/data_manifest.csv`, 이 Raw schema baseline과 `subway/data/validation/raw_schema_snapshot.json`이다. Stage 1 PASS는 loadability와 입력 재현성의 근거이며 Stage 2 join·값·공간 품질이 검증되었다는 뜻은 아니다. Stage 2 구현은 아직 시작하지 않았다.
+
+
+## Approved baseline extension — P-S2-2RB, 2026-10-06
+
+The original Stage 1 baseline remains **7 datasets / 11 immutable Raw files**.
+The human approved `population_direct_65_plus` / one exact official CSV as an
+eighth dataset: current extended baseline **8 datasets / 12 files**. Original
+hashes and historical records remain unchanged. This source is Task 6 PRIMARY;
+the old age-band population remains VALIDATION / SUPPLEMENTARY. The original
+26 incomplete age-band dongs are not repaired; direct aggregates supply all
+426 Q2 dong values, independently matching the complete old 400 exactly.
+See [Batch 2R-B authority record](../../subway/docs/analysis/03-approved-authority-adoption.md) and
+`batch2rb_baseline_extension_summary.json` / `batch2rb_population_authority_summary.json`.
+Task 5 BLOCKED; Task 6 COMPLETE; Task 9/10/11 NOT STARTED.

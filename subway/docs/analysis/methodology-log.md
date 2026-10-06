@@ -16,3 +16,17 @@
 Interaction specification 후보는 `Extreme × Senior`, three-way specification 후보는 `Extreme × Senior × Daytime`이다. 이는 위 모형 안의 항 사양이며 독립적인 분석 알고리즘이 아니다. Daytime은 현재 10~16시 가설이고 최종 정의·검증은 분석 Stage에서 수행한다. Stage 2에서는 해당 indicator나 극한기온 분류·검정·모형 fit을 만들지 않고 원래 20개 hour_bin과 age comparison 정보를 보존한다.
 
 Stage 2 계획의 wide→long, alias mapping, crosswalk, 인구 집계 및 Point-in-Polygon은 모두 **계획 상태**다. 이번 문서 작성으로 adopted가 되지 않는다. 분석 후보의 선택 이유는 검토 목적이며 특정 방법의 적합성이 검증되었다는 진술이 아니다.
+
+
+## P-S2-2RB implemented-method update — 2026-10-06
+
+The earlier “planned” preprocessing entries are historical. Explicit reviewed
+station aliases/transfer validation and direct Q2 population aggregates are
+now adopted within the approved scope: 55 station aliases, three transfer
+groups, strict official code-parent/boundary attribute-set corroboration,
+426 direct clean rows and independent 400-dong source comparison. The old
+26 incomplete age-band dongs stay unchanged. Source SHA and reversed-row
+deterministic CSV checks pass, with 100 unit tests and actual Task 8/4/7
+regression. These are data-preparation checks, not statistical inference.
+Point-in-Polygon remains unimplemented; Task 9 NOT STARTED. Detailed gates and
+method limits: [Batch 2R-B record](03-approved-authority-adoption.md).
