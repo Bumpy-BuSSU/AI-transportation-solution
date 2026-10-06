@@ -1,6 +1,6 @@
 # 개인 subway 분석보고서 근거 지도
 
-이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 기록일: 2026-10-07. Stage 1 COMPLETE / 승인된 baseline 확장 8종·12 files / Stage 2 Tasks 1–8 COMPLETE; Task 5는 documented exclusions를 포함한 eligibility contract 완료, Task 9–11 NOT STARTED. 최신 근거: [Task 5 closure](05-station-spatial-eligibility.md).
+이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 기록일: 2026-10-07. Stage 1 COMPLETE / 승인된 baseline 확장 8종·12 files / Stage 2 Tasks 1–9 구현·검증 COMPLETE; Task 5 HUMAN-APPROVED COMPLETE, Task 9 strict mapping의 인간 결과 검토는 PENDING. Task 10·11 NOT STARTED. 최신 근거: [Task 9 mapping](06-station-dong-mapping.md).
 
 ## 현재 working research questions
 
@@ -20,7 +20,7 @@
 | 활용 데이터 | [Raw 연구 기록](01-raw-data-baseline.md), [기술 baseline](../../../docs/subway/2024-raw-schema-baseline.md) | 원래 7종·11 files 보존 + 승인된 직접 65+ source 1종·1 file 확장 |
 | 출처·제공기관·URL | [manifest](../../data_manifest.csv) | 확인된 값만 기록. 빈 다운로드일·라이선스 등은 미확인; 제출 전 공식 출처 재검토 |
 | 기준시점·기간 | manifest, [source contracts](../../config/source_contracts_2024.yaml) | 승하차·기상 2024, 기존 인구 Q2–Q4는 보조 검증, 직접 65+ Q2가 primary, 경계 2024-06-30. 역 좌표는 승인된 snapshot-stability/CRS 분석 가정과 exclusions 적용; source-specific 검증 및 쉼터 시점 한계 유지 |
-| 수집 및 전처리 | Raw baseline, Stage 1 코드·tests, [Stage 2 계획](../../../docs/superpowers/plans/2026-10-05-subway-clean-transform-pipeline.md) | Raw 검사·provenance·재현성 및 승인된 Tasks 1–8 범위 구현·검증; Task 5 eligibility contract COMPLETE; Task 9–11 미착수 |
+| 수집 및 전처리 | Raw baseline, Stage 1 코드·tests, [Stage 2 계획](../../../docs/superpowers/plans/2026-10-05-subway-clean-transform-pipeline.md) | Raw 검사·provenance·재현성 및 Tasks 1–9 범위 구현·검증; Task 5 승인된 eligibility contract COMPLETE; Task 9 strict mapping COMPLETE / 인간 검토 PENDING; Task 10·11 미착수 |
 | 분석 방법론 | [방법론 로그](methodology-log.md) | schema inspection·SHA-256·재현성 및 승인된 전처리 adopted. 통계모형은 candidate |
 | AI 서비스·범위·주요 프롬프트 | [AI 사용 기록](ai-usage-log.md) | ChatGPT/Codex 역할과 주요 지시 요약 기록. 인간 검증은 증거가 있는 범위만 기록 |
 | 분석 결과 | 아직 없음 | 미완료. Stage 1 검사 성공을 연구 결과로 대체하지 않음 |
@@ -37,3 +37,5 @@
 
 
 - [P-S2-2RD Task5 eligibility closure](05-station-spatial-eligibility.md): core 보존, 공간 제외 사유·이용량 비중, 승인된 분석 가정. 이전2RC의 BLOCKED는 당시 역사 기록이다.
+
+- [P-S2-T9 strict station-dong mapping](06-station-dong-mapping.md): 258개 적격 역 중243 mapped/15 명시적 ZERO_MATCH; 원본 core 보존, 누적 제외 비중과426/426 인구 경계 검증. Task9 결과 인간 검토 PENDING.

@@ -101,3 +101,10 @@ identity without changing the Seoul alias or reconciling codes. No human
 manual rerun is claimed. Full122 tests PASS; Task5 COMPLETE under
 eligibility_based_with_documented_exclusions; Task6/8 COMPLETE;
 Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibility.md).
+
+## P-S2-T9: strict station-to-dong Point-in-Polygon mapping — 2026-10-07
+
+- Human: Task5 결과를 수용하고 이번 Task9 Mission을 전달했다. Task9 결과는 이후 인간 검토가 필요하며 현재 PENDING이다. 인간이 테스트를 직접 실행했다고 기록하지 않는다.
+- ChatGPT: Task5 closure를 precision-review하고 Task9 구현을 승인했으며 strict spatial mapping / documented-exception 규칙을 정의했다. 첨부 Mission에 기록된 역할이다.
+- Codex: GIS 변환/PIP, RED→GREEN TDD18 tests, 실제258역 diagnostics,426/426 ADM_CD population-boundary 검증, Task5/6/8 회귀와 결정성/12 Raw 불변 검사를 수행했다. 전체140 tests PASS. Task10/11 미착수.
+- 결과:243 MAPPED/15 ZERO_MATCH. 인구 값은 mapped 역에만 연결하고 원본 core는 보존했다. CRS 및 시간 가정은 source-specific 확정으로 바꾸지 않았다. [증거](06-station-dong-mapping.md).

@@ -336,3 +336,15 @@ Task8/4/7 regression. Task5 COMPLETE under
 eligibility_based_with_documented_exclusions. Task9/10/11 NOT STARTED; no
 geometry/transformation/Point-in-Polygon/proximity work is performed.
 See [Task5 contract evidence](../../../subway/docs/analysis/05-station-spatial-eligibility.md).
+
+## Human-issued P-S2-T9 contract addendum — 2026-10-07
+
+The Task9 Mission supersedes the older Task9 interfaces and universal spatial-success gate.
+`build_station_master(eligibility: pd.DataFrame) -> StageResult` consumes the approved Task5 table,
+preserves274 identities, and only258 eligible identities enter `map_stations_to_dongs(stations,boundary)`.
+`map_population_to_boundary(population,boundary)` uses verified ADM_CD bijection with gu/dong diagnostics;
+mapped-only enrichment preserves core rows. Strict within/touches exceptions are auditable, never repaired.
+Task9 technical COMPLETE under strict_point_in_polygon_with_documented_exceptions after coverage/regression gates;
+human review PENDING. Actual243 MAPPED/15 ZERO_MATCH. New18/full140 tests PASS, reversed output hashes equal,
+12 Raw hashes unchanged. Task10/11 NOT STARTED. No production publication or final Stage2 closeout.
+See [Task9 evidence](../../../subway/docs/analysis/06-station-dong-mapping.md).

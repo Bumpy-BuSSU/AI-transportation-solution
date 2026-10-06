@@ -50,3 +50,15 @@ excluded. These checks are not statistical inference or source repair.
 Task5 COMPLETE means eligibility contract finalized with exclusions, not all
 source problems fixed. Task9 Point-in-Polygon, CRS transformation and shelter
 proximity remain NOT STARTED. Detailed evidence: [Task5 closure](05-station-spatial-eligibility.md).
+
+## P-S2-T9 — 2026-10-07 strict spatial preprocessing adopted
+
+Task5의 승인된274 identity master를 보존하며258 eligible에만 longitude=x/latitude=y,
+EPSG:4326 ANALYTICAL_ASSUMPTION → EPSG:5179 변환 및 strict Point-in-Polygon 적용.
+243 MAPPED/15 ZERO_MATCH/0 BOUNDARY_POINT/0 MULTIPLE_MATCH. 좌표·경계 보정과 nearest fallback 없음.
+ADM_CD로426/426 population-boundary bijection 및 gu/dong 진단 후 mapped 역에만 직접 인구 부착.
+원본 Task8 accounting/total-only/3 senior>total 예외 및12 Raw hashes 보존.
+Core274 대비 누적 제외31 identities, total-all6.458125%, senior7.898269%; 분모 분리는
+[Task9 증거](06-station-dong-mapping.md) 및 summary 참조. 173개 동 coverage는 전처리 QA뿐이다.
+Task9 기술 구현 COMPLETE / 인간 결과 검토 PENDING. Task10/11 NOT STARTED.
+EDA·회귀·가설검정·공간적 수요/접근성 해석은 수행하지 않았다.
