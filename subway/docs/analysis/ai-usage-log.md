@@ -38,3 +38,12 @@ Codex는 Task 2 정제 long 및 Task 3 승인 identity를 사용하여 date × c
 실제 2024 원본 대조에서 senior>total은 3셀(2역·3일·2시간대)이며 하남시청 같은 하차 시간대에서 2일 반복됐다는 점을 명시한다. 개별 예외와 파생 null은 severity에 관계없이 유지한다. 정책은 통계적 유의성 주장이 아닌 운영 품질 검사이며, count≥20(20-bin source 한 행 규모), rate≥0.0001(유효 matched 1만 셀당 1셀), 동일 date/station/boarding의 초과 hour≥2, 동일 station/hour/boarding의 반복 date≥3 중 하나면 ERROR다. 현재 3셀은 WARNING이며 source 값의 정확성을 인증하는 의미가 아니다. 정책·실제 분모·집중도·양쪽 provenance는 Batch 3 summary/exception에 기록한다.
 
 테스트·실제 데이터 진단·Raw hash·회귀·재현성 확인은 Codex 자동 검증이다. 인간의 Batch 3 결과 수용은 **아직 대기 중**이며 Task 9는 **NOT STARTED**다. 이번 Task 8 실행 승인은 해당 Mission에 근거하며 Batch 3 결과의 사전 인간 승인을 뜻하지 않는다.
+
+
+P-S2-2RA: **Task 5/6 blocker evidence resolution before spatial mapping**. 원문 reference: 2026-10-06 사용자 첨부 “Mission: Stage 2 Batch 2R-A — Resolve Task 5/6 Blockers Before Spatial Mapping”, attachment ID `6359a14e-f2d2-4f57-9057-9bfe1de8e7eb`.
+
+**2026-10-06 인간 승인 기록: Batch 3 / Task 8 APPROVED.** ChatGPT는 remote-code/result review 후 Task 8을 수용하고 공식 역명변경 OA-22477 및 직접 65+ 인구 후보 DT_201004_O020003과 증거 gate를 제안했다. 인간 사용자는 이번 Mission에서 Task 8 결과를 승인했다. 이는 Codex 자동 테스트·진단과 별개의 수용 결정이며 인간이 테스트를 직접 재실행했다는 주장이 아니다. 앞선 “대기 중” 기록은 당시 상태다. 기존 generated Batch 3 summary의 `human_batch3_acceptance=pending`은 조사한 이전 local 생성 경로의 역사적 값으로 보존하고, 현재 수용 결정은 이 날짜별 연구 기록에 관리한다. 해당 기술 산출물은 재계산 후 세 파일 모두 baseline SHA와 같았다. 채택된 `senior_excess_policy`는 **2024 baseline QA 정책으로 고정**하며 별도 방법론 변경 승인 없이 후속 연도에 맞춰 조정하지 않는다. Task 8 승인은 Task 9 승인을 뜻하지 않는다.
+
+Codex는 로컬 원본 재계산, 공식 파일/컬럼/API/과거 버전 조사, 별칭 gate 검증, 중복 좌표 RED→GREEN 테스트, 실제 Task 8/Task 4/7 회귀 및 인구 후보 400동 독립 대조를 수행했다. 자동 검사와 Codex의 증거 판정을 인간의 직접 source 열람이나 수동 검증으로 기록하지 않는다. 전체 station 후보 158개를 일괄 승인하지 않았으며 line-6 코드/이름 모순과 마곡/발산 좌표 충돌을 보존한다. 공식 대체 좌표는 감사 후보에 한정한다.
+
+인구 후보는 2024Q2 25구·426동·required missing 0, 기존 유효 400동의 total/65+ 각각 exact 400·mismatch 0이다. 공식 메타정보의 분기 말 기준 및 65+ 외국인 포함을 기록한다. 신규 인구 source contract는 **인간 미승인**이고 교체 제안 후 중지한다. station 55개 명시적 alias 및 환승 3그룹 검토안은 실제 gate를 통과했으나 automatic approval review가 권위 설정 반영을 두 차례 거부하며 명시적 재승인을 요구하여, 채택하지 않고 제안으로만 보존했다. 기존 senior 5행 및 설정/Raw는 유지한다. 인간은 **Task 9 및 새로운 인구 소스를 승인하지 않았다**. Tasks 9/10/11 **NOT STARTED**. 상세 근거·한계·소스 계약 제안은 `02-spatial-input-blocker-review.md`와 Batch 2R diagnostics에 기록한다.
