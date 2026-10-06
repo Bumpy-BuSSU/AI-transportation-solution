@@ -44,7 +44,7 @@
   "manifest_sha256": "9598c9f6c7c1585a1304a0d9204f4759512fdeb075547eb4525009fd942e8383",
   "population": {
     "blocked_dong": 26,
-    "blocking_reason": "selected Q2 elderly cells use literal - in 26 dongs; table-specific zero/missing semantics not verified; no imputation",
+    "blocking_reason": "official statistical symbol - means 자료없음; 26 dongs / 32 Q2 senior-age cells are incomplete; no zero fill or imputation",
     "clean_valid_dong": 400,
     "code_evidence": "https://sgis.mods.go.kr/developer/html/newOpenApi/api/dataApi/addressBoundary.html",
     "complete_population_65_plus": 1723230,
@@ -264,6 +264,12 @@
     ],
     "hierarchy_evidence": "https://stat.eseoul.go.kr/statHtml/statHtml.do?con=&orgId=201&tblId=DT_201003_A010006",
     "item_evidence": "official selectable 계 item; downloaded metadata names the table/source/unit but gives no arithmetic formula",
+    "missing_symbol_evidence": {
+      "evidence_chain": "ChatGPT reviewed official legend; externally supplied via P-S2-B3 Mission; no claim of independent human source opening",
+      "meaning": "자료없음",
+      "source": "https://stat.eseoul.go.kr/statHtml/statHtml.do?con=&orgId=201&tblId=DT_201003_A010006",
+      "symbol": "-"
+    },
     "partial_totals_only": true,
     "raw_rows": 8136,
     "selected_q2_dash_cells": 32,

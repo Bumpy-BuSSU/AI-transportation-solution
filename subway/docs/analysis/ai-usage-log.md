@@ -28,3 +28,13 @@ ChatGPT는 Batch 1A를 검토하고 AI-log 역할 표기 보정을 제안했으�
 Task 4는 108번 단일 지점·366일·9개 변수를 보존하며 빈 강수/적설/풍속은 missing으로 유지한다. Task 5는 205 exact / 69 ridership-only / 71 station-only 및 전체 후보를 기록한다. 새 station alias는 채택하지 않았고 CRS·2025 snapshot의 2024 적용성은 미확인으로 Task 5 BLOCKED다. Task 6은 다운로드 메타정보의 표명·출처·명 단위, 공식 25구 표시, SGIS 공식 단계별 코드 설명과 전체 source 순서 및 경계 parent별 완전한 동 집합을 대조하여 25구·426동 계층을 검증했다. 동명 `.`/`·` 차이 7개는 설정의 명시적 관계로만 처리하며 원본 표기는 보존한다. 이는 여러 자료의 완전 집합 대조에 근거한 Codex의 계층 판정이다. 그러나 26동의 Q2 계 항목 32셀에 있는 `-`의 이 표에 대한 의미는 확정하지 못했다. 0 대체 없이 해당 동을 예외로 남기므로 Task 6 BLOCKED이며 유효 400동의 합계를 서울 전체 인구로 해석하지 않는다. 공식 항목 `계`의 산식을 창작하지 않는다.
 
 Task 7은 원본 경계 426개 geometry·EPSG:5179·20240630 및 쉼터 412개 좌표·명시된 EPSG:5186을 검증한다. 구 이름은 검증된 인구 계층의 ADM_CD/동명 관계로만 부여하며 geometry repair나 공간 결합은 없다. 쉼터 기준시점 미확인은 WARNING으로 보존한다. Raw/manifest/Stage 1/기존 5개 senior alias/Batch 1 baseline은 그대로 유지한다. Task 8 이상은 시작하지 않는다. 상세 자동 검증 결과와 환경은 `subway/data/validation/batch2_summary.json`에 기록하며 인간 수동 검증으로 기록하지 않는다.
+
+P-S2-B3: **Task 8 auditable senior-total ridership integration**. 원문 reference: 2026-10-06 사용자 첨부 “Mission: Stage 2 Implementation Batch 3 — Task 8 Core Ridership Integration”, attachment ID `e2cf7c25-9c96-4116-a261-165993c3f34e`.
+
+Batch 2 population review 보정: ChatGPT가 공식 서울 등록인구 통계표의 통계부호 범례 **“- : 자료없음”**을 확인했으며, Codex는 이번 Mission을 통해 제공받은 외부 근거로 기록한다. 공식 source: https://stat.eseoul.go.kr/statHtml/statHtml.do?con=&orgId=201&tblId=DT_201003_A010006 . 이전 “의미 미확정” 표기를 “공식 자료없음”으로 정정한다. 인간이 해당 source를 독립 열람했다고 주장하지 않는다. 26동·32개 Q2 고령 연령대 셀은 여전히 결측이며 0 대체·보간·분기 변경은 없다. Task 6 BLOCKED와 유효 400동의 부분집합 해석을 유지한다. 인구 정제 구현은 변경하지 않는다.
+
+Codex는 Task 2 정제 long 및 Task 3 승인 identity를 사용하여 date × canonical_station_id × hour_bin × boarding_type의 full outer integration을 구현했다. Raw 역코드는 공통 PK가 아니며 양쪽 provenance를 분리한다. 중복·미확인 identity는 거부하되 원본 행을 보존하며, 유효 matched에서 senior≤total일 때만 non_senior를 계산한다. total>0에서만 senior_share를 계산하고 0/0은 null이다. Station 좌표·weather·population 결합은 없고 Task 5 CRS는 null 상태다.
+
+실제 2024 원본 대조에서 senior>total은 3셀(2역·3일·2시간대)이며 하남시청 같은 하차 시간대에서 2일 반복됐다는 점을 명시한다. 개별 예외와 파생 null은 severity에 관계없이 유지한다. 정책은 통계적 유의성 주장이 아닌 운영 품질 검사이며, count≥20(20-bin source 한 행 규모), rate≥0.0001(유효 matched 1만 셀당 1셀), 동일 date/station/boarding의 초과 hour≥2, 동일 station/hour/boarding의 반복 date≥3 중 하나면 ERROR다. 현재 3셀은 WARNING이며 source 값의 정확성을 인증하는 의미가 아니다. 정책·실제 분모·집중도·양쪽 provenance는 Batch 3 summary/exception에 기록한다.
+
+테스트·실제 데이터 진단·Raw hash·회귀·재현성 확인은 Codex 자동 검증이다. 인간의 Batch 3 결과 수용은 **아직 대기 중**이며 Task 9는 **NOT STARTED**다. 이번 Task 8 실행 승인은 해당 Mission에 근거하며 Batch 3 결과의 사전 인간 승인을 뜻하지 않는다.
