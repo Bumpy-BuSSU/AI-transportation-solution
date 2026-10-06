@@ -58,3 +58,12 @@ results/tables/eda_summary.json text eol=lf
 run_eda.py text eol=lf
 src/analysis/eda.py text eol=lf
 src/analysis/figures.py text eol=lf
+
+# Stage3B frozen confirmatory specification, code and deterministic text outputs.
+config/confirmatory_analysis_2024.yaml text eol=lf
+run_confirmatory.py text eol=lf
+src/analysis/confirmatory.py text eol=lf
+results/models/confirmatory_*.json text eol=lf
+results/models/*.csv text eol=lf
+results/tables/confirmatory_*.csv text eol=lf
+results/tables/extreme_temperature_days_2024.csv text eol=lf

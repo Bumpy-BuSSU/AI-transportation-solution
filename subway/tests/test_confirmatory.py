@@ -134,5 +134,71 @@ class ConfirmatorySpecificationTests(unittest.TestCase):
             build_confirmatory_tables(synthetic_base(), self.config, 2024, event="combined")
 
 
+class ConfirmatoryModelContractTests(unittest.TestCase):
+    def setUp(self):
+        self.config = load_confirmatory_config(ROOT, 2024)
+
+    def _annual_tables(self):
+        dates = pd.date_range("2024-01-01", "2024-12-31", freq="D")
+        h1_rows = []
+        h2_rows = []
+        for date in dates:
+            hot = (date.dayofyear % 10 == 0)
+            cold = (date.dayofyear % 11 == 0)
+            for senior in (0, 1):
+                h1_rows.append(
+                    dict(
+                        date=date, senior=senior, age_group=("senior" if senior else "non_senior"),
+                        count=100000 + senior * 10000 + date.dayofyear,
+                        month=date.month, day_of_week=date.dayofweek,
+                        hot_primary=hot, cold_primary=cold,
+                        hot_sensitivity=(date.dayofyear % 20 == 0),
+                        cold_sensitivity=(date.dayofyear % 22 == 0),
+                    )
+                )
+                for daytime in (0, 1):
+                    h2_rows.append(
+                        dict(
+                            date=date, senior=senior, age_group=("senior" if senior else "non_senior"),
+                            daytime=daytime,
+                            count=50000 + senior * 5000 + daytime * 1000 + date.dayofyear,
+                            month=date.month, day_of_week=date.dayofweek,
+                            hot_primary=hot, cold_primary=cold,
+                            hot_sensitivity=(date.dayofyear % 20 == 0),
+                            cold_sensitivity=(date.dayofyear % 22 == 0),
+                        )
+                    )
+        return pd.DataFrame(h1_rows), pd.DataFrame(h2_rows)
+
+    def test_design_matrices_full_rank_and_contract_terms_present(self):
+        from subway.src.analysis.confirmatory import design_h1, design_h2, ensure_full_rank
+        h1, h2 = self._annual_tables()
+        x1 = design_h1(h1)
+        x2 = design_h2(h2)
+        ensure_full_rank(x1, "H1 test")
+        ensure_full_rank(x2, "H2 test")
+        self.assertIn("senior_x_hot", x1)
+        self.assertIn("senior_x_cold", x1)
+        self.assertIn("senior_x_hot_x_daytime", x2)
+        self.assertIn("senior_x_cold_x_daytime", x2)
+        self.assertGreater(sum(c.startswith("date_") for c in x1.columns), 300)
+
+    def test_holm_adjustment_is_monotone_in_sorted_p_order(self):
+        from subway.src.analysis.confirmatory import holm_adjust
+        raw = [0.01, 0.04, 0.03, 0.20]
+        adjusted = holm_adjust(raw)
+        self.assertEqual(len(adjusted), 4)
+        ordered = sorted(zip(raw, adjusted))
+        self.assertTrue(all(ordered[i][1] <= ordered[i + 1][1] for i in range(3)))
+        self.assertTrue(all(a >= p for p, a in zip(raw, adjusted)))
+
+    def test_hac_benchmark_refuses_zero_without_correction(self):
+        from subway.src.analysis.confirmatory import fit_hac_benchmarks
+        h1, h2 = self._annual_tables()
+        h1.loc[(h1.date.eq(pd.Timestamp("2024-01-01"))) & h1.senior.eq(1), "count"] = 0
+        with self.assertRaises(ValueError):
+            fit_hac_benchmarks(h1, h2, event="boarding")
+
+
 if __name__ == "__main__":
     unittest.main()
