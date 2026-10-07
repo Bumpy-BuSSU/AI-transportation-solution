@@ -1,0 +1,33 @@
+schema_version: 1
+reference_year: 2024
+study_area_id: seoul_2024
+stage3b_human_approved_on: '2026-10-07'
+design_baseline_sha: d24830a7a4de3a41753fe53f8ccfa8ba6a8f2186
+primary_event: boarding
+age_comparison_rule: common_valid_cells
+expected_stations: 243
+expected_station_dongs: 173
+expected_seoul_dongs: 426
+shelter_crs: EPSG:5186
+boundary_crs: EPSG:5179
+moderators: [senior_population_share, shelters_per_10k]
+standardization: unique_station_dongs_ddof_1
+model: ols_log_ratio_station_date_fe
+calendar_controls: moderator_x_month_and_dow
+calendar_reference: {month: 1, dow: 0}
+covariance: ADM_CD_date_two_way_cluster
+use_correction: false
+multiple_testing: {method: holm, alpha: 0.05, family_size: 4}
+hot_primary: {variable: temperature_max, quantile: 0.90, threshold_c: 32.75, operator: ge}
+cold_primary: {variable: temperature_min, quantile: 0.10, threshold_c: -3.05, operator: le}
+hot_sensitivity: {variable: temperature_max, quantile: 0.95, threshold_c: 33.675, operator: ge}
+cold_sensitivity: {variable: temperature_min, quantile: 0.05, threshold_c: -4.8, operator: le}
+sensitivity_failure_protocol:
+  provenance: human_approved_post_gate_amendment_not_originally_prespecified
+  scope: entire_four_target_inferential_layer
+  reason: NOT_ESTIMABLE_INVALID_TWOWAY_COVARIANCE
+layer_a: descriptive_only
+daytime_spatial_analysis: false
+moran_lisa: false
+station_significance_mining: false
+causal_policy_conclusion: false

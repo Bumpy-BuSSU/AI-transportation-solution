@@ -166,3 +166,24 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - ChatGPT: final commit `d7fe7aadaa80de3831b1cfde6d566ba87d516bc7`의 코드·model outputs·summary·result document·effect figure를 검토하고 blocking issue가 없다고 판단했다. 네 primary test 모두 Holm 비기각이며 현재 동결 사양에서 H1/H2를 NOT SUPPORTED로 해석하되, 차이 없음의 증명이나 반대 효과 입증으로 확대하지 않도록 제한했다.
 - Codex: 사전 동결 사양을 변경하지 않고 Stage3B 실행·검증·결과 commit을 완료했다.
 - 승인 범위 밖: Secondary2 공간 이질성, 정책 권고, trip purpose, causal shelter-seeking, carbon reduction, inter-regional inequality.
+
+## P-S3C-CONTROLLED-RECONSTRUCTION — 2026-10-07
+
+- AI service/tool: ChatGPT/Codex coding agent, PowerShell/Python/Git, bounded fresh-context code review.
+- Scope/major prompt: 신뢰 baseline d24830a에서 고정 Stage3C를 재구축; 이전 checkpoint/29-test claim 재사용 금지, 수치는 independent acceptance checkpoints만, 전체 민감도 NOT ESTIMABLE amendment만 적용, one local commit 후 STOP.
+- Human decisions: Stage3B/design 승인 및 covariance scientific gate에 대한 failure-handling amendment 승인. 이번 자동검증을 인간이 독립 실행했다는 뜻은 아니며 인간 결과검토 PENDING.
+- Codex: 새 코드와 sufficient contract tests, RED→GREEN, 실제 기존 Parquet 환경의 runner exit0, 독립 acceptance 비교, 기존 input/output 무결성 및 report-ready ledger를 검증·기록했다. Raw/Stage1–3B 사양 및 결과를 변경하지 않았다.
+- Provenance: controlled reconstruction; f002cc1 복구 아님; 종전29PASS 검증 아님. No new dependency, no causal/risk/policy conclusion, no push/PR/merge.
+- Results/limitations와 데이터 출처는 [Stage3C evidence](11-spatial-heterogeneity.md)와 기존 manifest에 연결한다. 최종 disclosure는 주요 의사결정·사용범위 요약만 포함한다.
+
+최종 정밀 검토: 전체 invalid station 소실 gate finding은 RED1→최소 수정→focused17 PASS; reviewer 확인. 실제 재실행 exit0 및9CSV/PNG byte-identical, summary의 코드 해시만 변경.
+
+최종 자동검증: 새focused17/전체195 PASS, production Parquet exit0, post-review actual9CSV/PNG byte-identical. 인간 독립 재실행·과학적 결과 승인 PENDING.
+
+## P-S3C-HUMAN-APPROVAL — 2026-10-07
+
+- Codex: controlled reconstruction `f5e0328a4928d4373f91967860ea00e6190da8c8`의 구현, TDD, production Parquet execution, acceptance comparison 및 기술 결과·evidence 준비를 수행했다.
+- ChatGPT: 과학적 방법 검토, 해석 경계 검토 및 최종 Stage3C gate 검토를 수행했다.
+- Human: 위 검토 후 과학적 결정과 승인된 범위의 Stage 완료를 승인했다. **SCIENTIFIC REVIEW PASS**. 인간이 모든 Python 명령을 독립 재실행했다고 주장하지 않는다.
+- 승인 경계: Layer A descriptive only; Primary Cold×senior population share만 Holm 통과한 contextual association, 인과효과 아님. p95/p05 전체 추론 NOT ESTIMABLE은 covariance 실패이며 비유의성 아님; 대체 통계 방법 없음. Stage3B 결과 불변.
+- 이번 Codex 범위: 네 문서에 후속 인간 승인을 기록하고 Git 통합만 수행; 과학적 실행/195·17 tests/figure generation 재실행 없음. 이전 PENDING 및 generated summary는 기술 실행 provenance로 보존한다. [승인·evidence](11-spatial-heterogeneity.md)는 이후 최종보고서 synthesis 준비 완료이며 추가 optional 분석은 필요하지 않다.

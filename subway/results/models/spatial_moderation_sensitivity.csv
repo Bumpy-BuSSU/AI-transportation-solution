@@ -1,0 +1,5 @@
+term,threshold,beta,se,ci95_low,ci95_high,p_raw,p_holm,holm_reject,inference_status,failure_reason
+cold_x_z_senior_population_share,p95/p05,-0.004122839187959262,,,,,,,NOT ESTIMABLE,NOT_ESTIMABLE_INVALID_TWOWAY_COVARIANCE
+cold_x_z_shelters_per_10k,p95/p05,0.000551694851541965,,,,,,,NOT ESTIMABLE,NOT_ESTIMABLE_INVALID_TWOWAY_COVARIANCE
+hot_x_z_senior_population_share,p95/p05,0.0035541025540569895,,,,,,,NOT ESTIMABLE,NOT_ESTIMABLE_INVALID_TWOWAY_COVARIANCE
+hot_x_z_shelters_per_10k,p95/p05,-0.00045985785994674813,,,,,,,NOT ESTIMABLE,NOT_ESTIMABLE_INVALID_TWOWAY_COVARIANCE

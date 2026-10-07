@@ -170,3 +170,32 @@ Primary four-test family는 Holm 기각 0/4이며, 모든 primary pointwise 95% 
 - HAC(7) log-ratio benchmark: adopted as robustness
 - Secondary2 spatial heterogeneity: NOT STARTED
 - policy/causal/trip-purpose inference: NOT ADOPTED
+
+## P-S3C-RECONSTRUCTION — 2026-10-07
+
+Baseline d24830a7a4de3a41753fe53f8ccfa8ba6a8f2186로 controlled reconstruction했다. 누락 f002cc1/종전29PASS를 복구·재검증했다고 주장하지 않는다.
+설계의 Layer A 기술적 OLS와 station/date FE 공동 moderation, ADM_CD/date two-way covariance(use_correction=False), primary4-test Holm을 채택했다.
+Ruling: 최신 Mission에 따라 중간 commits/push 대신 마지막 로컬 reconstruction commit 하나만 한다.
+Ruling: 전체 p95/p05 추론 억제는 scientific gate 이후 인간 승인 protocol amendment이며 originally prespecified가 아니다. 3/4 negative diagonal이 실제 재현돼 네 beta만 보존/추론 NA/explicit NOT ESTIMABLE을 발행했다. Primary는 변경하지 않았다.
+Task1–3: RED13→GREEN13 계약 검증. Task4: runner/그림 RED3→focusedGREEN16, production Parquet exit0, 독립 실제 acceptance checkpoints 및 기존173tracked hashes 불변.
+243역/173동/426동,88938 station-days,1778759 valid boarding cells,0/0 zero-days,412/412 unique shelter PIP,37/37/19/20 극한일.
+Cold×senior population share만 primary Holm 기각; local-context association까지 해석. Layer A 음수 점추정을 위험/유의성 분류로 쓰지 않는다.
+보고서용 누적 evidence ledger: [Stage3C record](11-spatial-heterogeneity.md). Task5 인간 결과검토 PENDING; 과학적 완료/정책결론 없음.
+
+최종 정밀 검토: 전체 invalid station 소실 gate finding은 RED1→최소 수정→focused17 PASS; reviewer 확인. 실제 재실행 exit0 및9CSV/PNG byte-identical, summary의 코드 해시만 변경.
+
+
+최종 전체 회귀: `python -m unittest discover -s subway/tests -v` → **195 tests, OK, exit0** (51.960s). 기존178개 + 새17개이며 이전 미복구29개를 포함했다는 뜻은 아니다.
+최초 전체 회귀194 tests도 통과했고, 정밀 검토 후 gate/회귀 테스트 변경 때문에 최종195개를 재실행했다. 이미 통과한 검증의 불필요한 반복이 아니다.
+최종 focused: `python -m unittest subway.tests.test_spatial_heterogeneity -v` →17 tests OK/exit0.
+실제 실행: `python subway/run_spatial_heterogeneity.py --year 2024` →최초/필요한 최종 재실행 모두 exit0, 동일 승인 Parquet 경로 사용.
+독립 acceptance 검증은 현재 실제 산출물을 이전 보고의 근사값과 비교했고 모든 sample/point estimate/primary inference/covariance failure checkpoints가 허용 반올림 범위 안에서 재현됐다.
+최종 Git hygiene는 로컬 커밋 전에 `git diff --check` 및 `git diff --cached --check`로 검사하고, 커밋 후 `git status --short`로 clean을 확인한다. 정확한 commit SHA/status는 종료 보고에 제공한다.
+기술 검증을 마쳤으나 **인간 과학적 결과 검토 PENDING**이며 Stage3C 과학적 완료를 선언하지 않는다.
+
+## P-S3C-HUMAN-APPROVAL — 2026-10-07
+
+인간이 technical reconstruction `f5e0328a4928d4373f91967860ea00e6190da8c8`의 acceptance 재현과 제한된 해석을 승인했다. **SCIENTIFIC REVIEW PASS / approved-scope Stage3C scientifically complete**.
+Layer A는 descriptive point estimates only. Primary frozen inference에서 Cold×senior-population-share만 four-test Holm 통과; contextual association/moderation이며 causal effect가 아니다. Stage3B 결과는 불변이다.
+Sensitivity의 frozen two-way covariance가 invalid target variance를 산출해 네 점추정은 보존/전체 추론 NOT ESTIMABLE이다. 비유의성으로 해석하지 않으며 covariance fallback/abs/clipping/PSD repair/threshold 변경/post-hoc inference 없음.
+추가 optional EDA/sensitivity는 필요하지 않다. Evidence는 이후 최종보고서 synthesis 준비 완료. Generated summary와 앞선 PENDING은 당시 실행 provenance로 보존; 후속 인간 승인 기록이 현재 결정이다. 이번 문서 closeout에서 통계 실행·tests·산출물을 재생성하지 않았다.
