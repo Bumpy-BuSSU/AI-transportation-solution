@@ -187,3 +187,12 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - Human: 위 검토 후 과학적 결정과 승인된 범위의 Stage 완료를 승인했다. **SCIENTIFIC REVIEW PASS**. 인간이 모든 Python 명령을 독립 재실행했다고 주장하지 않는다.
 - 승인 경계: Layer A descriptive only; Primary Cold×senior population share만 Holm 통과한 contextual association, 인과효과 아님. p95/p05 전체 추론 NOT ESTIMABLE은 covariance 실패이며 비유의성 아님; 대체 통계 방법 없음. Stage3B 결과 불변.
 - 이번 Codex 범위: 네 문서에 후속 인간 승인을 기록하고 Git 통합만 수행; 과학적 실행/195·17 tests/figure generation 재실행 없음. 이전 PENDING 및 generated summary는 기술 실행 provenance로 보존한다. [승인·evidence](11-spatial-heterogeneity.md)는 이후 최종보고서 synthesis 준비 완료이며 추가 optional 분석은 필요하지 않다.
+
+## P-S4-EVIDENCE-SYNTHESIS-POLICY — 2026-10-07
+
+- AI service/tool: ChatGPT/Codex coding agent, PowerShell/Git. 외부 문헌 조사·새 통계분석·tests/runner 실행 없음.
+- Major prompt/reference: 사용자 첨부 “Mission: Create the Stage 4 subway evidence synthesis and policy-translation record”, 2026-10-07, attachment ID `868c8da1-a7db-4841-a21f-7520822c254d`. 승인된 Stage 3A/B/C 동결 근거로 canonical synthesis 하나, 최소 보고용 table/기존 figure 후보, evidence-tier 정책, unsupported claims 및 bike 통합 checklist 작성. One local documentation commit 후 STOP; push/PR/merge 금지.
+- Human: Stage 3A/B/C를 승인하고 Stage 4 문서 작업 Mission을 제공했다. **Stage 4 synthesis·정책 번역·최종 그림 채택 검토 PENDING**이며 과거 과학적 승인을 이번 정책 문구 승인으로 확대하지 않는다.
+- ChatGPT: Mission에 제시된 frozen synthesis, Tier 1/Tier 2 정책 구분, 이동선택권·인과·이동목적·쉼터 해석 경계를 설계했다. 이번 완성 문서의 독립 검토를 수행했다고 기록하지 않는다.
+- Codex: 최신 GitHub dev SHA와 로컬 origin/dev 일치를 확인하고 작업 브랜치를 생성했다. 기존 문서·canonical CSV/JSON 수치를 대조해 [Stage 4 synthesis](12-evidence-synthesis-policy.md), report-map 연결 및 이 로그를 작성했다. 한 번의 집중 정밀검토와 문서 변경 범위·상대 링크·수치·Git whitespace 검증을 수행했다. 변경은 의도한 문서 3개뿐이고, local file links 63개 및 primary 반올림 β/CI 네 행·Cold canonical β/Holm p·판정·민감도 추론 억제가 일치했다. 자동 문서 검증은 인간 독립 실행이나 인간 과학적 승인과 구분한다.
+- Result/boundary: H1/H2 Holm 0/4 NOT SUPPORTED; Primary Cold×고령인구비중만 지지된 station-weighted contextual association; Stage 3C p95/p05 전체 NOT ESTIMABLE 유지. Layer A descriptive only. 신규 방법론·모형·변수·threshold·결과/그림 변경 없음; methodology-log 및 bike 결과는 변경·재해석하지 않는다. Tier 1은 우선 모니터링·추가 평가, Tier 2는 미검증 평가 가설이며 정책 효과·직접적인 이동선택권 격차의 입증이 아니다.

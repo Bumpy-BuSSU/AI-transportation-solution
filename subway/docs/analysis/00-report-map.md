@@ -1,5 +1,7 @@
 # 개인 subway 분석보고서 근거 지도
 
+최신 종합 기록: [Stage 4 evidence synthesis & policy translation](12-evidence-synthesis-policy.md) — 승인된 Stage 3A/B/C 동결 근거의 문서 종합 / **Stage 4 HUMAN REVIEW PENDING 2026-10-07**. 이전 완료·미착수·PENDING 문구는 각 시점의 이력이며 최신 synthesis와 후속 승인 기록을 함께 따른다.
+
 이 문서는 사용자 개인의 subway 연구 기록이다. 팀 공통 규칙이 아니며 bike/, common/, top-level README에 적용하지 않는다. 현재 상태: 2026-10-07 **Stage 1 COMPLETE / Stage 2 preprocessing COMPLETE / Task 11 COMPLETE**. 승인된 baseline은 8종·12 Raw files다. **Task 9 및 Task 10 HUMAN APPROVED 2026-10-07**. 인간이 자동 테스트를 독립 실행했다는 뜻은 아니다. Canonical 종료 근거는 [2024 clean/transform 기술 baseline](../../../docs/subway/2024-clean-transform-baseline.md) 및 [현재 canonical QA summary](../../data/validation/pipeline_summary.json)다. Stage 3A focused EDA는 HUMAN APPROVED 2026-10-07. Stage 3B는 사전 동결 H1/H2 PPML·지정 sensitivity 실행 COMPLETE / **HUMAN APPROVED 2026-10-07**이다. 네 primary test의 Holm 기각은0/4이며 정책결론과 Secondary2 공간분석은 없다. 최신 [H1/H2 근거](10-confirmatory-h1-h2.md). 이전 Tasks의 PENDING/NOT STARTED는 당시 기록으로 유지한다.
 
 ## 현재 working research questions
@@ -117,3 +119,18 @@ Secondary2 기술 실행 완료, 인간 과학적 결과검토 PENDING. Cold×�
 Stage 3C controlled reconstruction `f5e0328a4928d4373f91967860ea00e6190da8c8`의 인간 과학적 검토는 **PASS**다. 승인된 범위의 과학적 작업이 완료됐고 [누적 evidence](11-spatial-heterogeneity.md)는 이후 최종보고서 synthesis에 사용 가능하다.
 Layer A는 기술적 점추정만, Primary는 Cold×고령인구비중만 Holm 통과한 문맥적 연관으로 해석한다. p95/p05 전체 추론은 covariance 실패에 따른 NOT ESTIMABLE이며 비유의성이 아니다. Stage3B 결과·통계 방법은 불변이며 추가 optional EDA/sensitivity는 필요하지 않다.
 앞선 PENDING 및 generated summary의 PENDING은 인간 검토 전 기술 실행 이력이며, 이 후속 승인 기록으로 현재 상태를 구분한다. 이번은 문서 closeout만 수행했고 과학적 분석을 재실행하지 않았다.
+
+## P-S4-EVIDENCE-SYNTHESIS — 2026-10-07
+
+Canonical [Stage 4 synthesis](12-evidence-synthesis-policy.md)는 승인된 Stage 3A/B/C만 사용한다. 새 통계 방법·변수·분석·tests/runner 실행·그림 재생성은 없으며 methodology-log는 변경하지 않는다. Stage 4 정책 번역 및 최종보고서 채택은 **인간 검토 PENDING**이다.
+
+| 최종보고서 항목 | 최신 근거·선택 |
+|---|---|
+| 분석 결과·질문별 판단 | Stage 4 §3 및 §7 요약표: H1/H2 NOT SUPPORTED(Holm 0/4), Cold×고령인구비중만 문맥적 조절 연관 지지, shelters/10k 비지지, Stage 3C p95/p05 NOT ESTIMABLE |
+| 통합 결론·이동선택권 framing | Stage 4 §4. 지역 문맥에 따른 이질성에 주목; subway 단독으로 이동선택권 격차를 입증하지 않음 |
+| 정책 제안·기대 기여 | Stage 4 §5 Tier 1 우선 모니터링·추가 평가와 Tier 2 인프라 평가 가설. 정책 효과·격차 감소·탄소감축 크기는 미검증; 인간 검토 대기 |
+| 최소 결과 이미지 | 기존 confirmatory_effects.png 및 spatial_moderation_effects.png를 primary 후보로 선택. Pointwise CI와 Holm 판단을 구분; Layer A 지도·공간 문맥·EDA 그림은 supplementary 후보 |
+| AI 사용·인간 검토 | Stage 4 §9 및 [AI log](ai-usage-log.md)의 P-S4 기록. 기존 과학적 승인과 이번 synthesis 검토를 구분 |
+| 후속 연구·bike 통합 | Stage 4 §8 post-hoc 가설 및 문서 말미의 team-integration interface. Bike 결과는 조사하지 않고 확인 checklist만 제공 |
+
+현재 산출물은 subway 보고용 근거 package이며 최종 팀 5쪽 보고서나 팀 통합 결과가 아니다. Stage 4 §6의 인과·거주지·이동목적·위험/취약 역·쉼터 해법·강건성 과장 금지 경계를 유지한다.
