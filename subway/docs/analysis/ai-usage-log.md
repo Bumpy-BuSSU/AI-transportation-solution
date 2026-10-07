@@ -196,3 +196,7 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 - ChatGPT: Mission에 제시된 frozen synthesis, Tier 1/Tier 2 정책 구분, 이동선택권·인과·이동목적·쉼터 해석 경계를 설계했다. 이번 완성 문서의 독립 검토를 수행했다고 기록하지 않는다.
 - Codex: 최신 GitHub dev SHA와 로컬 origin/dev 일치를 확인하고 작업 브랜치를 생성했다. 기존 문서·canonical CSV/JSON 수치를 대조해 [Stage 4 synthesis](12-evidence-synthesis-policy.md), report-map 연결 및 이 로그를 작성했다. 한 번의 집중 정밀검토와 문서 변경 범위·상대 링크·수치·Git whitespace 검증을 수행했다. 변경은 의도한 문서 3개뿐이고, local file links 63개 및 primary 반올림 β/CI 네 행·Cold canonical β/Holm p·판정·민감도 추론 억제가 일치했다. 자동 문서 검증은 인간 독립 실행이나 인간 과학적 승인과 구분한다.
 - Result/boundary: H1/H2 Holm 0/4 NOT SUPPORTED; Primary Cold×고령인구비중만 지지된 station-weighted contextual association; Stage 3C p95/p05 전체 NOT ESTIMABLE 유지. Layer A descriptive only. 신규 방법론·모형·변수·threshold·결과/그림 변경 없음; methodology-log 및 bike 결과는 변경·재해석하지 않는다. Tier 1은 우선 모니터링·추가 평가, Tier 2는 미검증 평가 가설이며 정책 효과·직접적인 이동선택권 격차의 입증이 아니다.
+
+## P-S4-KOREAN-REPORT-CORRECTION — 2026-10-07
+
+인간 과학적 검토는 Stage 4 종합에 중대한 문제가 없다고 판단하고 한국어·보고용 접근성 보정을 요청했다. 원문: 사용자 첨부 “Stage 4 Human Review Correction”, attachment ID `c8b34453-1fb7-4650-9d41-23413f2c55b0`. Codex는 승인된 주요 결과 CSV 두 개만 읽는 Pillow 렌더러로 별도 한국어 그림 두 개를 생성하고, 종합표·설명·상대 링크를 한국어 중심으로 갱신했다. 설치된 맑은 고딕을 사용하고 글꼴 파일은 포함하지 않았다. 통계 결론·모형·CSV/JSON·기존 영문 그림은 보존하며 새 적합·추론 재계산·과학적 runner 실행은 없다. 검증은 표현 단계에 한정했다: 렌더러 exit0, 기준 커밋 대비 결과·코드·설정 79파일의 체크아웃 바이트 불변, 상대 파일 링크 70개 및 절대 Windows 경로 없음, PNG 원본 SHA-256 일치. 두 그림의 원본·A4 폭 축소 미리보기에서 한글·잘림·가독성·0선·신뢰구간·과학적 문구를 직접 확인했다. 보정본은 최종 인간 검토 대기다.

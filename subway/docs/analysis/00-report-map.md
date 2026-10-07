@@ -129,8 +129,10 @@ Canonical [Stage 4 synthesis](12-evidence-synthesis-policy.md)는 승인된 Stag
 | 분석 결과·질문별 판단 | Stage 4 §3 및 §7 요약표: H1/H2 NOT SUPPORTED(Holm 0/4), Cold×고령인구비중만 문맥적 조절 연관 지지, shelters/10k 비지지, Stage 3C p95/p05 NOT ESTIMABLE |
 | 통합 결론·이동선택권 framing | Stage 4 §4. 지역 문맥에 따른 이질성에 주목; subway 단독으로 이동선택권 격차를 입증하지 않음 |
 | 정책 제안·기대 기여 | Stage 4 §5 Tier 1 우선 모니터링·추가 평가와 Tier 2 인프라 평가 가설. 정책 효과·격차 감소·탄소감축 크기는 미검증; 인간 검토 대기 |
-| 최소 결과 이미지 | 기존 confirmatory_effects.png 및 spatial_moderation_effects.png를 primary 후보로 선택. Pointwise CI와 Holm 판단을 구분; Layer A 지도·공간 문맥·EDA 그림은 supplementary 후보 |
+| 최소 결과 이미지 | 인간 검토 후 한국어 [H1/H2 그림](../../results/report_figures/confirmatory_effects_ko.png) 및 [공간 조절연관 그림](../../results/report_figures/spatial_moderation_effects_ko.png)을 본문 후보로 선택. 개별 95% 신뢰구간과 Holm 판단을 구분; 기존 영문 그림은 재현성 근거, Layer A 지도·공간 문맥·EDA 그림은 보충 후보 |
 | AI 사용·인간 검토 | Stage 4 §9 및 [AI log](ai-usage-log.md)의 P-S4 기록. 기존 과학적 승인과 이번 synthesis 검토를 구분 |
 | 후속 연구·bike 통합 | Stage 4 §8 post-hoc 가설 및 문서 말미의 team-integration interface. Bike 결과는 조사하지 않고 확인 checklist만 제공 |
 
 현재 산출물은 subway 보고용 근거 package이며 최종 팀 5쪽 보고서나 팀 통합 결과가 아니다. Stage 4 §6의 인과·거주지·이동목적·위험/취약 역·쉼터 해법·강건성 과장 금지 경계를 유지한다.
+
+후속 인간 과학적 검토는 Stage 4 종합에 중대한 문제가 없다고 판단했다. 한국어·보고용 접근성 보정은 별도 PNG와 상대 링크를 추가하는 표현 단계이며 과학적 결론·Stage 3 원본 근거는 불변이다. 보정본 최종 인간 검토는 대기 중이다. 앞선 그림 미생성 기록은 최초 Stage 4 작업 당시 이력이다.
