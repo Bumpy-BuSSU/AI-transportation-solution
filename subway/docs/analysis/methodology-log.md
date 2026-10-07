@@ -192,3 +192,10 @@ Cold×senior population share만 primary Holm 기각; local-context association�
 독립 acceptance 검증은 현재 실제 산출물을 이전 보고의 근사값과 비교했고 모든 sample/point estimate/primary inference/covariance failure checkpoints가 허용 반올림 범위 안에서 재현됐다.
 최종 Git hygiene는 로컬 커밋 전에 `git diff --check` 및 `git diff --cached --check`로 검사하고, 커밋 후 `git status --short`로 clean을 확인한다. 정확한 commit SHA/status는 종료 보고에 제공한다.
 기술 검증을 마쳤으나 **인간 과학적 결과 검토 PENDING**이며 Stage3C 과학적 완료를 선언하지 않는다.
+
+## P-S3C-HUMAN-APPROVAL — 2026-10-07
+
+인간이 technical reconstruction `f5e0328a4928d4373f91967860ea00e6190da8c8`의 acceptance 재현과 제한된 해석을 승인했다. **SCIENTIFIC REVIEW PASS / approved-scope Stage3C scientifically complete**.
+Layer A는 descriptive point estimates only. Primary frozen inference에서 Cold×senior-population-share만 four-test Holm 통과; contextual association/moderation이며 causal effect가 아니다. Stage3B 결과는 불변이다.
+Sensitivity의 frozen two-way covariance가 invalid target variance를 산출해 네 점추정은 보존/전체 추론 NOT ESTIMABLE이다. 비유의성으로 해석하지 않으며 covariance fallback/abs/clipping/PSD repair/threshold 변경/post-hoc inference 없음.
+추가 optional EDA/sensitivity는 필요하지 않다. Evidence는 이후 최종보고서 synthesis 준비 완료. Generated summary와 앞선 PENDING은 당시 실행 provenance로 보존; 후속 인간 승인 기록이 현재 결정이다. 이번 문서 closeout에서 통계 실행·tests·산출물을 재생성하지 않았다.

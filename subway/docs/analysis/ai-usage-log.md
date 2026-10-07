@@ -179,3 +179,11 @@ Task9/10/11 NOT STARTED. See [eligibility closure](05-station-spatial-eligibilit
 최종 정밀 검토: 전체 invalid station 소실 gate finding은 RED1→최소 수정→focused17 PASS; reviewer 확인. 실제 재실행 exit0 및9CSV/PNG byte-identical, summary의 코드 해시만 변경.
 
 최종 자동검증: 새focused17/전체195 PASS, production Parquet exit0, post-review actual9CSV/PNG byte-identical. 인간 독립 재실행·과학적 결과 승인 PENDING.
+
+## P-S3C-HUMAN-APPROVAL — 2026-10-07
+
+- Codex: controlled reconstruction `f5e0328a4928d4373f91967860ea00e6190da8c8`의 구현, TDD, production Parquet execution, acceptance comparison 및 기술 결과·evidence 준비를 수행했다.
+- ChatGPT: 과학적 방법 검토, 해석 경계 검토 및 최종 Stage3C gate 검토를 수행했다.
+- Human: 위 검토 후 과학적 결정과 승인된 범위의 Stage 완료를 승인했다. **SCIENTIFIC REVIEW PASS**. 인간이 모든 Python 명령을 독립 재실행했다고 주장하지 않는다.
+- 승인 경계: Layer A descriptive only; Primary Cold×senior population share만 Holm 통과한 contextual association, 인과효과 아님. p95/p05 전체 추론 NOT ESTIMABLE은 covariance 실패이며 비유의성 아님; 대체 통계 방법 없음. Stage3B 결과 불변.
+- 이번 Codex 범위: 네 문서에 후속 인간 승인을 기록하고 Git 통합만 수행; 과학적 실행/195·17 tests/figure generation 재실행 없음. 이전 PENDING 및 generated summary는 기술 실행 provenance로 보존한다. [승인·evidence](11-spatial-heterogeneity.md)는 이후 최종보고서 synthesis 준비 완료이며 추가 optional 분석은 필요하지 않다.

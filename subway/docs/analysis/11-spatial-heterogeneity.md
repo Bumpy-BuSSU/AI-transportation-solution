@@ -1,7 +1,7 @@
 # Stage 3C: controlled reconstruction and Secondary 2 evidence ledger
 
-기록일: 2026-10-07. **실제 데이터 기술 실행 완료 / 인간 과학적 결과 검토 PENDING**.
-Stage 3C의 과학적 완료를 선언하지 않는다. 정책·최종보고서 작성은 시작하지 않았다.
+기록일: 2026-10-07. **실제 데이터 기술 실행 완료 / SCIENTIFIC REVIEW PASS / HUMAN APPROVED 2026-10-07**.
+Stage 3C는 승인된 범위에서 과학적으로 완료됐다. 정책·최종보고서 작성은 시작하지 않았다.
 
 ## Provenance and approved decisions
 
@@ -13,7 +13,7 @@ Stage 3C의 과학적 완료를 선언하지 않는다. 정책·최종보고서 
 승인된 [design](../../../docs/superpowers/specs/2026-10-07-subway-spatial-heterogeneity-design.md)과 [plan](../../../docs/superpowers/plans/2026-10-07-subway-spatial-heterogeneity.md)은 보존했다.
 민감도 실패 처리는 **과학적 gate 이후 인간이 승인한 failure-handling protocol amendment**이다. 원래 사전 지정된 규칙이라고 기술하지 않는다.
 최신 재구축 Mission이 계획의 중간 커밋·push 절차를 대체한다: 최종 로컬 재구축 커밋 하나 후 STOP, push/PR/merge 없음.
-결과 커밋은 이 문서를 도입한 Git 커밋(`git log -1 --format=%H -- subway/docs/analysis/11-spatial-heterogeneity.md`)으로 식별한다. 생성 산출물에는 baseline 및 실행 코드 SHA-256을 기록했다.
+기술 재구축·결과 커밋은 `f5e0328a4928d4373f91967860ea00e6190da8c8`이며 이후 인간 승인 문서 커밋과 구분한다. 생성 산출물에는 baseline 및 실행 코드 SHA-256을 기록했다.
 
 ## A–B. Purpose and data
 
@@ -156,3 +156,14 @@ Fresh-context read-only reviewer가 common-valid filtering 뒤 한 역의 모든
 독립 acceptance 검증은 현재 실제 산출물을 이전 보고의 근사값과 비교했고 모든 sample/point estimate/primary inference/covariance failure checkpoints가 허용 반올림 범위 안에서 재현됐다.
 최종 Git hygiene는 로컬 커밋 전에 `git diff --check` 및 `git diff --cached --check`로 검사하고, 커밋 후 `git status --short`로 clean을 확인한다. 정확한 commit SHA/status는 종료 보고에 제공한다.
 기술 검증을 마쳤으나 **인간 과학적 결과 검토 PENDING**이며 Stage3C 과학적 완료를 선언하지 않는다.
+
+## P-S3C-HUMAN-APPROVAL — 2026-10-07
+
+인간은 ChatGPT의 과학적 방법·해석 경계·최종 gate 검토 후 기술 재구축 커밋 `f5e0328a4928d4373f91967860ea00e6190da8c8`의 Stage 3C 결과와 완료를 승인했다. **SCIENTIFIC REVIEW PASS**이며 승인된 범위의 Stage 3C는 과학적으로 완료됐다.
+재구축은 승인된 데이터·수치 acceptance checkpoints를 재현했다. 기존 focused17 PASS/full195 PASS/production Parquet exit0는 기술 실행 증거이며 이번 문서 closeout에서 재실행하지 않았다. 인간이 모든 Python 명령을 독립 재실행했다는 뜻은 아니다.
+
+승인 해석: Layer A는 기술적 점추정 이질성만 보고한다. Primary Layer B는 고정 모형·추론 사양에서 유효하며 **Cold×senior population share만 four-test Holm을 통과**했다. 이는 문맥적 moderation/association이며 인과효과가 아니다. Stage 3B 결과는 불변이다.
+p95/p05는 고정된 two-way covariance의3/4 음의 target variance를 재현했다. 네 점추정은 보존하고 **전체 네 계수의 추론은 NOT ESTIMABLE**을 유지한다. 이는 비유의성을 뜻하지 않는다. 대체 covariance, 분산 abs/clipping/PSD repair, threshold 변경 또는 post-hoc inference를 도입·승인하지 않았다.
+
+Generated `spatial_moderation_summary.json`의 `human_scientific_review=PENDING`과 앞선 기술 실행 당시 PENDING 기록은 그대로 보존한다. 이는 인간 검토 전 실행 provenance이며 **이 후속 문서가 2026-10-07 승인 결정의 authoritative record**다.
+추가 optional EDA/sensitivity 확장은 Stage 3C 완료에 필요하지 않다. 이 evidence는 이후 최종보고서 synthesis에 사용할 준비가 됐다. 이번 변경은 승인 기록 네 문서뿐이며 분석·산출물·tests는 변경하지 않았다.
