@@ -1,0 +1,12 @@
+{
+  "dataset_count": 8,
+  "file_count": 12,
+  "finding_counts": {
+    "ERROR": 0,
+    "INFO": 0,
+    "WARNING": 0
+  },
+  "primary_file_count": 8,
+  "status": "RAW INSPECTION PASSED",
+  "year": 2024
+}

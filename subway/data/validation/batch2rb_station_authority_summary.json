@@ -1,0 +1,309 @@
+{
+  "alias_authority": "exact reviewed Batch2R-A relationships; station-only audit side; recorded resolution suffix retained in history",
+  "approval_date": "2026-10-06",
+  "duplicate_coordinate_error_rows": 2,
+  "duplicate_coordinate_errors": [
+    {
+      "latitude": 37.562182,
+      "line": "5",
+      "longitude": 126.82693,
+      "station_code_raw": "2515",
+      "station_name_raw": "마곡"
+    },
+    {
+      "latitude": 37.562182,
+      "line": "5",
+      "longitude": 126.82693,
+      "station_code_raw": "2516",
+      "station_name_raw": "발산"
+    }
+  ],
+  "findings": [
+    {
+      "code": "VERIFIED_TRANSFER_COORDINATE",
+      "dataset_id": "station",
+      "message": "verified physical transfer member rows: 2",
+      "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+      "severity": "INFO"
+    },
+    {
+      "code": "VERIFIED_TRANSFER_COORDINATE",
+      "dataset_id": "station",
+      "message": "verified physical transfer member rows: 2",
+      "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+      "severity": "INFO"
+    },
+    {
+      "code": "VERIFIED_TRANSFER_COORDINATE",
+      "dataset_id": "station",
+      "message": "verified physical transfer member rows: 2",
+      "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+      "severity": "INFO"
+    },
+    {
+      "code": "DUPLICATE_COORDINATE",
+      "dataset_id": "station",
+      "message": "unverified or conflicting coordinate pair; review source identities: 2",
+      "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+      "severity": "ERROR"
+    },
+    {
+      "code": "CRS_UNVERIFIED",
+      "dataset_id": "station",
+      "message": "source does not explicitly establish coordinate CRS; Task 9 blocked",
+      "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+      "severity": "WARNING"
+    },
+    {
+      "code": "TEMPORAL_UNCERTAINTY",
+      "dataset_id": "station",
+      "message": "coordinate reference snapshot is not proven applicable to 2024",
+      "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+      "severity": "WARNING"
+    },
+    {
+      "code": "SOURCE_CODE_CONFLICT",
+      "dataset_id": "station",
+      "message": "21 name/line matches have incompatible external codes; spatial eligibility blocked",
+      "relative_path": "",
+      "severity": "ERROR"
+    },
+    {
+      "code": "UNRESOLVED_STATION_IDENTITY",
+      "dataset_id": "station",
+      "message": "30 unmatched identities; no implicit aliases adopted",
+      "relative_path": "",
+      "severity": "ERROR"
+    }
+  ],
+  "kric_coordinates_adopted": false,
+  "match_counts": {
+    "alias_matched": 55,
+    "exact_matched": 205,
+    "ridership_only": 14,
+    "station_only": 16
+  },
+  "matched_identities": 260,
+  "matched_identity_coverage": 0.948905109489051,
+  "mission": "P-S2-2RB",
+  "remaining_blockers": [
+    "14 ridership-only / 16 station-only identities",
+    "21 line-6 source-code disagreements",
+    "까치울 and 암사역사공원 missing current-source coordinates",
+    "마곡/발산 unrelated coordinate collision",
+    "station CRS unverified",
+    "2025 snapshot temporal applicability unresolved"
+  ],
+  "reviewed_transfer_info_rows": 6,
+  "ridership_identities": 274,
+  "source_code_conflict_count": 21,
+  "source_code_conflicts": [
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2627",
+      "station_code_raw_station": "2628",
+      "station_name": "공덕"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2616",
+      "station_code_raw_station": "2617",
+      "station_name": "구산"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2644",
+      "station_code_raw_station": "2645",
+      "station_name": "돌곶이"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2637",
+      "station_code_raw_station": "2638",
+      "station_name": "동묘앞"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2619",
+      "station_code_raw_station": "2620",
+      "station_name": "디지털미디어시티"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2621",
+      "station_code_raw_station": "2622",
+      "station_name": "마포구청"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2622",
+      "station_code_raw_station": "2623",
+      "station_name": "망원"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2633",
+      "station_code_raw_station": "2634",
+      "station_name": "버티고개"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2639",
+      "station_code_raw_station": "2640",
+      "station_name": "보문"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2629",
+      "station_code_raw_station": "2630",
+      "station_name": "삼각지"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2624",
+      "station_code_raw_station": "2625",
+      "station_name": "상수"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2645",
+      "station_code_raw_station": "2646",
+      "station_name": "석계"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2636",
+      "station_code_raw_station": "2637",
+      "station_name": "신당"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2634",
+      "station_code_raw_station": "2635",
+      "station_name": "약수"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2631",
+      "station_code_raw_station": "2632",
+      "station_name": "이태원"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2638",
+      "station_code_raw_station": "2639",
+      "station_name": "창신"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2635",
+      "station_code_raw_station": "2636",
+      "station_name": "청구"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2646",
+      "station_code_raw_station": "2647",
+      "station_name": "태릉입구"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2632",
+      "station_code_raw_station": "2633",
+      "station_name": "한강진"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2623",
+      "station_code_raw_station": "2624",
+      "station_name": "합정"
+    },
+    {
+      "line": "6",
+      "source_code_conflict": true,
+      "station_code_raw_ridership": "2628",
+      "station_code_raw_station": "2629",
+      "station_name": "효창공원앞"
+    }
+  ],
+  "starting_head": "e70601fa1917316296e1c59ae01e70672b285dd2",
+  "station_aliases_adopted": 55,
+  "station_crs": null,
+  "task5_coordinate_coverage_status": "BLOCKED",
+  "task5_crs_status": "BLOCKED",
+  "task5_identity_status": "BLOCKED",
+  "task5_status": "BLOCKED",
+  "task5_temporal_status": "BLOCKED",
+  "task9_status": "NOT STARTED",
+  "transfer_groups": [
+    {
+      "evidence": "KRIC dataset32 S1105 까치산 transfer S1102; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32; official KRIC transfer explanation https://www.kric.go.kr/jsp/board/portal/sub05/knp/railCommonSenceDetail.jsp?p_id1=A010031131&p_id2=182",
+      "members": [
+        [
+          "2",
+          "200",
+          "까치산"
+        ],
+        [
+          "5",
+          "2519",
+          "까치산"
+        ]
+      ],
+      "verified": true
+    },
+    {
+      "evidence": "KRIC dataset32 I1103/I1104 충무로 mutual transfer; same road address 퇴계로 지하214; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32",
+      "members": [
+        [
+          "3",
+          "321",
+          "충무로"
+        ],
+        [
+          "4",
+          "423",
+          "충무로"
+        ]
+      ],
+      "verified": true
+    },
+    {
+      "evidence": "KRIC dataset32 S1106/S1107 태릉입구 mutual transfer; same road address 동일로 지하992-1; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32; physical relation only; station source code disagreement remains a separate identity blocker",
+      "members": [
+        [
+          "6",
+          "2647",
+          "태릉입구"
+        ],
+        [
+          "7",
+          "2719",
+          "태릉입구"
+        ]
+      ],
+      "verified": true
+    }
+  ],
+  "unique_relationships": 55
+}

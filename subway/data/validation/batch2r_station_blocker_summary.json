@@ -1,0 +1,332 @@
+{
+  "automatic_approval_block": "two rejected authority configuration updates; retain reviewable proposal; ask user explicit reapproval before adoption",
+  "baseline": {
+    "candidate_identity_rows": 135,
+    "candidate_relations": 158,
+    "classes": {
+      "adjunct_name": 146,
+      "code_supported_name_change": 8,
+      "station_suffix": 4
+    },
+    "match_counts": {
+      "exact_matched": 205,
+      "ridership_only": 69,
+      "station_only": 71
+    },
+    "no_candidate": 5,
+    "ridership_identities": 274,
+    "source_rows": 276
+  },
+  "crs": {
+    "column_definition_sha256": "ac4123a00bd89acd99db656360473bddb10518181797777cf206305ff10128cf",
+    "oas_sha256": "8063c2d57be8c3cac37a5ff69a9e83649cd0d39f6ca637e38e1911915244bd9b",
+    "oas_url": "https://infuser.odcloud.kr/oas/docs?namespace=15099316/v1",
+    "provider_document_search": "no same-source explicit CRS found; numeric range, names, convention and another dataset are not evidence",
+    "result": "official source metadata, downloaded column definitions, OAS including historical schemas contain no explicit WGS84/EPSG:4326; unverified",
+    "same_source_page": "https://www.data.go.kr/data/15099316/fileData.do",
+    "value": null
+  },
+  "current_match_counts": {
+    "exact_matched": 205,
+    "ridership_only": 69,
+    "station_only": 71
+  },
+  "duplicate_review": {
+    "configuration_adopted": false,
+    "current_error_rows": 8,
+    "groups": 4,
+    "proposed_error_rows": 2,
+    "rows": 8,
+    "transfer_rows": 6,
+    "unrelated_collision_rows": 2,
+    "verified_transfer_groups": 3
+  },
+  "evidence_downloads": {
+    "kric_station_20260630.xlsx": "cdf1d84a7e5c898b2aacd622783ba8ba9af35c40bee0561dc97d55ce8e063f94",
+    "rename.csv": "fc1c285c6309c63c4c3f5b4928d47ec50fb3a2008c5e959d4c3a623fd68b6f52",
+    "station_2023.csv": "9da58a78b07852906b9b9c75c539770d8a50a16c0cb5b8c21b23383327f85ce6",
+    "station_2024.csv": "9da58a78b07852906b9b9c75c539770d8a50a16c0cb5b8c21b23383327f85ce6"
+  },
+  "external_code_disagreements_in_exact_matches": [
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2627",
+      "station_code_raw_station": "2628",
+      "station_name": "공덕"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2616",
+      "station_code_raw_station": "2617",
+      "station_name": "구산"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2644",
+      "station_code_raw_station": "2645",
+      "station_name": "돌곶이"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2637",
+      "station_code_raw_station": "2638",
+      "station_name": "동묘앞"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2619",
+      "station_code_raw_station": "2620",
+      "station_name": "디지털미디어시티"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2621",
+      "station_code_raw_station": "2622",
+      "station_name": "마포구청"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2622",
+      "station_code_raw_station": "2623",
+      "station_name": "망원"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2633",
+      "station_code_raw_station": "2634",
+      "station_name": "버티고개"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2639",
+      "station_code_raw_station": "2640",
+      "station_name": "보문"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2629",
+      "station_code_raw_station": "2630",
+      "station_name": "삼각지"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2624",
+      "station_code_raw_station": "2625",
+      "station_name": "상수"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2645",
+      "station_code_raw_station": "2646",
+      "station_name": "석계"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2636",
+      "station_code_raw_station": "2637",
+      "station_name": "신당"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2634",
+      "station_code_raw_station": "2635",
+      "station_name": "약수"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2631",
+      "station_code_raw_station": "2632",
+      "station_name": "이태원"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2638",
+      "station_code_raw_station": "2639",
+      "station_name": "창신"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2635",
+      "station_code_raw_station": "2636",
+      "station_name": "청구"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2646",
+      "station_code_raw_station": "2647",
+      "station_name": "태릉입구"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2632",
+      "station_code_raw_station": "2633",
+      "station_name": "한강진"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2623",
+      "station_code_raw_station": "2624",
+      "station_name": "합정"
+    },
+    {
+      "line": "6",
+      "station_code_raw_ridership": "2628",
+      "station_code_raw_station": "2629",
+      "station_name": "효창공원앞"
+    }
+  ],
+  "identity_code_evidence": "21 exact name/line identities disagree on external code; 6-line competing name/code candidates not adopted; do not code-only join or rewrite Raw codes",
+  "kric_candidate": {
+    "download_date": "2026-10-06",
+    "download_url": "https://data.kric.go.kr/rips/dataset/download.file?type=filedata&id=32&operation=1",
+    "label": "전체_도시철도역사정보_20260630",
+    "license": "이용허락범위 제한 없음 (data.go.kr dataset15013205)",
+    "not_authoritative": true,
+    "page": "https://data.kric.go.kr/rips/M_01_01/detail.do?id=32",
+    "provider": "국가철도공단 / 전국도시철도운영기관",
+    "rows": 1099
+  },
+  "missing_ridership_coordinates": [
+    {
+      "adopted": false,
+      "contract_status": "additional official source requires explicit contract/CRS/temporal review; no substitution",
+      "crs": null,
+      "name": "까치울",
+      "official_candidate": {
+        "노선명": "도시철도 7호선",
+        "노선번호": "S1107",
+        "데이터기준일자": "2022-04-30",
+        "역경도": "126.81095",
+        "역번호": "3753",
+        "역사도로명주소": "경기도 부천시 원미구 길주로 지하 626 (춘의동)",
+        "역사명": "까치울",
+        "역사전화번호": "032-451-1303",
+        "역위도": "37.506236",
+        "영문역사명": "Kkachiul",
+        "운영기관명": "인천교통공사",
+        "한자역사명": "-",
+        "환승노선명": "",
+        "환승노선번호": "",
+        "환승역구분": "일반역"
+      }
+    },
+    {
+      "adopted": false,
+      "contract_status": "additional official source requires explicit contract/CRS/temporal review; no substitution",
+      "crs": null,
+      "name": "암사역사공원",
+      "official_candidate": {
+        "노선명": "8호선",
+        "노선번호": "S1108",
+        "데이터기준일자": "2024-12-31",
+        "역경도": "127.137556",
+        "역번호": "0809",
+        "역사도로명주소": "서울시 강동구 아리수로 27번길 2",
+        "역사명": "암사역사공원",
+        "역사전화번호": "02-6311-8091",
+        "역위도": "37.557167",
+        "영문역사명": "Amsa History Park",
+        "운영기관명": "서울교통공사",
+        "한자역사명": "岩寺歷史公園",
+        "환승노선명": "",
+        "환승노선번호": "",
+        "환승역구분": "일반역"
+      }
+    }
+  ],
+  "mission": "P-S2-2RA",
+  "no_candidate_review": [
+    {
+      "code": "200",
+      "line": "2",
+      "name": "까치산",
+      "result": "coordinate-only line-specific transfer identity; actual total source has only line5/code2519, 732 wide rows; no line2 Task8 identity; no forced mapping"
+    },
+    {
+      "code": "321",
+      "line": "3",
+      "name": "충무로",
+      "result": "coordinate-only line-specific transfer identity; actual total source has only line4/code423, 732 wide rows; no forced mapping"
+    },
+    {
+      "code": "2649",
+      "evidence_url": "https://mediahub.seoul.go.kr/archives/1265711",
+      "line": "6",
+      "name": "신내",
+      "result": "no 2024 total source rows under name 신내; official 2019 opening evidence; exact cause of omission unresolved; unused coordinate does not block actual observations"
+    }
+  ],
+  "proposal_simulation": {
+    "match_counts": {
+      "alias_matched": 55,
+      "exact_matched": 205,
+      "ridership_only": 14,
+      "station_only": 16
+    },
+    "matched_identity_coverage": 0.948905109489051,
+    "not_an_authoritative_result": true
+  },
+  "starting_head": "91e107016f3cc8e73e8dc600de18ec5174d483c7",
+  "station_aliases_adopted": 0,
+  "station_aliases_proposed": 55,
+  "task5_coordinate_coverage_status": "BLOCKED",
+  "task5_crs_status": "BLOCKED",
+  "task5_identity_status": "BLOCKED",
+  "task5_temporal_status": "BLOCKED",
+  "task9_status": "NOT STARTED",
+  "temporal": {
+    "amsa_opening": "2024-08-10",
+    "amsa_preopening": {
+      "dates": 9,
+      "interpretation": "source observations only; not asserted test rides",
+      "nonzero_cells": 78,
+      "raw_wide_rows": 18,
+      "total": 261
+    },
+    "current_reference": "2025-08-14",
+    "historical_coordinate_equal_rows": 276,
+    "historical_versions_are_byte_identical": true,
+    "limitations": "both historical files omit the station opened in August 2024; reference label alone does not prove fresh measurement or full-year validity; each relevant identity is unresolved except opening-event classification for 암사역사공원",
+    "opening_evidence_url": "https://scpm.seoul.go.kr/seoul-policy/evt0064",
+    "same_source_historical_files": {
+      "2023-10-31": "9da58a78b07852906b9b9c75c539770d8a50a16c0cb5b8c21b23383327f85ce6",
+      "2024-10-31": "9da58a78b07852906b9b9c75c539770d8a50a16c0cb5b8c21b23383327f85ce6"
+    }
+  },
+  "verification": {
+    "authority_config_hashes": {
+      "subway/config/source_contracts_2024.yaml": "06afddf9d669f948184a1f06cb462cd5e19804843932e675e35ef0429cef7e10",
+      "subway/config/station_aliases.csv": "c3181cf850c8f69f5a26dca4bc27cf4f1c30b76eb67c7ff65f947dee2fd5aa98",
+      "subway/config/validation_rules.yaml": "d1376484ff6e91e1e351e7fdcb9d2f976174cdcb8e627645eafc0cf540a6f665"
+    },
+    "raw_hashes": {
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.dbf": "f1191dd2ae5ca1f5fd1e3977cb3e6150630ad6d066a977935ea42fb317088b74",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.prj": "0c549431311685a7f58ce669878c50db7b4d77d5b27e4a3c942067b8654bbe48",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shp": "1f88299a67d115f3fa1321ffedd2c219e70cfbe74da052c7de3c265c87ea0a22",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shx": "99b202c58f50075c1d1e68e7cc4bd3baf64676669fe9681ebaf6d1438d640455",
+      "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls": "462ae9c5916fd3c8adac8250bf14d5b2e358988f0bd1b17c996604a25d320abc",
+      "subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv": "3a21980c02827ff2a97c6bdb824313f2dbeb87e61989af21daab7bc30c2bead7",
+      "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv": "acba50585ee981d56502fc9a1f09b4be9f57edeedda00507015bd590eb6bc97b",
+      "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv": "30e2eb633ac78904029b69fb0b9c48d3aee74b1493e93469af42837697421d08",
+      "subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv": "2cb197ee17b5ed95c7c54ae05a3688a336ee0d0908416c8ab7af905e1296ff72",
+      "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv": "b8826c28c9dabd0ab66fcc775e651eb1e2764bd1f1f3b9748f164592b7e8aade"
+    },
+    "raw_inspection": {
+      "ERROR": 0,
+      "INFO": 0,
+      "WARNING": 0,
+      "exit_code": 0
+    },
+    "result": "PASS",
+    "review": "nonblank string evidence required; null/NaN/false/zero RED then GREEN",
+    "task4_task7_actual_regression": "equal to Batch2 baseline",
+    "task8_artifacts_byte_identical": {
+      "batch3_join_report.csv": "e8a82433ba887940087455d31a918860cb78868410a8f040ee6563b2eb059157",
+      "batch3_ridership_exceptions.csv": "3a8ba3fdb81cebf7d48a1f58cdeb1143d129305e4561aeb1502ec270a7ff63de",
+      "batch3_ridership_integration_summary.json": "eef2ef2f0e830bf47ecc4b97975244def149108a73fa86ef12a3eab0db7e78b3"
+    },
+    "task8_human_acceptance": "approved 2026-10-06, separate dated AI log; historical generated summary retained",
+    "unit_tests": 83
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "access_terms": "public official table/export accessible without login; export and table metadata do not state a separate license; cite provider/source",
+  "acquired": true,
+  "aggregate": {
+    "population_65_plus": 1785286,
+    "population_total": 9619861
+  },
+  "authority_adopted": false,
+  "context": "주민등록인구(동별)",
+  "cross_validation": {
+    "population_65_plus": {
+      "difference_distribution": {
+        "0": 400
+      },
+      "exact": 400,
+      "max_abs_difference": 0,
+      "mismatch": 0,
+      "mismatch_examples": []
+    },
+    "population_total": {
+      "difference_distribution": {
+        "0": 400
+      },
+      "exact": 400,
+      "max_abs_difference": 0,
+      "mismatch": 0,
+      "mismatch_examples": []
+    }
+  },
+  "download_date": "2026-10-06",
+  "explicit_typography_mappings": {
+    "금호2.3가동": "금호2·3가동",
+    "면목3.8동": "면목3·8동",
+    "상계3.4동": "상계3·4동",
+    "상계6.7동": "상계6·7동",
+    "종로1.2.3.4가동": "종로1·2·3·4가동",
+    "종로5.6가동": "종로5·6가동",
+    "중계2.3동": "중계2·3동"
+  },
+  "export_title": "등록인구",
+  "future_completed_dongs": 426,
+  "hierarchy": {
+    "dong": 426,
+    "exact_boundary_keys": 426,
+    "extra": 0,
+    "gu": 25,
+    "missing": 0,
+    "seoul_total": 1,
+    "sinsa": [
+      {
+        "dong": "신사동",
+        "gu": "관악구",
+        "source_code": "001021037"
+      },
+      {
+        "dong": "신사동",
+        "gu": "강남구",
+        "source_code": "001023001"
+      }
+    ],
+    "unique_gu_dong": true
+  },
+  "local_audit_filename": "DT_201004_O020003_2024Q2_20261006.csv",
+  "metadata_sha256": "d84b715b3f0a903d45a4b5efa74838390b6f103a65141bb581b49618839e5073",
+  "official_export_filename": "등록인구_20261006115823.csv",
+  "period": "2024 2/4",
+  "proposal_required": true,
+  "provider": "서울특별시 / 서울특별시기본통계",
+  "recovered_26_dongs": [
+    {
+      "dong": "도곡1동",
+      "gu": "강남구",
+      "population_65_plus": 3273,
+      "population_total": 20615
+    },
+    {
+      "dong": "삼성1동",
+      "gu": "강남구",
+      "population_65_plus": 2308,
+      "population_total": 12311
+    },
+    {
+      "dong": "둔촌1동",
+      "gu": "강동구",
+      "population_65_plus": 10,
+      "population_total": 60
+    },
+    {
+      "dong": "수유1동",
+      "gu": "강북구",
+      "population_65_plus": 4830,
+      "population_total": 20139
+    },
+    {
+      "dong": "서원동",
+      "gu": "관악구",
+      "population_65_plus": 3585,
+      "population_total": 23905
+    },
+    {
+      "dong": "중곡3동",
+      "gu": "광진구",
+      "population_65_plus": 3183,
+      "population_total": 15814
+    },
+    {
+      "dong": "구로3동",
+      "gu": "구로구",
+      "population_65_plus": 3923,
+      "population_total": 24891
+    },
+    {
+      "dong": "하계2동",
+      "gu": "노원구",
+      "population_65_plus": 3678,
+      "population_total": 21142
+    },
+    {
+      "dong": "쌍문4동",
+      "gu": "도봉구",
+      "population_65_plus": 3664,
+      "population_total": 18021
+    },
+    {
+      "dong": "답십리2동",
+      "gu": "동대문구",
+      "population_65_plus": 6120,
+      "population_total": 27661
+    },
+    {
+      "dong": "망원1동",
+      "gu": "마포구",
+      "population_65_plus": 3568,
+      "population_total": 19267
+    },
+    {
+      "dong": "서교동",
+      "gu": "마포구",
+      "population_65_plus": 3460,
+      "population_total": 26100
+    },
+    {
+      "dong": "반포본동",
+      "gu": "서초구",
+      "population_65_plus": 37,
+      "population_total": 235
+    },
+    {
+      "dong": "응봉동",
+      "gu": "성동구",
+      "population_65_plus": 2680,
+      "population_total": 14888
+    },
+    {
+      "dong": "신길7동",
+      "gu": "영등포구",
+      "population_65_plus": 2863,
+      "population_total": 19920
+    },
+    {
+      "dong": "효창동",
+      "gu": "용산구",
+      "population_65_plus": 1659,
+      "population_total": 10772
+    },
+    {
+      "dong": "가회동",
+      "gu": "종로구",
+      "population_65_plus": 852,
+      "population_total": 3915
+    },
+    {
+      "dong": "교남동",
+      "gu": "종로구",
+      "population_65_plus": 1731,
+      "population_total": 9851
+    },
+    {
+      "dong": "숭인2동",
+      "gu": "종로구",
+      "population_65_plus": 1803,
+      "population_total": 11029
+    },
+    {
+      "dong": "이화동",
+      "gu": "종로구",
+      "population_65_plus": 1392,
+      "population_total": 7537
+    },
+    {
+      "dong": "종로5·6가동",
+      "gu": "종로구",
+      "population_65_plus": 1101,
+      "population_total": 5778
+    },
+    {
+      "dong": "창신1동",
+      "gu": "종로구",
+      "population_65_plus": 1264,
+      "population_total": 5366
+    },
+    {
+      "dong": "창신2동",
+      "gu": "종로구",
+      "population_65_plus": 1969,
+      "population_total": 8664
+    },
+    {
+      "dong": "창신3동",
+      "gu": "종로구",
+      "population_65_plus": 1372,
+      "population_total": 6533
+    },
+    {
+      "dong": "광희동",
+      "gu": "중구",
+      "population_65_plus": 1213,
+      "population_total": 7070
+    },
+    {
+      "dong": "을지로동",
+      "gu": "중구",
+      "population_65_plus": 518,
+      "population_total": 3466
+    }
+  ],
+  "reference_date": "2024-06-30",
+  "required_cells": 852,
+  "required_missing_cells": 0,
+  "semantics": {
+    "population_65_plus": "official metadata explicitly says foreign residents included; direct official aggregate; exact match with existing 8-band sum on 400 complete dongs",
+    "population_total": "official 계; includes 한국인 and 등록외국인 context; exact 400-dong match with existing age-band 계",
+    "reconciliation": "none; no averaging, imputation or year/period substitution",
+    "reference": "official metadata: quarterly end; annual December31"
+  },
+  "sha256": "e48f83ca75f7f92a5a83e39834440c0f3149ace1113c3533102797e4d0338d76",
+  "source_url": "https://stat.eseoul.go.kr/statHtml/statHtml.do?orgId=201&tblId=DT_201004_O020003&conn_path=I2",
+  "statistical_symbol_policy": "preserve -/.../x; none in the two required 426-dong measures; never coerce to zero",
+  "table_id": "DT_201004_O020003",
+  "task6_current_status": "BLOCKED; existing 26 incomplete dongs unchanged",
+  "task9_status": "NOT STARTED",
+  "viability": "PASS; source-contract adoption requires human approval"
+}

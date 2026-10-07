@@ -1,0 +1,69 @@
+# Stage 1 deterministic generated artifacts use LF on every platform.
+data_manifest.csv text eol=lf
+data/validation/raw_inventory.csv text eol=lf
+data/validation/raw_schema_snapshot.json text eol=lf
+data/validation/raw_inspection_report.csv text eol=lf
+data/validation/raw_inspection_summary.json text eol=lf
+
+# Preserve the exact human-approved official export bytes, including BOM/newlines.
+data/raw/2024/population_direct_65_plus/201_DT_201004_O020003_2024Q2_20261006.csv -text
+
+# P-S2-2RB deterministic acceptance artifacts and unchanged senior alias bytes.
+config/station_aliases.csv text eol=lf
+data/validation/batch2rb_baseline_extension_summary.json text eol=lf
+data/validation/batch2rb_population_authority_summary.json text eol=lf
+data/validation/batch2rb_population_clean.csv text eol=lf
+data/validation/batch2rb_population_cross_validation.csv text eol=lf
+data/validation/batch2rb_station_authority_summary.json text eol=lf
+data/validation/batch2rb_station_identity_audit.csv text eol=lf
+config/datasets.yaml text eol=lf
+config/source_contracts_2024.yaml text eol=lf
+config/validation_rules.yaml text eol=lf
+
+# P-S2-2RC deterministic audit evidence; no source adoption.
+data/validation/batch2rc_coordinate_comparison.csv text eol=lf
+data/validation/batch2rc_kric_candidate_summary.json text eol=lf
+data/validation/batch2rc_line6_code_audit.csv text eol=lf
+data/validation/batch2rc_spatial_source_proposal.md text eol=lf
+data/validation/batch2rc_station_candidate_mapping.csv text eol=lf
+data/validation/batch2rc_temporal_audit.csv text eol=lf
+data/validation/batch2rc_unmatched_identity_audit.csv text eol=lf
+
+# P-S2-2RD frozen analytical eligibility contract and reports.
+config/spatial_eligibility_2024.yaml text eol=lf
+data/validation/task5_spatial_eligibility.csv text eol=lf
+data/validation/task5_spatial_eligibility_summary.json text eol=lf
+data/validation/task5_spatial_exclusions.csv text eol=lf
+
+# P-S2-T9 deterministic mapping evidence.
+data/validation/task9_station_dong_map.csv text eol=lf
+data/validation/task9_station_dong_exceptions.csv text eol=lf
+data/validation/task9_spatial_summary.json text eol=lf
+
+# P-S2-T10 current pipeline config and deterministic validation products.
+config/study_area_2024.yaml text eol=lf
+config/pipeline_baseline_2024.yaml text eol=lf
+data/validation/data_quality_report.csv text eol=lf
+data/validation/join_report.csv text eol=lf
+data/validation/exceptions_ridership.csv text eol=lf
+data/validation/exceptions_station.csv text eol=lf
+data/validation/exceptions_spatial.csv text eol=lf
+data/validation/pipeline_summary.json text eol=lf
+
+# Stage3A deterministic tables.
+results/tables/eda_*.csv text eol=lf
+results/tables/eda_summary.json text eol=lf
+
+# Source hashes must survive Windows fresh checkout.
+run_eda.py text eol=lf
+src/analysis/eda.py text eol=lf
+src/analysis/figures.py text eol=lf
+
+# Stage3B frozen confirmatory specification, code and deterministic text outputs.
+config/confirmatory_analysis_2024.yaml text eol=lf
+run_confirmatory.py text eol=lf
+src/analysis/confirmatory.py text eol=lf
+results/models/confirmatory_*.json text eol=lf
+results/models/*.csv text eol=lf
+results/tables/confirmatory_*.csv text eol=lf
+results/tables/extreme_temperature_days_2024.csv text eol=lf

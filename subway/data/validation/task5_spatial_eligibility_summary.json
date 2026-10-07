@@ -1,0 +1,409 @@
+{
+  "analysis_crs": "EPSG:4326",
+  "approval_date": "2026-10-07",
+  "approved_transfer_group_policy": "existing exact approved three groups are physical transfer coincidences, not unresolved coordinate collisions",
+  "assumptions": {
+    "analysis_crs": "EPSG:4326",
+    "core_policy": "preserve all Task8 observations; return spatial subset separately",
+    "crs_evidence": "analysis assumption supported by official national station-data standard; not source-specific CRS explicitly verified. Batch2R-C official 2024 공공데이터 제공 표준 section42 도시철도역사정보 items10 역위도/11 역경도 explicitly specifies WGS84; longitude=x latitude=y geographic degrees. https://www.data.go.kr/bbs/rcr/selectRecsroom.do?originId=PDS_0000000001227&atchFileId=FILE_000000003049184 standard SHA256=d3d464f6a9dd9f6dfd3ff61fec966c95ccce8aec085c234ba3af9e665d3c67cd",
+    "crs_status": "ANALYTICAL_ASSUMPTION",
+    "known_coordinate_absences": [
+      {
+        "evidence": "Task8 exact line7/까치울 identity corroborated by current official KRIC S1107/3753/인천교통공사/address, but no accepted adopted Seoul coordinate mapping; current KRIC coordinate is not substituted. Batch2R-C audit.",
+        "line": "7",
+        "station_name": "까치울"
+      },
+      {
+        "evidence": "Task8 exact line8/암사역사공원 identity corroborated by current official KRIC S1108/0809/서울교통공사/address, but no accepted adopted Seoul coordinate mapping; current KRIC coordinate is not substituted.",
+        "line": "8",
+        "station_name": "암사역사공원"
+      }
+    ],
+    "known_openings": [
+      {
+        "date": "2024-08-10",
+        "evidence": "official passenger service start2024-08-10; https://scpm.seoul.go.kr/seoul-policy/evt0064; known opening exception, not snapshot stability; pre-opening Raw observations retained without asserting test rides.",
+        "line": "8",
+        "station_name": "암사역사공원"
+      }
+    ],
+    "metadata": {
+      "approved_date": "2026-10-07",
+      "completion_mode": "eligibility_based_with_documented_exclusions",
+      "mission": "P-S2-2RD",
+      "scope": "Task5 analytical eligibility only; no Task9 spatial operations"
+    },
+    "spatial_subset_statuses": [
+      "ELIGIBLE",
+      "ELIGIBLE_CODE_WARNING"
+    ],
+    "temporal_evidence": "Official same-source snapshots labelled2023-10-31,2024-10-31,2025-08-14 corroborate identical coordinates for existing276source rows; practical pre-existing-station spatial stability assumption approved by human; not continuous-observation proof, not verified unchanged throughout2024. Historical2023/2024 file SHA256=9da58a78b07852906b9b9c75c539770d8a50a16c0cb5b8c21b23383327f85ce6; residual temporal uncertainty retained; see Batch2R-C temporal audit.",
+    "temporal_status": "SNAPSHOT_STABILITY_ASSUMPTION",
+    "unresolved_policy": "no new aliases, code offset, coordinate substitution, averaging or Raw rewriting"
+  },
+  "by_exclusion_reason": {
+    "NO_ACCEPTED_COORDINATE": {
+      "integrated_rows": 6400,
+      "matched_rows": 5880,
+      "senior_ridership_all_observations": 269873,
+      "senior_ridership_matched_observations": 269873,
+      "station_identities": 2,
+      "total_only_rows": 520,
+      "total_ridership_all_observations": 1495597,
+      "total_ridership_matched_observations": 1495460
+    },
+    "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY": {
+      "integrated_rows": 175680,
+      "matched_rows": 175680,
+      "senior_ridership_all_observations": 13145793,
+      "senior_ridership_matched_observations": 13145793,
+      "station_identities": 12,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 82367083,
+      "total_ridership_matched_observations": 82367083
+    },
+    "UNRESOLVED_SOURCE_COORDINATE_COLLISION": {
+      "integrated_rows": 29280,
+      "matched_rows": 29280,
+      "senior_ridership_all_observations": 3121392,
+      "senior_ridership_matched_observations": 3121392,
+      "station_identities": 2,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 24990843,
+      "total_ridership_matched_observations": 24990843
+    }
+  },
+  "by_status": {
+    "ELIGIBLE": {
+      "integrated_rows": 3469680,
+      "matched_rows": 3469680,
+      "senior_ridership_all_observations": 427337965,
+      "senior_ridership_matched_observations": 427337965,
+      "station_identities": 237,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 3045946574,
+      "total_ridership_matched_observations": 3045946574
+    },
+    "ELIGIBLE_CODE_WARNING": {
+      "integrated_rows": 307440,
+      "matched_rows": 307440,
+      "senior_ridership_all_observations": 19106930,
+      "senior_ridership_matched_observations": 19106930,
+      "station_identities": 21,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 147948363,
+      "total_ridership_matched_observations": 147948363
+    },
+    "EXCLUDED_COORDINATE": {
+      "integrated_rows": 35680,
+      "matched_rows": 35160,
+      "senior_ridership_all_observations": 3391265,
+      "senior_ridership_matched_observations": 3391265,
+      "station_identities": 4,
+      "total_only_rows": 520,
+      "total_ridership_all_observations": 26486440,
+      "total_ridership_matched_observations": 26486303
+    },
+    "EXCLUDED_IDENTITY": {
+      "integrated_rows": 175680,
+      "matched_rows": 175680,
+      "senior_ridership_all_observations": 13145793,
+      "senior_ridership_matched_observations": 13145793,
+      "station_identities": 12,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 82367083,
+      "total_ridership_matched_observations": 82367083
+    },
+    "EXCLUDED_TEMPORAL": {
+      "integrated_rows": 0,
+      "matched_rows": 0,
+      "senior_ridership_all_observations": 0,
+      "senior_ridership_matched_observations": 0,
+      "station_identities": 0,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 0,
+      "total_ridership_matched_observations": 0
+    }
+  },
+  "code_conflicts_preserved": 21,
+  "completion_mode": "eligibility_based_with_documented_exclusions",
+  "core_preserved": true,
+  "crs_status": "ANALYTICAL_ASSUMPTION",
+  "current_kric_support_role": "name/line corroboration only; 2026 file not 2024 spatial authority; no coordinate substitution",
+  "denominators": {
+    "integrated_rows": 3988480,
+    "matched_rows": 3987960,
+    "senior_ridership_all_observations": 462981953,
+    "senior_ridership_matched_observations": 462981953,
+    "station_identities": 274,
+    "total_only_rows": 520,
+    "total_ridership_all_observations": 3302748460,
+    "total_ridership_matched_observations": 3302748323
+  },
+  "environment": {
+    "geopandas": "1.2.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "python": "3.11.9",
+    "shapely": "2.1.2"
+  },
+  "excluded_station_identities": [
+    {
+      "canonical_station_id": "station:[\"5\",\"마곡\"]",
+      "exclusion_reason": "UNRESOLVED_SOURCE_COORDINATE_COLLISION",
+      "line": "5",
+      "spatial_status": "EXCLUDED_COORDINATE",
+      "station_name": "마곡"
+    },
+    {
+      "canonical_station_id": "station:[\"5\",\"발산\"]",
+      "exclusion_reason": "UNRESOLVED_SOURCE_COORDINATE_COLLISION",
+      "line": "5",
+      "spatial_status": "EXCLUDED_COORDINATE",
+      "station_name": "발산"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"고려대(종암)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "고려대(종암)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"광흥창(서강)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "광흥창(서강)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"녹사평(용산구청)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "녹사평(용산구청)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"대흥(서강대앞)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "대흥(서강대앞)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"봉화산(서울의료원)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "봉화산(서울의료원)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"상월곡(한국과학기술연구원)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "상월곡(한국과학기술연구원)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"새절(신사)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "새절(신사)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"안암(고대병원앞)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "안암(고대병원앞)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"월곡(동덕여대)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "월곡(동덕여대)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"월드컵경기장(성산)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "월드컵경기장(성산)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"증산(명지대앞)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "증산(명지대앞)"
+    },
+    {
+      "canonical_station_id": "station:[\"6\",\"화랑대(서울여대입구)\"]",
+      "exclusion_reason": "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY",
+      "line": "6",
+      "spatial_status": "EXCLUDED_IDENTITY",
+      "station_name": "화랑대(서울여대입구)"
+    },
+    {
+      "canonical_station_id": "station:[\"7\",\"까치울\"]",
+      "exclusion_reason": "NO_ACCEPTED_COORDINATE",
+      "line": "7",
+      "spatial_status": "EXCLUDED_COORDINATE",
+      "station_name": "까치울"
+    },
+    {
+      "canonical_station_id": "station:[\"8\",\"암사역사공원\"]",
+      "exclusion_reason": "NO_ACCEPTED_COORDINATE",
+      "line": "8",
+      "spatial_status": "EXCLUDED_COORDINATE",
+      "station_name": "암사역사공원"
+    }
+  ],
+  "exclusion_reasons": {
+    "NO_ACCEPTED_COORDINATE": 2,
+    "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY": 12,
+    "UNRESOLVED_SOURCE_COORDINATE_COLLISION": 2
+  },
+  "exclusion_shares": {
+    "excluded_senior_ridership_matched_share": 0.03571858015813416,
+    "excluded_senior_ridership_share": 0.03571858015813416,
+    "excluded_station_identity_share": 0.058394160583941604,
+    "excluded_total_ridership_matched_share": 0.03295842593937788,
+    "excluded_total_ridership_share": 0.03295846605284618
+  },
+  "exclusions": {
+    "integrated_rows": 211360,
+    "matched_rows": 210840,
+    "senior_ridership_all_observations": 16537058,
+    "senior_ridership_matched_observations": 16537058,
+    "station_identities": 16,
+    "total_only_rows": 520,
+    "total_ridership_all_observations": 108853523,
+    "total_ridership_matched_observations": 108853386
+  },
+  "input_hashes": {
+    "approved_analysis_policy": "c2047661ff1f30693e9055ae74eedd55622c28ba2b3dbb2f294cb797e57e671e",
+    "approved_station_aliases": "e76c5a6ff8f4ba76902d4bba02cd0de3704044750ea7abc0aa5fa9e6f18250d1",
+    "current_official_kric_support_mapping": "d4dc9f56b8ae49838a73929fddcc93aead3e481960990c2d7eea7761aabbd694",
+    "station_source": "30e2eb633ac78904029b69fb0b9c48d3aee74b1493e93469af42837697421d08"
+  },
+  "limitation": "eligibility contract finalized; unresolved source problems remain; spatial results need not represent all core station identities",
+  "mission": "P-S2-2RD",
+  "output_hashes": {
+    "task5_spatial_eligibility.csv": "d5fa6b5843d1be0ea399d27abe3f6c7dfa9414a91f7bd6deb25b7b03c759b080",
+    "task5_spatial_exclusions.csv": "7e42d7a3dd6a985fb3493f58edb858239a9a0240b97c8a44572dbc1899dbc12b"
+  },
+  "regression": {
+    "core_task8": {
+      "input_accounting": {
+        "senior_ridership": {
+          "duplicate_keys": 0,
+          "integrated_sums_by_join_status": {
+            "ambiguous_rejected": 0,
+            "matched": 462981953,
+            "senior_only": 0,
+            "total_only": 0
+          },
+          "long_rows": 3987960,
+          "raw_rows": 199398,
+          "ridership_sum": 462981953
+        },
+        "total_ridership": {
+          "duplicate_keys": 0,
+          "integrated_sums_by_join_status": {
+            "ambiguous_rejected": 0,
+            "matched": 3302748323,
+            "senior_only": 0,
+            "total_only": 137
+          },
+          "long_rows": 3988480,
+          "raw_rows": 199424,
+          "ridership_sum": 3302748460
+        }
+      },
+      "integrated_rows": 3988480,
+      "join_counts": {
+        "ambiguous_rejected": 0,
+        "matched": 3987960,
+        "senior_only": 0,
+        "total_only": 520
+      },
+      "valid_non_senior": 3987957,
+      "valid_senior_share": 3968169,
+      "zero_zero_matched": 19788
+    },
+    "frozen_file_hashes": {
+      "subway/config/datasets.yaml": "9c075f05068f7582734aeafaf7863f19513bfcbd7bc8685d8e7b215a9825730b",
+      "subway/config/source_contracts_2024.yaml": "d461bba246ba55109d2f725adadd292ed456da8f180299e6569e4f822f164450",
+      "subway/config/station_aliases.csv": "e76c5a6ff8f4ba76902d4bba02cd0de3704044750ea7abc0aa5fa9e6f18250d1",
+      "subway/config/validation_rules.yaml": "745cd1121a144c50c9217a05a47c1f2e1e37fb58f25fd8b48621fc2286008e1f",
+      "subway/data/validation/batch1_crosswalk_diagnostics.csv": "6e4dbefce1fb3ad6ffd074b1049a4517a4a5c09c54835ea7f98b247c65aafae5",
+      "subway/data/validation/batch1_summary.json": "0adbfd5fda27e142f0bb9eddde19075ea0557c034fa8c4b942f21b5968bc031a",
+      "subway/data/validation/batch2_population_diagnostics.csv": "c62d3716cedf86c4e8ed8d9ddbe157209fef3510bca4502b833b31e776fd0e8f",
+      "subway/data/validation/batch2_spatial_summary.json": "efb32bb17ce4d63e50ccf78798f61907c1d0c58fcb7b856c444228429ff060be",
+      "subway/data/validation/batch2_station_diagnostics.csv": "c0237b5007c6395254e6c06d96b7b3a51ad7372b0a0422cf314aeae3fe1241b6",
+      "subway/data/validation/batch2_summary.json": "b7df00f6e18dd06bfd41283bef471dc18a59ffb68c598954542c9411397d5206",
+      "subway/data/validation/batch2_weather_summary.json": "95949bcffb13341dc76fe415d86bed9b56bc1b548c230fc60ef878b9e63047bb",
+      "subway/data/validation/batch2r_population_candidate_comparison.csv": "38c4c68c6689faa73e73e31502d236b55c15f6b40134a5a04cc414a834b2a2f8",
+      "subway/data/validation/batch2r_population_candidate_summary.json": "f793365df1a1c69db7fea7e2cce413f91ccfdb601fd23d723ceb2d36bb45d750",
+      "subway/data/validation/batch2r_station_blocker_summary.json": "c7952d223dbac1ae7c128b9c111abc2c8ff65981f7c60b4a20a98d31d4cb455a",
+      "subway/data/validation/batch2r_station_duplicate_coordinate_review.csv": "f6519fe9e0a6af3c93adcb09de76feafb1657caad2721769e8efb8ad64e90055",
+      "subway/data/validation/batch2r_station_identity_resolution.csv": "7905accb0fe4d839e0f72e061c2e023bd04b0314576fe6a81c6022ded925bb1b",
+      "subway/data/validation/batch2rb_baseline_extension_summary.json": "abfbf8a3fc4ccba27ea5d94cdb751ce09c758b3ff17f8b8e4486594247ec3da1",
+      "subway/data/validation/batch2rb_population_authority_summary.json": "00fb24968a4622b2e6c8aa246dc5fda26bc4d5d89f95aa8a85eaa0dacc768e02",
+      "subway/data/validation/batch2rb_population_clean.csv": "9d7e0115d7da96711d54a9cca009d52428cb2c3b0b80978b535724f9e78d96cd",
+      "subway/data/validation/batch2rb_population_cross_validation.csv": "089503c78b2b61328ea298bf2cfa33bccfc4260eb18c88d87cac80e1af3cc28f",
+      "subway/data/validation/batch2rb_station_authority_summary.json": "475f994d778f18b5a7f7b1eb86705a7ff0bc7a906d03320909b4eb2aedf739b4",
+      "subway/data/validation/batch2rb_station_identity_audit.csv": "7fd750257f658f3e04517d1f9bd78ad92a7efa202e915a485e764cc97c9ee120",
+      "subway/data/validation/batch2rc_coordinate_comparison.csv": "3ab771137bcd43023fa2a4edf2d6558c88029769a8a20dfbce09fe1064e8c948",
+      "subway/data/validation/batch2rc_kric_candidate_summary.json": "b91f39c13b62c625e0c48c4fe09241d261d645defa9d25607551cfe1a337d4a4",
+      "subway/data/validation/batch2rc_line6_code_audit.csv": "4e3d3b1358c5124259f9a9168303bb0ff05ee3cd81a79e8646f22d9cdad00879",
+      "subway/data/validation/batch2rc_spatial_source_proposal.md": "d29aad3a1d077704b41526ca877bf3aab4e39aebafba747d7ae139218571eb36",
+      "subway/data/validation/batch2rc_station_candidate_mapping.csv": "d4dc9f56b8ae49838a73929fddcc93aead3e481960990c2d7eea7761aabbd694",
+      "subway/data/validation/batch2rc_temporal_audit.csv": "e3a925bf245ea9e553919b698f0ddac13aab42f8366761790f62783841d62058",
+      "subway/data/validation/batch2rc_unmatched_identity_audit.csv": "96791324cf4579577b39f4b8d6279781bc5b4cb2b0cac691e518371750e70023",
+      "subway/data/validation/batch3_join_report.csv": "e8a82433ba887940087455d31a918860cb78868410a8f040ee6563b2eb059157",
+      "subway/data/validation/batch3_ridership_exceptions.csv": "3a8ba3fdb81cebf7d48a1f58cdeb1143d129305e4561aeb1502ec270a7ff63de",
+      "subway/data/validation/batch3_ridership_integration_summary.json": "eef2ef2f0e830bf47ecc4b97975244def149108a73fa86ef12a3eab0db7e78b3",
+      "subway/data/validation/raw_inspection_report.csv": "94b40cdae920c582cd3813515e5d541396e9653e95522976df73b6d3380eef6c",
+      "subway/data/validation/raw_inspection_summary.json": "3bffb6c3acd75829e9d54671bbf5585675f4a342c89e63eee49a1a81e3c00580",
+      "subway/data/validation/raw_inventory.csv": "6bc572690c16410296710a6cd381e99d1713d1a234e2f8e0819a2de4ef57c1d6",
+      "subway/data/validation/raw_schema_snapshot.json": "fd14031013d41ef3818460cb59765c5e4d73c6956475e32edce6933594ecfe49",
+      "subway/data_manifest.csv": "ac6dd97660dffb53e5190c368326758488b3e43deaff4289e5d91448a4dd5b65"
+    },
+    "full_unit_tests": 122,
+    "raw_hashes": {
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.dbf": "f1191dd2ae5ca1f5fd1e3977cb3e6150630ad6d066a977935ea42fb317088b74",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.prj": "0c549431311685a7f58ce669878c50db7b4d77d5b27e4a3c942067b8654bbe48",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shp": "1f88299a67d115f3fa1321ffedd2c219e70cfbe74da052c7de3c265c87ea0a22",
+      "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shx": "99b202c58f50075c1d1e68e7cc4bd3baf64676669fe9681ebaf6d1438d640455",
+      "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls": "462ae9c5916fd3c8adac8250bf14d5b2e358988f0bd1b17c996604a25d320abc",
+      "subway/data/raw/2024/population_direct_65_plus/201_DT_201004_O020003_2024Q2_20261006.csv": "e48f83ca75f7f92a5a83e39834440c0f3149ace1113c3533102797e4d0338d76",
+      "subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv": "3a21980c02827ff2a97c6bdb824313f2dbeb87e61989af21daab7bc30c2bead7",
+      "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv": "acba50585ee981d56502fc9a1f09b4be9f57edeedda00507015bd590eb6bc97b",
+      "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv": "30e2eb633ac78904029b69fb0b9c48d3aee74b1493e93469af42837697421d08",
+      "subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv": "2cb197ee17b5ed95c7c54ae05a3688a336ee0d0908416c8ab7af905e1296ff72",
+      "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv": "b8826c28c9dabd0ab66fcc775e651eb1e2764bd1f1f3b9748f164592b7e8aade"
+    },
+    "task4_task7": "actual recalculated summaries identical to accepted baseline",
+    "task6": "accepted direct-population inputs/config/outputs unchanged"
+  },
+  "source_specific_crs_verified": false,
+  "spatial_subset_statuses": [
+    "ELIGIBLE",
+    "ELIGIBLE_CODE_WARNING"
+  ],
+  "starting_head": "7923c0c24cd4150bfa995c364d259c00a14a0bc0",
+  "task10_status": "NOT STARTED",
+  "task11_status": "NOT STARTED",
+  "task5_status": "COMPLETE",
+  "task6_status": "COMPLETE",
+  "task8_status": "COMPLETE",
+  "task9_status": "NOT STARTED",
+  "temporal_status": "SNAPSHOT_STABILITY_ASSUMPTION",
+  "unresolved_problems_not_fixed": true
+}
