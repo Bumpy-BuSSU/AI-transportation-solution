@@ -24,7 +24,7 @@
 | 수집 및 전처리 | Raw baseline, Stage 1 코드·tests, [Stage 2 계획](../../../docs/superpowers/plans/2026-10-05-subway-clean-transform-pipeline.md) | **Stage 2 전처리 COMPLETE**. [종료 baseline](../../../docs/subway/2024-clean-transform-baseline.md), [canonical QA](../../data/validation/pipeline_summary.json), Tasks 9/10 사람 승인 및 Task11 최종 검증으로 근거 연결 |
 | 분석 방법론 | [방법론 로그](methodology-log.md) | schema inspection·SHA-256·재현성 및 승인된 전처리 adopted. 사전 동결 H1/H2 PPML·지정 HAC만 실제 실행; 나머지 통계모형은 candidate |
 | AI 서비스·범위·주요 프롬프트 | [AI 사용 기록](ai-usage-log.md) | ChatGPT/Codex 역할과 주요 지시 요약 기록. 인간 검증은 증거가 있는 범위만 기록 |
-| 분석 결과 | [Stage 3A focused EDA](08-focused-eda.md), `subway/results/tables/`, `subway/results/figures/` | [동결 H1/H2 결과](10-confirmatory-h1-h2.md) 생성. Primary Holm 기각0/4, 현재 사양 NOT SUPPORTED; 기술 EDA와 추론 결과를 구분. Secondary2는 미착수 |
+| 분석 결과 | [Stage 3A focused EDA](08-focused-eda.md), `subway/results/tables/`, `subway/results/figures/` | [동결 H1/H2 결과](10-confirmatory-h1-h2.md) 생성. Primary Holm 기각0/4, 현재 사양 NOT SUPPORTED; 기술 EDA와 추론 결과를 구분. Secondary2는 controlled reconstruction 기술 실행 완료 / 인간 결과검토 PENDING; [Stage3C evidence](11-spatial-heterogeneity.md) |
 | 정책 제안·기대효과 | 아직 없음 | 미완료. 분석 후 작성 |
 | 결과 이미지 | Stage 3A 기술 EDA 그림 5개 | 기술적 탐색 그림이며 최종 보고서 채택 여부는 사람 검토 후 결정. [H1/H2 effects](../../results/figures/confirmatory_effects.png)는 pointwise95% CI를 표시; 최종보고서 채택은 사람 검토 후 결정 |
 | GitHub 재현 코드 | 저장소의 `subway/tools/inspect_raw_inputs.py`, `subway/tests/`, 기술 baseline | Stage1 및 `python subway/run_pipeline.py --year 2024` 재현 가능. Task11 종료 검증 완료; [종료 baseline](../../../docs/subway/2024-clean-transform-baseline.md)의 환경·hash·계약 참조 |
@@ -103,3 +103,11 @@ Primary boarding, p90hot32.75°C / p10cold-3.05°C, daytime10–16, date-cluster
 이는 연령차가 없다는 증명도, 반대방향 효과가 입증되었다는 뜻도 아니다.
 정책제안·trip purpose·인과적 shelter-seeking·탄소감축·지역 간 격차 결론은 여전히 미승인/미도출이며,
 Secondary2 공간 이질성은 다음 별도 Stage로 남긴다.
+
+## P-S3C-RECONSTRUCTION current evidence — 2026-10-07
+
+[Stage3C cumulative evidence ledger](11-spatial-heterogeneity.md)에 목적/출처/기간/QA/모형/정밀 Primary 표/Layer A 기술분포/p95/p05 점추정 및 covariance 실패/해석한계/AI 역할/재현 명령을 연결했다.
+Secondary2 기술 실행 완료, 인간 과학적 결과검토 PENDING. Cold×고령인구비중만 frozen4-test Holm을 통과했다. 민감도는 네 점추정만 보존하고 전체 NOT ESTIMABLE이다.
+그림은 [Layer A paired map](../../results/figures/station_extreme_heterogeneity.png), [all-dong context](../../results/figures/spatial_context.png), [Primary pointwise CI](../../results/figures/spatial_moderation_effects.png) 세 개다.
+기존 H1/H2 NOT SUPPORTED 결과 유지. 이전 NOT STARTED/PENDING 문구는 당시 기록이다. 이번 재구축은 missing f002cc1 복구가 아니며 종전29PASS를 검증 증거로 사용하지 않는다.
+정책·인과·승객 이동목적·위험 역 분류·최종보고서 초안은 이번 범위 밖이다.
