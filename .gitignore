@@ -220,7 +220,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Project raw data
-**/data/raw/
+**/data/raw/*
 
 # Subway runtime logs
 subway/logs/*.log
@@ -236,3 +236,11 @@ subway/logs/*.log
 # Reproducible Stage3A local base and staging (hashes in EDA summary).
 /subway/data/analysis/*.parquet
 /subway/data/.eda-staging-*/
+
+# Mobility-choice source manifest is versioned; original data remains local.
+!/data/raw/manifest.csv
+*.part
+
+# Independent local analysis environments documented in README.
+.venv-mobility/
+.venv-subway/
