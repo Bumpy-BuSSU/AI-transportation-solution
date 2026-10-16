@@ -1,0 +1,78 @@
+{
+  "blank_counts": {
+    "humidity_mean": 0,
+    "precipitation": 206,
+    "snow_depth_max": 338,
+    "snow_new_max": 350,
+    "temperature_max": 0,
+    "temperature_mean": 0,
+    "temperature_min": 0,
+    "wind_max": 2,
+    "wind_mean": 3
+  },
+  "clean_missing_counts": {
+    "humidity_mean": 0,
+    "precipitation": 206,
+    "snow_depth_max": 338,
+    "snow_new_max": 350,
+    "temperature_max": 0,
+    "temperature_mean": 0,
+    "temperature_min": 0,
+    "wind_max": 2,
+    "wind_mean": 3
+  },
+  "findings": [
+    {
+      "code": "OBSERVATION_MISSING",
+      "dataset_id": "weather",
+      "message": "일강수량(mm): 206",
+      "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+      "severity": "WARNING"
+    },
+    {
+      "code": "OBSERVATION_MISSING",
+      "dataset_id": "weather",
+      "message": "최대 풍속(m/s): 2",
+      "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+      "severity": "WARNING"
+    },
+    {
+      "code": "OBSERVATION_MISSING",
+      "dataset_id": "weather",
+      "message": "평균 풍속(m/s): 3",
+      "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+      "severity": "WARNING"
+    },
+    {
+      "code": "OBSERVATION_MISSING",
+      "dataset_id": "weather",
+      "message": "일 최심신적설(cm): 350",
+      "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+      "severity": "WARNING"
+    },
+    {
+      "code": "OBSERVATION_MISSING",
+      "dataset_id": "weather",
+      "message": "일 최심적설(cm): 338",
+      "relative_path": "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv",
+      "severity": "WARNING"
+    }
+  ],
+  "literal_zero_counts": {
+    "humidity_mean": 0,
+    "precipitation": 50,
+    "snow_depth_max": 0,
+    "snow_new_max": 0,
+    "temperature_max": 1,
+    "temperature_mean": 0,
+    "temperature_min": 2,
+    "wind_max": 0,
+    "wind_mean": 0
+  },
+  "missing_policy": "blank -> missing; literal numeric zero -> zero; no filling or classifications",
+  "rows": 366,
+  "station_ids": [
+    "108"
+  ],
+  "unique_dates": 366
+}

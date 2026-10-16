@@ -1,0 +1,19 @@
+severity,dataset_id,code,message,relative_path
+INFO,station,VERIFIED_TRANSFER_COORDINATE,verified physical transfer member rows: 2,subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv
+INFO,study_area,OUTSIDE_CURRENT_STUDY_AREA,15 eligible points independently outside configured boundary union; core preserved,
+WARNING,population,SUPPLEMENTARY_SOURCE_LIMITS,old age-band rejected rows retained in diagnostics; valid groups independently compared; direct official source remains primary,
+WARNING,ridership,SENIOR_EXCEEDS_TOTAL,3/3987960 valid matched cells; values preserved and derived values null,
+WARNING,shelter,TEMPORAL_UNCERTAINTY,downloaded rows do not establish a 2024 shelter census,subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv
+WARNING,station,APPROVED_ALIASES,explicit approved aliases retain evidence,
+WARNING,station,APPROVED_COORDINATE_EXCLUSION,source DUPLICATE_COORDINATE retained in exceptions; exact Task5-approved collision excluded from spatial use,subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv
+WARNING,station,CRS_UNVERIFIED,source-specific CRS unverified; Task5-approved EPSG:4326 ANALYTICAL_ASSUMPTION used without rewriting source metadata,subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv
+WARNING,station,DOCUMENTED_IDENTITY_EXCLUSIONS,unmatched core identities explicitly excluded by Task5; coordinate-only source rows remain audit evidence,
+WARNING,station,SOURCE_CODE_CONFLICT,external codes unreconciled; per-row Task5 corroboration permits spatial use with warnings,
+WARNING,station,TASK5_SPATIAL_EXCLUSIONS,16 core identities preserved but spatially excluded,
+WARNING,station,TEMPORAL_UNCERTAINTY,coordinate reference snapshot is not proven applicable to 2024,subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv
+WARNING,task9,ZERO_MATCH,15 explicit mapping exceptions; no correction,
+WARNING,weather,OBSERVATION_MISSING,일 최심신적설(cm): 350,subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv
+WARNING,weather,OBSERVATION_MISSING,일 최심적설(cm): 338,subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv
+WARNING,weather,OBSERVATION_MISSING,일강수량(mm): 206,subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv
+WARNING,weather,OBSERVATION_MISSING,최대 풍속(m/s): 2,subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv
+WARNING,weather,OBSERVATION_MISSING,평균 풍속(m/s): 3,subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv

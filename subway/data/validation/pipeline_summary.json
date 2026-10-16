@@ -1,0 +1,923 @@
+{
+  "clean_outputs": {
+    "clean/climate_shelters.parquet": {
+      "rows": 412,
+      "sha256": "b0fbe6245fc0453f5b932ad7eb4ab9d3135f7a864ec4e4c7152de83dc78e361e"
+    },
+    "clean/dong_boundary_2024q2.parquet": {
+      "rows": 426,
+      "sha256": "f480ac7e77b181013e1ff66cae62a67f31ea0a8321d8a41ab659e39b033927e6"
+    },
+    "clean/population_2024q2.parquet": {
+      "rows": 426,
+      "sha256": "ca587dc2ce6bed0992caf1a5652e3af4888f8d1ce9a573a46e7b65d9a3656932"
+    },
+    "clean/senior_ridership_2024.parquet": {
+      "rows": 3987960,
+      "sha256": "27204fe04b646ae03b4a9eff0b506ae3b8ae7405b6dcf7589eb475830d2661d8"
+    },
+    "clean/stations.parquet": {
+      "rows": 276,
+      "sha256": "cf5fc107d1882c69f83fe97fb1183f71f4d68c1f17aee0de2758167b3b6ad589"
+    },
+    "clean/total_ridership_2024.parquet": {
+      "rows": 3988480,
+      "sha256": "574fcddda13937092523b13bcdcfa854eb43358d022b7298700db443afc4c5ae"
+    },
+    "clean/weather_2024.parquet": {
+      "rows": 366,
+      "sha256": "f28c83c551c8a5397bf1150aef0987ff83d6ada4eab98669c9fee61f36be91f2"
+    }
+  },
+  "config_hashes": {
+    "subway/config/datasets.yaml": "9c075f05068f7582734aeafaf7863f19513bfcbd7bc8685d8e7b215a9825730b",
+    "subway/config/pipeline_baseline_2024.yaml": "0d338607e0d887988a664991126ae20cc3b429b5b2753f274cfa2dcdf86b05c7",
+    "subway/config/source_contracts_2024.yaml": "d461bba246ba55109d2f725adadd292ed456da8f180299e6569e4f822f164450",
+    "subway/config/spatial_eligibility_2024.yaml": "c2047661ff1f30693e9055ae74eedd55622c28ba2b3dbb2f294cb797e57e671e",
+    "subway/config/station_aliases.csv": "e76c5a6ff8f4ba76902d4bba02cd0de3704044750ea7abc0aa5fa9e6f18250d1",
+    "subway/config/study_area_2024.yaml": "1fa91600ab613b9d8175bb941580005e2edf44978d2bc0f60ad5988f3d993dc5",
+    "subway/config/validation_rules.yaml": "745cd1121a144c50c9217a05a47c1f2e1e37fb58f25fd8b48621fc2286008e1f"
+  },
+  "determinism": "same Raw/config/code/recorded environment; explicit unique sorts and writer settings; summary self-hash excluded",
+  "environment": {
+    "geopandas": "1.2.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "proj": "9.5.1",
+    "pyarrow": "25.0.1",
+    "pyproj": "3.7.2",
+    "python": "3.11.9",
+    "shapely": "2.1.2"
+  },
+  "finding_counts": {
+    "ERROR": 0,
+    "INFO": 2,
+    "WARNING": 16
+  },
+  "input_dataset_count": 8,
+  "input_hashes": {
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.dbf": "f1191dd2ae5ca1f5fd1e3977cb3e6150630ad6d066a977935ea42fb317088b74",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.prj": "0c549431311685a7f58ce669878c50db7b4d77d5b27e4a3c942067b8654bbe48",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shp": "1f88299a67d115f3fa1321ffedd2c219e70cfbe74da052c7de3c265c87ea0a22",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shx": "99b202c58f50075c1d1e68e7cc4bd3baf64676669fe9681ebaf6d1438d640455",
+    "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls": "462ae9c5916fd3c8adac8250bf14d5b2e358988f0bd1b17c996604a25d320abc",
+    "subway/data/raw/2024/population_direct_65_plus/201_DT_201004_O020003_2024Q2_20261006.csv": "e48f83ca75f7f92a5a83e39834440c0f3149ace1113c3533102797e4d0338d76",
+    "subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv": "3a21980c02827ff2a97c6bdb824313f2dbeb87e61989af21daab7bc30c2bead7",
+    "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv": "acba50585ee981d56502fc9a1f09b4be9f57edeedda00507015bd590eb6bc97b",
+    "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv": "30e2eb633ac78904029b69fb0b9c48d3aee74b1493e93469af42837697421d08",
+    "subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv": "2cb197ee17b5ed95c7c54ae05a3688a336ee0d0908416c8ab7af905e1296ff72",
+    "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv": "b8826c28c9dabd0ab66fcc775e651eb1e2764bd1f1f3b9748f164592b7e8aade"
+  },
+  "output_hashes": {
+    "clean/climate_shelters.parquet": "b0fbe6245fc0453f5b932ad7eb4ab9d3135f7a864ec4e4c7152de83dc78e361e",
+    "clean/dong_boundary_2024q2.parquet": "f480ac7e77b181013e1ff66cae62a67f31ea0a8321d8a41ab659e39b033927e6",
+    "clean/population_2024q2.parquet": "ca587dc2ce6bed0992caf1a5652e3af4888f8d1ce9a573a46e7b65d9a3656932",
+    "clean/senior_ridership_2024.parquet": "27204fe04b646ae03b4a9eff0b506ae3b8ae7405b6dcf7589eb475830d2661d8",
+    "clean/stations.parquet": "cf5fc107d1882c69f83fe97fb1183f71f4d68c1f17aee0de2758167b3b6ad589",
+    "clean/total_ridership_2024.parquet": "574fcddda13937092523b13bcdcfa854eb43358d022b7298700db443afc4c5ae",
+    "clean/weather_2024.parquet": "f28c83c551c8a5397bf1150aef0987ff83d6ada4eab98669c9fee61f36be91f2",
+    "processed/dong_population_2024q2.parquet": "b99e248e7362af7c5f145c3b174e9cabada6e0585c708f09e6c009cc2a01ac5c",
+    "processed/ridership_2024.parquet": "b355e22f64500fd2eebbd57d50ec3e8d91be0a5c8abb0d79d8a3ec283c21b035",
+    "processed/station_dong_map.parquet": "772fad38688a6db4a0b0c5f304b2b2445321a114caefd35d84a8a7340fd41516",
+    "processed/station_master.parquet": "8bca3bf847126c3624048b9ffce4103b5aa0142f43c432b4b1610cd381ea289d",
+    "validation/data_quality_report.csv": "313bff26cbd84a5b12fe8746b6bb582d432a061535089e252886f5d747f049aa",
+    "validation/exceptions_ridership.csv": "3a8ba3fdb81cebf7d48a1f58cdeb1143d129305e4561aeb1502ec270a7ff63de",
+    "validation/exceptions_spatial.csv": "4a246425d4424c6e72b6fedf17d839463a2bce8b9b47897e73738f7d77cf9145",
+    "validation/exceptions_station.csv": "4f3fd4245021fdc89f4abefa66cf2c32a54b4121237735427b5dfe9b7768cf26",
+    "validation/join_report.csv": "4f765ec2a73349c0f810d6490d9b1bb53691386306f02fd951f968d816a8adba"
+  },
+  "processed_outputs": {
+    "processed/dong_population_2024q2.parquet": {
+      "rows": 426,
+      "sha256": "b99e248e7362af7c5f145c3b174e9cabada6e0585c708f09e6c009cc2a01ac5c"
+    },
+    "processed/ridership_2024.parquet": {
+      "rows": 3988480,
+      "sha256": "b355e22f64500fd2eebbd57d50ec3e8d91be0a5c8abb0d79d8a3ec283c21b035"
+    },
+    "processed/station_dong_map.parquet": {
+      "rows": 258,
+      "sha256": "772fad38688a6db4a0b0c5f304b2b2445321a114caefd35d84a8a7340fd41516"
+    },
+    "processed/station_master.parquet": {
+      "rows": 274,
+      "sha256": "8bca3bf847126c3624048b9ffce4103b5aa0142f43c432b4b1610cd381ea289d"
+    }
+  },
+  "publication": {
+    "method": "all gates before publication; single writer lock; rollback on replace failure; summary committed last",
+    "published": true,
+    "used_staging": true
+  },
+  "raw_file_count": 12,
+  "source_station_diagnostics": {
+    "approved_disposition": "only exact pinned Task5 collision rows are excluded spatially; original ERROR and coordinates remain in source exception evidence",
+    "original_findings": [
+      {
+        "code": "VERIFIED_TRANSFER_COORDINATE",
+        "dataset_id": "station",
+        "message": "verified physical transfer member rows: 2",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "INFO"
+      },
+      {
+        "code": "VERIFIED_TRANSFER_COORDINATE",
+        "dataset_id": "station",
+        "message": "verified physical transfer member rows: 2",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "INFO"
+      },
+      {
+        "code": "VERIFIED_TRANSFER_COORDINATE",
+        "dataset_id": "station",
+        "message": "verified physical transfer member rows: 2",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "INFO"
+      },
+      {
+        "code": "DUPLICATE_COORDINATE",
+        "dataset_id": "station",
+        "message": "unverified or conflicting coordinate pair; review source identities: 2",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "ERROR"
+      },
+      {
+        "code": "CRS_UNVERIFIED",
+        "dataset_id": "station",
+        "message": "source does not explicitly establish coordinate CRS; Task 9 blocked",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "WARNING"
+      },
+      {
+        "code": "TEMPORAL_UNCERTAINTY",
+        "dataset_id": "station",
+        "message": "coordinate reference snapshot is not proven applicable to 2024",
+        "relative_path": "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv",
+        "severity": "WARNING"
+      }
+    ]
+  },
+  "spatial_coverage": {
+    "by_mapping_status": {
+      "BOUNDARY_POINT": {
+        "integrated_rows": 0,
+        "matched_rows": 0,
+        "senior_ridership_all_observations": 0,
+        "senior_ridership_matched_observations": 0,
+        "station_identities": 0,
+        "total_only_rows": 0,
+        "total_ridership_all_observations": 0,
+        "total_ridership_matched_observations": 0
+      },
+      "MAPPED": {
+        "integrated_rows": 3557520,
+        "matched_rows": 3557520,
+        "senior_ridership_all_observations": 426414392,
+        "senior_ridership_matched_observations": 426414392,
+        "station_identities": 243,
+        "total_only_rows": 0,
+        "total_ridership_all_observations": 3089452830,
+        "total_ridership_matched_observations": 3089452830
+      },
+      "MULTIPLE_MATCH": {
+        "integrated_rows": 0,
+        "matched_rows": 0,
+        "senior_ridership_all_observations": 0,
+        "senior_ridership_matched_observations": 0,
+        "station_identities": 0,
+        "total_only_rows": 0,
+        "total_ridership_all_observations": 0,
+        "total_ridership_matched_observations": 0
+      },
+      "ZERO_MATCH": {
+        "integrated_rows": 219600,
+        "matched_rows": 219600,
+        "senior_ridership_all_observations": 20030503,
+        "senior_ridership_matched_observations": 20030503,
+        "station_identities": 15,
+        "total_only_rows": 0,
+        "total_ridership_all_observations": 104442107,
+        "total_ridership_matched_observations": 104442107
+      }
+    },
+    "completion_mode": "strict_point_in_polygon_with_documented_exceptions",
+    "core_preserved": true,
+    "cumulative_coverage_shares": {
+      "integrated_rows": 0.8919488125802311,
+      "matched_rows": 0.8920651159991575,
+      "senior_ridership_all_observations": 0.9210173079899726,
+      "senior_ridership_matched_observations": 0.9210173079899726,
+      "station_identities": 0.8868613138686131,
+      "total_only_rows": 0.0,
+      "total_ridership_all_observations": 0.9354187481779948,
+      "total_ridership_matched_observations": 0.9354187869797308
+    },
+    "cumulative_exclusion_shares": {
+      "integrated_rows": 0.10805118741976893,
+      "matched_rows": 0.10793488400084253,
+      "senior_ridership_all_observations": 0.07898269201002744,
+      "senior_ridership_matched_observations": 0.07898269201002744,
+      "station_identities": 0.11313868613138686,
+      "total_only_rows": 1.0,
+      "total_ridership_all_observations": 0.06458125182200523,
+      "total_ridership_matched_observations": 0.06458121302026924
+    },
+    "cumulative_exclusions": {
+      "integrated_rows": 430960,
+      "matched_rows": 430440,
+      "senior_ridership_all_observations": 36567561,
+      "senior_ridership_matched_observations": 36567561,
+      "station_identities": 31,
+      "total_only_rows": 520,
+      "total_ridership_all_observations": 213295630,
+      "total_ridership_matched_observations": 213295493
+    },
+    "denominators": {
+      "original": {
+        "integrated_rows": 3988480,
+        "matched_rows": 3987960,
+        "senior_ridership_all_observations": 462981953,
+        "senior_ridership_matched_observations": 462981953,
+        "station_identities": 274,
+        "total_only_rows": 520,
+        "total_ridership_all_observations": 3302748460,
+        "total_ridership_matched_observations": 3302748323
+      },
+      "task5_eligible": {
+        "integrated_rows": 3777120,
+        "matched_rows": 3777120,
+        "senior_ridership_all_observations": 446444895,
+        "senior_ridership_matched_observations": 446444895,
+        "station_identities": 258,
+        "total_only_rows": 0,
+        "total_ridership_all_observations": 3193894937,
+        "total_ridership_matched_observations": 3193894937
+      },
+      "task9_mapped": {
+        "integrated_rows": 3557520,
+        "matched_rows": 3557520,
+        "senior_ridership_all_observations": 426414392,
+        "senior_ridership_matched_observations": 426414392,
+        "station_identities": 243,
+        "total_only_rows": 0,
+        "total_ridership_all_observations": 3089452830,
+        "total_ridership_matched_observations": 3089452830
+      }
+    },
+    "population_coverage": {
+      "distinct_ADM_CD": 173,
+      "station_count_distribution": {
+        "1": 124,
+        "2": 34,
+        "3": 10,
+        "4": 4,
+        "5": 1
+      },
+      "stations_per_ADM_CD": {
+        "11010530": 2,
+        "11010570": 1,
+        "11010610": 5,
+        "11010630": 2,
+        "11010670": 2,
+        "11010690": 1,
+        "11010700": 1,
+        "11010730": 1,
+        "11020520": 3,
+        "11020540": 1,
+        "11020550": 1,
+        "11020570": 2,
+        "11020580": 1,
+        "11020590": 3,
+        "11020600": 4,
+        "11020670": 1,
+        "11020690": 1,
+        "11020700": 1,
+        "11020710": 2,
+        "11020720": 2,
+        "11030530": 3,
+        "11030580": 1,
+        "11030650": 1,
+        "11030730": 4,
+        "11030740": 1,
+        "11040520": 1,
+        "11040540": 1,
+        "11040550": 1,
+        "11040560": 2,
+        "11040570": 1,
+        "11040590": 1,
+        "11040660": 1,
+        "11040680": 1,
+        "11040700": 3,
+        "11040720": 1,
+        "11040730": 1,
+        "11050530": 2,
+        "11050570": 1,
+        "11050590": 4,
+        "11050620": 1,
+        "11050630": 1,
+        "11050650": 1,
+        "11050670": 1,
+        "11060800": 1,
+        "11060810": 4,
+        "11070540": 1,
+        "11070600": 1,
+        "11070620": 1,
+        "11070650": 1,
+        "11070710": 1,
+        "11070720": 1,
+        "11080610": 1,
+        "11080680": 1,
+        "11080770": 1,
+        "11080820": 1,
+        "11080830": 1,
+        "11080850": 1,
+        "11090600": 1,
+        "11090700": 1,
+        "11090710": 1,
+        "11100530": 1,
+        "11100630": 1,
+        "11100650": 1,
+        "11110590": 1,
+        "11110650": 1,
+        "11110660": 1,
+        "11110690": 1,
+        "11110720": 1,
+        "11110760": 1,
+        "11110770": 1,
+        "11110780": 1,
+        "11110790": 3,
+        "11120510": 2,
+        "11120520": 2,
+        "11120550": 1,
+        "11120570": 1,
+        "11120580": 1,
+        "11120650": 1,
+        "11120710": 1,
+        "11130620": 1,
+        "11130640": 1,
+        "11130730": 3,
+        "11130740": 1,
+        "11130750": 1,
+        "11140590": 1,
+        "11140600": 1,
+        "11140660": 3,
+        "11140680": 1,
+        "11140730": 1,
+        "11140740": 1,
+        "11140760": 1,
+        "11140770": 2,
+        "11140780": 1,
+        "11150510": 1,
+        "11150660": 1,
+        "11150700": 1,
+        "11150720": 2,
+        "11160630": 1,
+        "11160690": 1,
+        "11160710": 2,
+        "11160730": 1,
+        "11160740": 1,
+        "11160761": 1,
+        "11170510": 2,
+        "11170540": 2,
+        "11170550": 1,
+        "11170690": 1,
+        "11170730": 1,
+        "11180510": 1,
+        "11190540": 2,
+        "11190550": 2,
+        "11190560": 1,
+        "11190610": 1,
+        "11190680": 2,
+        "11190710": 1,
+        "11190740": 2,
+        "11190760": 1,
+        "11200530": 2,
+        "11200540": 1,
+        "11200630": 2,
+        "11200650": 1,
+        "11200680": 1,
+        "11200730": 1,
+        "11210620": 1,
+        "11210680": 1,
+        "11210690": 1,
+        "11210800": 2,
+        "11220510": 2,
+        "11220530": 2,
+        "11220540": 1,
+        "11220550": 1,
+        "11220570": 1,
+        "11220600": 2,
+        "11220620": 2,
+        "11220630": 2,
+        "11220650": 1,
+        "11230510": 1,
+        "11230511": 1,
+        "11230520": 1,
+        "11230530": 2,
+        "11230580": 1,
+        "11230600": 2,
+        "11230640": 1,
+        "11230650": 1,
+        "11230660": 2,
+        "11230720": 1,
+        "11230750": 1,
+        "11230770": 1,
+        "11230790": 2,
+        "11240520": 1,
+        "11240530": 1,
+        "11240550": 1,
+        "11240570": 1,
+        "11240590": 1,
+        "11240600": 2,
+        "11240630": 1,
+        "11240650": 2,
+        "11240660": 3,
+        "11240690": 1,
+        "11240750": 3,
+        "11240770": 2,
+        "11240780": 1,
+        "11240810": 1,
+        "11240820": 1,
+        "11250530": 1,
+        "11250540": 1,
+        "11250580": 1,
+        "11250610": 1,
+        "11250660": 3,
+        "11250670": 1,
+        "11250740": 1,
+        "11250750": 1,
+        "11250760": 1
+      }
+    },
+    "task5_exclusion_shares": {
+      "integrated_rows": 0.052992618741976895,
+      "matched_rows": 0.05286913609965998,
+      "senior_ridership_all_observations": 0.03571858015813416,
+      "senior_ridership_matched_observations": 0.03571858015813416,
+      "station_identities": 0.058394160583941604,
+      "total_only_rows": 1.0,
+      "total_ridership_all_observations": 0.03295846605284618,
+      "total_ridership_matched_observations": 0.03295842593937788
+    },
+    "task5_exclusions": {
+      "integrated_rows": 211360,
+      "matched_rows": 210840,
+      "senior_ridership_all_observations": 16537058,
+      "senior_ridership_matched_observations": 16537058,
+      "station_identities": 16,
+      "total_only_rows": 520,
+      "total_ridership_all_observations": 108853523,
+      "total_ridership_matched_observations": 108853386
+    },
+    "task9_additional_exclusions": {
+      "integrated_rows": 219600,
+      "matched_rows": 219600,
+      "senior_ridership_all_observations": 20030503,
+      "senior_ridership_matched_observations": 20030503,
+      "station_identities": 15,
+      "total_only_rows": 0,
+      "total_ridership_all_observations": 104442107,
+      "total_ridership_matched_observations": 104442107
+    },
+    "task9_incremental_shares_of_eligible": {
+      "integrated_rows": 0.05813953488372093,
+      "matched_rows": 0.05813953488372093,
+      "senior_ridership_all_observations": 0.04486668617859322,
+      "senior_ridership_matched_observations": 0.04486668617859322,
+      "station_identities": 0.05813953488372093,
+      "total_only_rows": null,
+      "total_ridership_all_observations": 0.03270054559092718,
+      "total_ridership_matched_observations": 0.03270054559092718
+    },
+    "task9_incremental_shares_of_original": {
+      "integrated_rows": 0.05505856867779204,
+      "matched_rows": 0.05506574790118256,
+      "senior_ridership_all_observations": 0.043264111851893286,
+      "senior_ridership_matched_observations": 0.043264111851893286,
+      "station_identities": 0.05474452554744526,
+      "total_only_rows": 0.0,
+      "total_ridership_all_observations": 0.031622785769159056,
+      "total_ridership_matched_observations": 0.031622787080891356
+    }
+  },
+  "station_master_scope_counts": {
+    "IN_CURRENT_STUDY_AREA": 243,
+    "OUTSIDE_CURRENT_STUDY_AREA": 15,
+    "UNRESOLVED_STUDY_AREA_STATUS": 16
+  },
+  "status": "PIPELINE PASSED WITH WARNINGS",
+  "study_area": {
+    "boundary_source": "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shp",
+    "current_empirical_scope": "Seoul is the current validated case study; transport core coverage remains broader.",
+    "future_extension": "Comparable boundaries, population, transport, climate-response layers and a validated regional weather assignment are required; no other region is currently implemented.",
+    "id": "seoul_2024",
+    "label": "Seoul Special City",
+    "weather_scope": "Validated Seoul ASOS 108 input; no exposure assignment to stations outside the current study area."
+  },
+  "study_area_counts": {
+    "IN_CURRENT_STUDY_AREA": 243,
+    "OUTSIDE_CURRENT_STUDY_AREA": 15,
+    "UNRESOLVED_STUDY_AREA_STATUS": 0
+  },
+  "supplementary_population_diagnostics": {
+    "original_findings": [
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강남구/도곡1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강남구/삼성1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강동구/둔촌1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "강북구/수유1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "관악구/서원동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "광진구/중곡3동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "구로구/구로3동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "노원구/하계2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "도봉구/쌍문4동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "동대문구/답십리2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "마포구/망원1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "마포구/서교동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "서초구/반포본동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "성동구/응봉동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "영등포구/신길7동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "용산구/효창동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/가회동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/교남동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/숭인2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/이화동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/종로5·6가동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/창신1동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/창신2동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "종로구/창신3동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "중구/광희동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "INVALID_POPULATION",
+        "dataset_id": "population",
+        "message": "중구/을지로동: nonnegative integer people required",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      },
+      {
+        "code": "HIERARCHY_COVERAGE",
+        "dataset_id": "population",
+        "message": "verified gu/dong coverage differs from target",
+        "relative_path": "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls",
+        "severity": "ERROR"
+      }
+    ],
+    "primary_source": "population_direct_65_plus",
+    "rejected_rows": 8370,
+    "role": "validation/supplementary only; no competing primary population output",
+    "valid_dongs": 400
+  },
+  "task10_human_review": "PENDING",
+  "task10_status": "COMPLETE",
+  "task11_status": "NOT STARTED",
+  "task5": {
+    "coverage": {
+      "by_exclusion_reason": {
+        "NO_ACCEPTED_COORDINATE": {
+          "integrated_rows": 6400,
+          "matched_rows": 5880,
+          "senior_ridership_all_observations": 269873,
+          "senior_ridership_matched_observations": 269873,
+          "station_identities": 2,
+          "total_only_rows": 520,
+          "total_ridership_all_observations": 1495597,
+          "total_ridership_matched_observations": 1495460
+        },
+        "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY": {
+          "integrated_rows": 175680,
+          "matched_rows": 175680,
+          "senior_ridership_all_observations": 13145793,
+          "senior_ridership_matched_observations": 13145793,
+          "station_identities": 12,
+          "total_only_rows": 0,
+          "total_ridership_all_observations": 82367083,
+          "total_ridership_matched_observations": 82367083
+        },
+        "UNRESOLVED_SOURCE_COORDINATE_COLLISION": {
+          "integrated_rows": 29280,
+          "matched_rows": 29280,
+          "senior_ridership_all_observations": 3121392,
+          "senior_ridership_matched_observations": 3121392,
+          "station_identities": 2,
+          "total_only_rows": 0,
+          "total_ridership_all_observations": 24990843,
+          "total_ridership_matched_observations": 24990843
+        }
+      },
+      "by_status": {
+        "ELIGIBLE": {
+          "integrated_rows": 3469680,
+          "matched_rows": 3469680,
+          "senior_ridership_all_observations": 427337965,
+          "senior_ridership_matched_observations": 427337965,
+          "station_identities": 237,
+          "total_only_rows": 0,
+          "total_ridership_all_observations": 3045946574,
+          "total_ridership_matched_observations": 3045946574
+        },
+        "ELIGIBLE_CODE_WARNING": {
+          "integrated_rows": 307440,
+          "matched_rows": 307440,
+          "senior_ridership_all_observations": 19106930,
+          "senior_ridership_matched_observations": 19106930,
+          "station_identities": 21,
+          "total_only_rows": 0,
+          "total_ridership_all_observations": 147948363,
+          "total_ridership_matched_observations": 147948363
+        },
+        "EXCLUDED_COORDINATE": {
+          "integrated_rows": 35680,
+          "matched_rows": 35160,
+          "senior_ridership_all_observations": 3391265,
+          "senior_ridership_matched_observations": 3391265,
+          "station_identities": 4,
+          "total_only_rows": 520,
+          "total_ridership_all_observations": 26486440,
+          "total_ridership_matched_observations": 26486303
+        },
+        "EXCLUDED_IDENTITY": {
+          "integrated_rows": 175680,
+          "matched_rows": 175680,
+          "senior_ridership_all_observations": 13145793,
+          "senior_ridership_matched_observations": 13145793,
+          "station_identities": 12,
+          "total_only_rows": 0,
+          "total_ridership_all_observations": 82367083,
+          "total_ridership_matched_observations": 82367083
+        },
+        "EXCLUDED_TEMPORAL": {
+          "integrated_rows": 0,
+          "matched_rows": 0,
+          "senior_ridership_all_observations": 0,
+          "senior_ridership_matched_observations": 0,
+          "station_identities": 0,
+          "total_only_rows": 0,
+          "total_ridership_all_observations": 0,
+          "total_ridership_matched_observations": 0
+        }
+      },
+      "completion_mode": "eligibility_based_with_documented_exclusions",
+      "core_preserved": true,
+      "denominators": {
+        "integrated_rows": 3988480,
+        "matched_rows": 3987960,
+        "senior_ridership_all_observations": 462981953,
+        "senior_ridership_matched_observations": 462981953,
+        "station_identities": 274,
+        "total_only_rows": 520,
+        "total_ridership_all_observations": 3302748460,
+        "total_ridership_matched_observations": 3302748323
+      },
+      "exclusion_reasons": {
+        "NO_ACCEPTED_COORDINATE": 2,
+        "NO_ADOPTED_UNIQUE_COORDINATE_IDENTITY": 12,
+        "UNRESOLVED_SOURCE_COORDINATE_COLLISION": 2
+      },
+      "exclusion_shares": {
+        "excluded_senior_ridership_matched_share": 0.03571858015813416,
+        "excluded_senior_ridership_share": 0.03571858015813416,
+        "excluded_station_identity_share": 0.058394160583941604,
+        "excluded_total_ridership_matched_share": 0.03295842593937788,
+        "excluded_total_ridership_share": 0.03295846605284618
+      },
+      "exclusions": {
+        "integrated_rows": 211360,
+        "matched_rows": 210840,
+        "senior_ridership_all_observations": 16537058,
+        "senior_ridership_matched_observations": 16537058,
+        "station_identities": 16,
+        "total_only_rows": 520,
+        "total_ridership_all_observations": 108853523,
+        "total_ridership_matched_observations": 108853386
+      },
+      "limitation": "eligibility contract finalized; unresolved source problems remain; spatial results need not represent all core station identities",
+      "spatial_subset_statuses": [
+        "ELIGIBLE",
+        "ELIGIBLE_CODE_WARNING"
+      ],
+      "task5_status": "COMPLETE"
+    },
+    "station_identities": 274,
+    "status_counts": {
+      "ELIGIBLE": 237,
+      "ELIGIBLE_CODE_WARNING": 21,
+      "EXCLUDED_COORDINATE": 4,
+      "EXCLUDED_IDENTITY": 12,
+      "EXCLUDED_TEMPORAL": 0
+    }
+  },
+  "task6": {
+    "ADM_CD_bijection": "PASS",
+    "dongs": 426,
+    "old_source_comparison": 400,
+    "population_65_plus": 1785286,
+    "population_total": 9619861
+  },
+  "task8": {
+    "ambiguous_rejected": 0,
+    "input_accounting": {
+      "senior_ridership": {
+        "duplicate_keys": 0,
+        "integrated_sums_by_join_status": {
+          "ambiguous_rejected": 0,
+          "matched": 462981953,
+          "senior_only": 0,
+          "total_only": 0
+        },
+        "long_rows": 3987960,
+        "raw_rows": 199398,
+        "ridership_sum": 462981953
+      },
+      "total_ridership": {
+        "duplicate_keys": 0,
+        "integrated_sums_by_join_status": {
+          "ambiguous_rejected": 0,
+          "matched": 3302748323,
+          "senior_only": 0,
+          "total_only": 137
+        },
+        "long_rows": 3988480,
+        "raw_rows": 199424,
+        "ridership_sum": 3302748460
+      }
+    },
+    "integrated_rows": 3988480,
+    "matched": 3987960,
+    "senior_excess": 3,
+    "senior_only": 0,
+    "total_only": 520
+  },
+  "task9": {
+    "BOUNDARY_POINT": 0,
+    "MAPPED": 243,
+    "MULTIPLE_MATCH": 0,
+    "ZERO_MATCH": 15,
+    "eligible": 258,
+    "human_approved_on": "2026-10-07"
+  },
+  "validation_outputs": [
+    "validation/data_quality_report.csv",
+    "validation/join_report.csv",
+    "validation/exceptions_ridership.csv",
+    "validation/exceptions_station.csv",
+    "validation/exceptions_spatial.csv",
+    "validation/pipeline_summary.json"
+  ],
+  "year": 2024,
+  "zero_match_union_check": {
+    "method": "independent configured validated boundary union contains/touches; longitude=x latitude=y",
+    "outside_union": 15,
+    "unresolved": 0,
+    "zero_match": 15
+  }
+}

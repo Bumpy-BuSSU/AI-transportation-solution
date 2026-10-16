@@ -1,0 +1,213 @@
+year: 2024
+contracts:
+  boundary:
+    primary_file: "bnd_dong_11_2024_2Q.shp"
+    format: "shapefile"
+    row_count: 426
+    crs: "EPSG:5179"
+    geometry_types:
+      - "Polygon"
+    columns:
+      - "BASE_DATE"
+      - "ADM_NM"
+      - "ADM_CD"
+      - "geometry"
+    notes:
+      - "Shapefile sidecar(.dbf, .shx, .prj, .cpg)는 동일 Raw 데이터셋의 구성 파일이므로 함께 보존한다."
+
+  population:
+    primary_file: "201_DT_201003_A010006_20261005224604.xls"
+    format: "spreadsheetml"
+    encoding: "euc-kr"
+    worksheet_names:
+      - "데이터"
+      - "메타정보"
+    selected_sheet: "데이터"
+    title_row_count: 1
+    row_count: 8136
+    columns:
+      - "동별"
+      - "연령별"
+      - "항목"
+      - "단위"
+      - "2024. 2/4"
+      - "2024. 3/4"
+      - "2024. 4/4"
+    notes:
+      - "이 .xls 파일의 실제 형식은 legacy binary XLS가 아니라 SpreadsheetML(XML)이다."
+      - "Stage 1은 관측된 source schema만 고정하며 연령 합산과 자치구+행정동 키 생성은 Stage 2에서 수행한다."
+
+  senior_ridership:
+    primary_file: "서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv"
+    format: "csv"
+    encoding: "cp949"
+    row_count: 199398
+    columns:
+      - "연번"
+      - "수송일자"
+      - "역번호"
+      - "역명"
+      - "승하차구분"
+      - "06시간대이전"
+      - "06-07시간대"
+      - "07-08시간대"
+      - "08-09시간대"
+      - "09-10시간대"
+      - "10-11시간대"
+      - "11-12시간대"
+      - "12-13시간대"
+      - "13-14시간대"
+      - "14-15시간대"
+      - "15-16시간대"
+      - "16-17시간대"
+      - "17-18시간대"
+      - "18-19시간대"
+      - "19-20시간대"
+      - "20-21시간대"
+      - "21-22시간대"
+      - "22-23시간대"
+      - "23-24시간대"
+      - "24시간대이후"
+    notes:
+      - "source에는 호선 컬럼이 없다."
+      - "total_ridership와 양 끝 시간대 컬럼명이 다르므로 Stage 2에서 명시적으로 정규화한다."
+
+  shelter:
+    primary_file: "서울시 기후동행쉼터.csv"
+    format: "csv"
+    encoding: "cp949"
+    row_count: 412
+    columns:
+      - "순번"
+      - "쉼터_구분"
+      - "쉼터명"
+      - "구이름"
+      - "도로명주소"
+      - "X좌표(EPSG:5186)"
+      - "Y좌표(EPSG:5186)"
+      - "운영시간"
+    notes:
+      - "좌표 컬럼명에 EPSG:5186이 명시되어 있으나 CSV 자체에는 내장 CRS metadata가 없다."
+      - "Raw schema만으로 snapshot 기준시점을 확정할 수 없으며 412행이라는 사실로 2024년 현황을 추정하지 않는다."
+
+  station:
+    primary_file: "서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv"
+    format: "csv"
+    encoding: "cp949"
+    row_count: 276
+    columns:
+      - "연번"
+      - "호선"
+      - "고유역번호(외부역코드)"
+      - "역명"
+      - "위도"
+      - "경도"
+      - "작성일자"
+      - "작성기준일"
+    notes:
+      - "Stage 1은 위도/경도 컬럼의 존재만 기록하며 CSV snapshot에 내장되지 않은 CRS를 임의로 확정하지 않는다."
+      - "역코드는 데이터셋 간 단독 primary key로 사용하지 않는다."
+
+  total_ridership:
+    primary_file: "서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv"
+    format: "csv"
+    encoding: "cp949"
+    row_count: 199424
+    columns:
+      - "연번"
+      - "수송일자"
+      - "호선"
+      - "역번호"
+      - "역명"
+      - "승하차구분"
+      - "06시이전"
+      - "06-07시간대"
+      - "07-08시간대"
+      - "08-09시간대"
+      - "09-10시간대"
+      - "10-11시간대"
+      - "11-12시간대"
+      - "12-13시간대"
+      - "13-14시간대"
+      - "14-15시간대"
+      - "15-16시간대"
+      - "16-17시간대"
+      - "17-18시간대"
+      - "18-19시간대"
+      - "19-20시간대"
+      - "20-21시간대"
+      - "21-22시간대"
+      - "22-23시간대"
+      - "23-24시간대"
+      - "24시이후"
+    notes:
+      - "senior_ridership와 양 끝 시간대 컬럼명이 다르므로 Stage 2에서 명시적으로 정규화한다."
+
+  weather:
+    primary_file: "OBS_ASOS_DD_20261003150614.csv"
+    format: "csv"
+    encoding: "cp949"
+    row_count: 366
+    columns:
+      - "지점"
+      - "지점명"
+      - "일시"
+      - "평균기온(°C)"
+      - "최저기온(°C)"
+      - "최고기온(°C)"
+      - "일강수량(mm)"
+      - "최대 풍속(m/s)"
+      - "평균 풍속(m/s)"
+      - "평균 상대습도(%)"
+      - "일 최심신적설(cm)"
+      - "일 최심적설(cm)"
+    notes:
+      - "강수·적설 빈값의 의미는 Stage 1에서 결정하지 않으며 0으로 자동 대체하지 않는다."
+
+  population_direct_65_plus:
+    primary_file: 201_DT_201004_O020003_2024Q2_20261006.csv
+    format: csv
+    encoding: utf-8-sig
+    title_row_count: 1
+    columns:
+    - A 동별
+    - 001 세대 (14STD05266 세대)
+    - 002 계 (14210.MT0047 명)
+    - 002001 남자
+    - 002002 여자
+    - 003 한국인 (14999671.ga028 명)
+    - 003001 남자
+    - 003002 여자
+    - 006 65세이상고령자 (14999671.ga028 명)
+    row_count: 452
+    reference_period_header:
+    - A 동별
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    - Q202402 2024 2/4
+    reference_period: 2024 Q2
+    reference_date: '2024-06-30'
+    unit: 명
+    sha256: e48f83ca75f7f92a5a83e39834440c0f3149ace1113c3533102797e4d0338d76
+    source_role: primary
+    table_id: DT_201004_O020003
+    geography_column: A 동별
+    total_column: 002 계 (14210.MT0047 명)
+    senior_column: 006 65세이상고령자 (14999671.ga028 명)
+    expected_gu: 25
+    expected_dong: 426
+    source_url: https://stat.eseoul.go.kr/statHtml/statHtml.do?orgId=201&tblId=DT_201004_O020003&conn_path=I2
+    notes:
+    - Approved P-S2-2RB extension of original 7 datasets / 11 files; direct aggregate,
+      no age-band imputation.
+    - One Seoul total, 25 gu and 426 dong; code lengths 3/6/9 retain explicit parents,
+      never treated as SGIS codes.
+    - Both adopted measure headers explicitly state people (명); 65+ includes foreigners
+      per official metadata.
+    - Statistical symbols remain nonnumeric; all required dong measure cells must be
+      numeric.

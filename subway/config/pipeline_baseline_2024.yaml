@@ -1,0 +1,42 @@
+schema_version: 1
+year: 2024
+task5:
+  station_identities: 274
+  status_counts:
+    ELIGIBLE: 237
+    ELIGIBLE_CODE_WARNING: 21
+    EXCLUDED_IDENTITY: 12
+    EXCLUDED_COORDINATE: 4
+    EXCLUDED_TEMPORAL: 0
+task6:
+  dongs: 426
+  population_total: 9619861
+  population_65_plus: 1785286
+  old_source_comparison: 400
+task8:
+  integrated_rows: 3988480
+  matched: 3987960
+  total_only: 520
+  senior_only: 0
+  ambiguous_rejected: 0
+  senior_excess: 3
+task9:
+  eligible: 258
+  MAPPED: 243
+  ZERO_MATCH: 15
+  BOUNDARY_POINT: 0
+  MULTIPLE_MATCH: 0
+accepted_hashes:
+  subway/config/datasets.yaml: 9c075f05068f7582734aeafaf7863f19513bfcbd7bc8685d8e7b215a9825730b
+  subway/config/source_contracts_2024.yaml: d461bba246ba55109d2f725adadd292ed456da8f180299e6569e4f822f164450
+  subway/config/validation_rules.yaml: 745cd1121a144c50c9217a05a47c1f2e1e37fb58f25fd8b48621fc2286008e1f
+  subway/config/station_aliases.csv: e76c5a6ff8f4ba76902d4bba02cd0de3704044750ea7abc0aa5fa9e6f18250d1
+  subway/config/spatial_eligibility_2024.yaml: c2047661ff1f30693e9055ae74eedd55622c28ba2b3dbb2f294cb797e57e671e
+  subway/data_manifest.csv: ac6dd97660dffb53e5190c368326758488b3e43deaff4289e5d91448a4dd5b65
+  subway/data/validation/task5_spatial_eligibility.csv: d5fa6b5843d1be0ea399d27abe3f6c7dfa9414a91f7bd6deb25b7b03c759b080
+  subway/data/validation/task5_spatial_eligibility_summary.json: 6bdcd7d659dcaef82dd9b369fe2c9874850ebc5f575a814292e02272c9577fcc
+  subway/data/validation/task5_spatial_exclusions.csv: 7e42d7a3dd6a985fb3493f58edb858239a9a0240b97c8a44572dbc1899dbc12b
+  subway/data/validation/task9_station_dong_map.csv: b6f037c1fcc3df0ba16dc65d38d366f2da4168f5b297977f835b0cec56c3d05e
+  subway/data/validation/task9_station_dong_exceptions.csv: 550d3623b7def2b3733b40834c9ae6e53b20e90367088de4671b10566aa15462
+  subway/data/validation/task9_spatial_summary.json: 6586d4cda7926058c28f281f71c7a18cb6902ccf84f67eb6403fb0d2dcc52edd
+  subway/data/validation/batch2rc_station_candidate_mapping.csv: d4dc9f56b8ae49838a73929fddcc93aead3e481960990c2d7eea7761aabbd694

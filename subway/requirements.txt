@@ -1,0 +1,6 @@
+pandas
+pyarrow
+openpyxl
+geopandas
+shapely
+pyyaml

@@ -1,0 +1,131 @@
+{
+  "adopted_aliases": [
+    {
+      "dataset_id": "senior_ridership",
+      "evidence": "P-S2-B1A human-reviewed source alias; provider=서울교통공사; senior_file=subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv; total_file=subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv; raw_name=교대(법원·검찰청); canonical_2024_total_name=교대(법원.검찰청); same source codes and unique total code/name/line=223:2호선|330:3호선; no contradictory candidate; line assigned only by code+canonical name; human-reviewed middle-dot/period source punctuation variant",
+      "line": "",
+      "station_name": "교대(법원.검찰청)",
+      "station_name_raw": "교대(법원·검찰청)",
+      "verified": "true"
+    },
+    {
+      "dataset_id": "senior_ridership",
+      "evidence": "P-S2-B1A human-reviewed source alias; provider=서울교통공사; senior_file=subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv; total_file=subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv; raw_name=남한산성입구(성남법원·검찰청); canonical_2024_total_name=남한산성입구(성남법원.검찰청); same source codes and unique total code/name/line=2823:8호선; no contradictory candidate; line assigned only by code+canonical name; human-reviewed middle-dot/period source punctuation variant",
+      "line": "",
+      "station_name": "남한산성입구(성남법원.검찰청)",
+      "station_name_raw": "남한산성입구(성남법원·검찰청)",
+      "verified": "true"
+    },
+    {
+      "dataset_id": "senior_ridership",
+      "evidence": "P-S2-B1A human-reviewed source alias; provider=서울교통공사; senior_file=subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv; total_file=subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv; raw_name=불암산; canonical_2024_total_name=당고개; same source codes and unique total code/name/line=409:4호선; no contradictory candidate; line assigned only by code+canonical name; 서울특별시고시 제2024-521호 도시철도 역명 개정 확정 고시 (2024-10-31); official supporting document=https://www.g2b.go.kr/fs/fsc/fsca/fileUpload.do?k00=a2MMYzianzwExorC2swMQwxC2swNQwwC2syNgwvZGF0YS9BdHRhY2hmaWxlcy9wbnBlLzIwMjUvMDQvMTUvNzQzZjlkN2UwMDZmNDAzMGIwYjFkMmQ2OTAwYmYyNTAucGRmC2szMQwxLuqzvOyXheyngOyLnOyEnCjqs7XthrUpLnBkZgtrMjEMNWVhYzA2ZTktZTk2OC00N2M3LTk3MDYtN2I1ZmM3MTA4NzgwLDE%3D",
+      "line": "",
+      "station_name": "당고개",
+      "station_name_raw": "불암산",
+      "verified": "true"
+    },
+    {
+      "dataset_id": "senior_ridership",
+      "evidence": "P-S2-B1A human-reviewed source alias; provider=서울교통공사; senior_file=subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv; total_file=subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv; raw_name=삼각지(전쟁기념관); canonical_2024_total_name=삼각지; same source codes and unique total code/name/line=2629:6호선|428:4호선; no contradictory candidate; line assigned only by code+canonical name; 서울특별시고시 제2024-521호 도시철도 역명 개정 확정 고시 (2024-10-31); official supporting document=https://www.g2b.go.kr/fs/fsc/fsca/fileUpload.do?k00=a2MMYzianzwExorC2swMQwxC2swNQwwC2syNgwvZGF0YS9BdHRhY2hmaWxlcy9wbnBlLzIwMjUvMDQvMTUvNzQzZjlkN2UwMDZmNDAzMGIwYjFkMmQ2OTAwYmYyNTAucGRmC2szMQwxLuqzvOyXheyngOyLnOyEnCjqs7XthrUpLnBkZgtrMjEMNWVhYzA2ZTktZTk2OC00N2M3LTk3MDYtN2I1ZmM3MTA4NzgwLDE%3D",
+      "line": "",
+      "station_name": "삼각지",
+      "station_name_raw": "삼각지(전쟁기념관)",
+      "verified": "true"
+    },
+    {
+      "dataset_id": "senior_ridership",
+      "evidence": "P-S2-B1A human-reviewed source alias; provider=서울교통공사; senior_file=subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv; total_file=subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv; raw_name=종로3가(탑골공원); canonical_2024_total_name=종로3가; same source codes and unique total code/name/line=2535:5호선|319:3호선; no contradictory candidate; line assigned only by code+canonical name; human-reviewed adjunct/base-name source variant; not an official renaming claim",
+      "line": "",
+      "station_name": "종로3가",
+      "station_name_raw": "종로3가(탑골공원)",
+      "verified": "true"
+    }
+  ],
+  "alias_adopted_count": 5,
+  "alias_affected_raw_rows": 5856,
+  "alias_applied_raw_rows": 5856,
+  "ambiguous_candidate_count": 0,
+  "baseline_before_batch1a": {
+    "alias_adopted_count": 0,
+    "line_assignment_coverage": 0.9706316011193693,
+    "matched_raw_rows": 193542,
+    "senior_exact_matched_unique_keys": 265,
+    "unmatched_raw_rows": 5856,
+    "unresolved_unique_keys": 8
+  },
+  "baseline_commit": "5b5fd6073c1e73105df480b56c42d96cd5eef4b7",
+  "batch": "Stage 2 Batch 1 Tasks 1-3",
+  "candidate_unique_keys": 8,
+  "canonical_name_policy": "Freeze verified physical-station identity to 2024 total_ridership labels; preserve source raw name; rename dates are provenance, not ID splits",
+  "code_line_contradiction_count": 0,
+  "code_name_mismatch_candidate_keys": 8,
+  "config_hashes": {
+    "subway/config/source_contracts_2024.yaml": "06afddf9d669f948184a1f06cb462cd5e19804843932e675e35ef0429cef7e10",
+    "subway/config/station_aliases.csv": "c3181cf850c8f69f5a26dca4bc27cf4f1c30b76eb67c7ff65f947dee2fd5aa98",
+    "subway/config/validation_rules.yaml": "bb5e4c7494bf7fba4a33f02749918de242c2e1913f137209691756e85164b80e"
+  },
+  "findings": [],
+  "line_assignment_coverage": 1.0,
+  "matched_raw_rows": 199398,
+  "output_hashes": {
+    "batch1_crosswalk_diagnostics.csv": "6e4dbefce1fb3ad6ffd074b1049a4517a4a5c09c54835ea7f98b247c65aafae5"
+  },
+  "prompt_reference": "P-S2-B1A: Task 3 crosswalk evidence resolution and Batch 1 hardening",
+  "raw_hashes": {
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.dbf": "f1191dd2ae5ca1f5fd1e3977cb3e6150630ad6d066a977935ea42fb317088b74",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.prj": "0c549431311685a7f58ce669878c50db7b4d77d5b27e4a3c942067b8654bbe48",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shp": "1f88299a67d115f3fa1321ffedd2c219e70cfbe74da052c7de3c265c87ea0a22",
+    "subway/data/raw/2024/boundary/bnd_dong_11_2024_2Q.shx": "99b202c58f50075c1d1e68e7cc4bd3baf64676669fe9681ebaf6d1438d640455",
+    "subway/data/raw/2024/population/201_DT_201003_A010006_20261005224604.xls": "462ae9c5916fd3c8adac8250bf14d5b2e358988f0bd1b17c996604a25d320abc",
+    "subway/data/raw/2024/senior_ridership/서울교통공사_역별 일별 시간대별 노인 승하차인원 정보_20260831.csv": "3a21980c02827ff2a97c6bdb824313f2dbeb87e61989af21daab7bc30c2bead7",
+    "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv": "acba50585ee981d56502fc9a1f09b4be9f57edeedda00507015bd590eb6bc97b",
+    "subway/data/raw/2024/station/서울교통공사_1_8호선 역사 좌표(위경도) 정보_20260917.csv": "30e2eb633ac78904029b69fb0b9c48d3aee74b1493e93469af42837697421d08",
+    "subway/data/raw/2024/total_ridership/서울교통공사_역별 일별 시간대별 승하차인원 정보_20260831.csv": "2cb197ee17b5ed95c7c54ae05a3688a336ee0d0908416c8ab7af905e1296ff72",
+    "subway/data/raw/2024/weather/OBS_ASOS_DD_20261003150614.csv": "b8826c28c9dabd0ab66fcc775e651eb1e2764bd1f1f3b9748f164592b7e8aade"
+  },
+  "ridership_clean": {
+    "senior_ridership": {
+      "bins": 20,
+      "exception_rows": 0,
+      "findings": [],
+      "long_rows": 3987960,
+      "long_sum": 462981953,
+      "raw_rows": 199398,
+      "raw_sum": 462981953,
+      "source_row_count": 199398
+    },
+    "total_ridership": {
+      "bins": 20,
+      "exception_rows": 0,
+      "findings": [],
+      "long_rows": 3988480,
+      "long_sum": 3302748460,
+      "raw_rows": 199424,
+      "raw_sum": 3302748460,
+      "source_row_count": 199424
+    }
+  },
+  "senior_alias_matched_unique_keys": 8,
+  "senior_exact_matched_unique_keys": 265,
+  "senior_exact_unmatched_unique_keys": 8,
+  "senior_raw_rows": 199398,
+  "senior_unique_keys": 273,
+  "task1_status": "COMPLETE",
+  "task2_status": "COMPLETE",
+  "task3_pipeline_status": "PIPELINE PASSED",
+  "task3_status": "COMPLETE",
+  "total_multiline_key_count": 0,
+  "total_unique_keys": 274,
+  "unmatched_raw_rows": 0,
+  "unresolved_unique_keys": 0,
+  "writer_environment": {
+    "geopandas": "1.2.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "python": "3.11.9",
+    "shapely": "2.1.2"
+  },
+  "year": 2024
+}

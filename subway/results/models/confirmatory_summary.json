@@ -1,0 +1,103 @@
+{
+  "alighting_sample": {
+    "cold_primary_days": 37,
+    "cold_sensitivity_days": 20,
+    "dates": 366,
+    "event": "alighting",
+    "extreme_threshold_status": "FROZEN_PRE_FIT",
+    "h1_rows": 732,
+    "h2_rows": 1464,
+    "hot_primary_days": 37,
+    "hot_sensitivity_days": 19,
+    "model_status": "NOT_FITTED",
+    "source_valid_event_cells": 1778760,
+    "year": 2024
+  },
+  "analysis_base_sha256": "12831b210bf4ae4a9e8376fd111056cff6f32064f948de6cfd3c3b8e91a29675",
+  "boarding_sample": {
+    "cold_primary_days": 37,
+    "cold_sensitivity_days": 20,
+    "dates": 366,
+    "event": "boarding",
+    "extreme_threshold_status": "FROZEN_PRE_FIT",
+    "h1_rows": 732,
+    "h2_rows": 1464,
+    "hot_primary_days": 37,
+    "hot_sensitivity_days": 19,
+    "model_status": "NOT_FITTED",
+    "source_valid_event_cells": 1778759,
+    "year": 2024
+  },
+  "causal_policy_conclusion": false,
+  "code_sha256": "3825bce90404fa18cc2ceb909244dbbd2bc653a062661ea05b08f0f606e22f7b",
+  "config_sha256": "fe86056bb9d07f9e117dee830d79457cd107bdfe2afbfc118291608382ed45a7",
+  "environment": {
+    "matplotlib": "3.10.7",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "python": "3.11.9",
+    "statsmodels": "0.15.0"
+  },
+  "holm_rejections": 0,
+  "model_meta": {
+    "all_ppml_converged": true,
+    "h1_alighting": {
+      "converged": true,
+      "date_clusters": 366,
+      "design_columns": 386,
+      "design_rank": 386,
+      "deviance": 438793.4824608333,
+      "nobs": 732
+    },
+    "h1_p95_p05": {
+      "converged": true,
+      "date_clusters": 366,
+      "design_columns": 386,
+      "design_rank": 386,
+      "deviance": 405979.58899739326,
+      "nobs": 732
+    },
+    "h1_primary": {
+      "converged": true,
+      "date_clusters": 366,
+      "design_columns": 386,
+      "design_rank": 386,
+      "deviance": 405282.85346312384,
+      "nobs": 732
+    },
+    "h2_alighting": {
+      "converged": true,
+      "date_clusters": 366,
+      "design_columns": 426,
+      "design_rank": 426,
+      "deviance": 7566969.15919368,
+      "nobs": 1464
+    },
+    "h2_p95_p05": {
+      "converged": true,
+      "date_clusters": 366,
+      "design_columns": 426,
+      "design_rank": 426,
+      "deviance": 6478252.742886205,
+      "nobs": 1464
+    },
+    "h2_primary": {
+      "converged": true,
+      "date_clusters": 366,
+      "design_columns": 426,
+      "design_rank": 426,
+      "deviance": 6472135.39683857,
+      "nobs": 1464
+    }
+  },
+  "primary_test_count": 4,
+  "runner_sha256": "71ee2fcbba6de69cd367c244bf771de953a9e5bfe96a784ba042e0a421c8a248",
+  "spatial_secondary_started": false,
+  "spec_freeze_sha": "f5433eb98d96d8098c265de0859282dcc53046f1",
+  "stage3a_human_approved_on": "2026-10-07",
+  "status": "CONFIRMATORY H1/H2 COMPLETE",
+  "threshold_changed_after_results": false,
+  "trip_purpose_inferred": false,
+  "year": 2024
+}

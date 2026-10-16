@@ -1,0 +1,247 @@
+schema_version: 1
+year: 2024
+metadata:
+  station_crs: null
+  station_crs_evidence: null
+senior_excess_policy:
+  status: adopted
+  count_threshold: 20
+  rate_threshold: 0.0001
+  rate_denominator: 'matched rows with valid canonical identity, compatible hour bounds, and nonnegative integer counts on both sides; includes excess rows'
+  profile_hour_threshold: 2
+  recurrence_date_threshold: 3
+  concentration_rule: 'ERROR if >=2 excess hour bins in one date/station/boarding profile OR same station/hour/boarding recurs on >=3 distinct dates'
+  evidence: 'P-S2-B3 actual preflight: 3/3987960 cells, 2 stations, 3 dates, 2 hour bins; two Hanam City Hall alighting 15_16 events on distinct dates; no complete multi-hour profile'
+  rationale: 'Operational quality screening, not statistical inference: 20 excess cells equals one full 20-bin source observation; 1 per 10000 valid cells is a material frequency budget. Two affected hours in one source profile flags a broader record mismatch; recurrence on three dates flags persistent station/hour behavior. Each threshold is an independent >= ERROR trigger. Sparse individual rows always remain exceptions with null derived values; WARNING does not certify source accuracy.'
+ridership:
+  boarding_map:
+    승차: boarding
+    하차: alighting
+  line_map:
+    1호선: '1'
+    2호선: '2'
+    3호선: '3'
+    4호선: '4'
+    5호선: '5'
+    6호선: '6'
+    7호선: '7'
+    8호선: '8'
+  time_bins:
+    senior_ridership:
+      06시간대이전:
+        hour_bin: before_06
+        hour_start: null
+        hour_end: 6
+      06-07시간대:
+        hour_bin: '06_07'
+        hour_start: 6
+        hour_end: 7
+      07-08시간대:
+        hour_bin: 07_08
+        hour_start: 7
+        hour_end: 8
+      08-09시간대:
+        hour_bin: 08_09
+        hour_start: 8
+        hour_end: 9
+      09-10시간대:
+        hour_bin: 09_10
+        hour_start: 9
+        hour_end: 10
+      10-11시간대:
+        hour_bin: '10_11'
+        hour_start: 10
+        hour_end: 11
+      11-12시간대:
+        hour_bin: '11_12'
+        hour_start: 11
+        hour_end: 12
+      12-13시간대:
+        hour_bin: '12_13'
+        hour_start: 12
+        hour_end: 13
+      13-14시간대:
+        hour_bin: '13_14'
+        hour_start: 13
+        hour_end: 14
+      14-15시간대:
+        hour_bin: '14_15'
+        hour_start: 14
+        hour_end: 15
+      15-16시간대:
+        hour_bin: '15_16'
+        hour_start: 15
+        hour_end: 16
+      16-17시간대:
+        hour_bin: '16_17'
+        hour_start: 16
+        hour_end: 17
+      17-18시간대:
+        hour_bin: '17_18'
+        hour_start: 17
+        hour_end: 18
+      18-19시간대:
+        hour_bin: '18_19'
+        hour_start: 18
+        hour_end: 19
+      19-20시간대:
+        hour_bin: '19_20'
+        hour_start: 19
+        hour_end: 20
+      20-21시간대:
+        hour_bin: '20_21'
+        hour_start: 20
+        hour_end: 21
+      21-22시간대:
+        hour_bin: '21_22'
+        hour_start: 21
+        hour_end: 22
+      22-23시간대:
+        hour_bin: '22_23'
+        hour_start: 22
+        hour_end: 23
+      23-24시간대:
+        hour_bin: '23_24'
+        hour_start: 23
+        hour_end: 24
+      24시간대이후:
+        hour_bin: after_24
+        hour_start: 24
+        hour_end: null
+    total_ridership:
+      06시이전:
+        hour_bin: before_06
+        hour_start: null
+        hour_end: 6
+      06-07시간대:
+        hour_bin: '06_07'
+        hour_start: 6
+        hour_end: 7
+      07-08시간대:
+        hour_bin: 07_08
+        hour_start: 7
+        hour_end: 8
+      08-09시간대:
+        hour_bin: 08_09
+        hour_start: 8
+        hour_end: 9
+      09-10시간대:
+        hour_bin: 09_10
+        hour_start: 9
+        hour_end: 10
+      10-11시간대:
+        hour_bin: '10_11'
+        hour_start: 10
+        hour_end: 11
+      11-12시간대:
+        hour_bin: '11_12'
+        hour_start: 11
+        hour_end: 12
+      12-13시간대:
+        hour_bin: '12_13'
+        hour_start: 12
+        hour_end: 13
+      13-14시간대:
+        hour_bin: '13_14'
+        hour_start: 13
+        hour_end: 14
+      14-15시간대:
+        hour_bin: '14_15'
+        hour_start: 14
+        hour_end: 15
+      15-16시간대:
+        hour_bin: '15_16'
+        hour_start: 15
+        hour_end: 16
+      16-17시간대:
+        hour_bin: '16_17'
+        hour_start: 16
+        hour_end: 17
+      17-18시간대:
+        hour_bin: '17_18'
+        hour_start: 17
+        hour_end: 18
+      18-19시간대:
+        hour_bin: '18_19'
+        hour_start: 18
+        hour_end: 19
+      19-20시간대:
+        hour_bin: '19_20'
+        hour_start: 19
+        hour_end: 20
+      20-21시간대:
+        hour_bin: '20_21'
+        hour_start: 20
+        hour_end: 21
+      21-22시간대:
+        hour_bin: '21_22'
+        hour_start: 21
+        hour_end: 22
+      22-23시간대:
+        hour_bin: '22_23'
+        hour_start: 22
+        hour_end: 23
+      23-24시간대:
+        hour_bin: '23_24'
+        hour_start: 23
+        hour_end: 24
+      24시이후:
+        hour_bin: after_24
+        hour_start: 24
+        hour_end: null
+
+weather:
+  station_id: '108'
+
+population:
+  unit: 명
+  unit_evidence: 'Raw 메타정보 ○단위=명; data-sheet unit cells are blank'
+  expected_gu: 25
+  expected_dong: 426
+  hierarchy_evidence: 'https://stat.eseoul.go.kr/statHtml/statHtml.do?con=&orgId=201&tblId=DT_201003_A010006'
+  code_evidence: 'https://sgis.mods.go.kr/developer/html/newOpenApi/api/dataApi/addressBoundary.html'
+  gu_names: [종로구, 중구, 용산구, 성동구, 광진구, 동대문구, 중랑구, 성북구, 강북구, 도봉구, 노원구, 은평구, 서대문구, 마포구, 양천구, 강서구, 구로구, 금천구, 영등포구, 동작구, 관악구, 서초구, 강남구, 송파구, 강동구]
+  # Seven explicit source typography relationships; corroborated by full gu
+  # membership sets and SGIS parent codes, never a general punctuation rule.
+  boundary_name_aliases:
+    종로1.2.3.4가동: 종로1·2·3·4가동
+    종로5.6가동: 종로5·6가동
+    금호2.3가동: 금호2·3가동
+    면목3.8동: 면목3·8동
+    상계3.4동: 상계3·4동
+    상계6.7동: 상계6·7동
+    중계2.3동: 중계2·3동
+
+station_coordinate_review:
+  verified_transfer_groups:
+  - members:
+    - - '2'
+      - '200'
+      - 까치산
+    - - '5'
+      - '2519'
+      - 까치산
+    verified: true
+    evidence: KRIC dataset32 S1105 까치산 transfer S1102; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32;
+      official KRIC transfer explanation https://www.kric.go.kr/jsp/board/portal/sub05/knp/railCommonSenceDetail.jsp?p_id1=A010031131&p_id2=182
+  - members:
+    - - '3'
+      - '321'
+      - 충무로
+    - - '4'
+      - '423'
+      - 충무로
+    verified: true
+    evidence: KRIC dataset32 I1103/I1104 충무로 mutual transfer; same road address 퇴계로
+      지하214; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32
+  - members:
+    - - '6'
+      - '2647'
+      - 태릉입구
+    - - '7'
+      - '2719'
+      - 태릉입구
+    verified: true
+    evidence: KRIC dataset32 S1106/S1107 태릉입구 mutual transfer; same road address 동일로
+      지하992-1; https://data.kric.go.kr/rips/M_01_01/detail.do?id=32; physical relation
+      only; station source code disagreement remains a separate identity blocker

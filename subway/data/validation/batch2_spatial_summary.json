@@ -1,0 +1,27 @@
+{
+  "boundary": {
+    "crs": "EPSG:5179",
+    "empty": 0,
+    "findings": [],
+    "gu_count": 25,
+    "missing": 0,
+    "rows": 426,
+    "valid": 426
+  },
+  "shelter": {
+    "crs": "EPSG:5186",
+    "findings": [
+      {
+        "code": "TEMPORAL_UNCERTAINTY",
+        "dataset_id": "shelter",
+        "message": "downloaded rows do not establish a 2024 shelter census",
+        "relative_path": "subway/data/raw/2024/shelter/서울시 기후동행쉼터.csv",
+        "severity": "WARNING"
+      }
+    ],
+    "reference_date": null,
+    "rows": 412,
+    "valid_coordinates": 412
+  },
+  "status": "COMPLETE"
+}
