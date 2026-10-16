@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+<title id="title">닿을 수 있어야, 선택할 수 있습니다.</title><desc id="desc">덜컹덜컹 서울버숭 서울 고령자의 이동선택권 연구</desc>
+<rect width="1280" height="360" rx="20" fill="#f1f7f8"/>
+<g fill="none" stroke-linecap="round"><path d="M1030 0 V95 Q1030 135 1070 135 H1280" stroke="#d5e8ed" stroke-width="18"/><path d="M1170 0 V220 Q1170 270 1220 270 H1280" stroke="#f1d7c1" stroke-width="18"/></g>
+<g fill="#fff" stroke="#9cbec9" stroke-width="5"><circle cx="1030" cy="55" r="10"/><circle cx="1120" cy="135" r="10"/></g><circle cx="1170" cy="180" r="10" fill="#fff" stroke="#d7ad88" stroke-width="5"/>
+<g font-family="NanumGothic, Noto Sans CJK KR, Malgun Gothic, sans-serif"><text x="70" y="68" fill="#39778b" font-size="21" font-weight="700" letter-spacing="1">BUMPY BuSSU · 덜컹덜컹 서울버숭</text>
+<text x="70" y="154" fill="#153c4a" font-size="48" font-weight="700">닿을 수 있어야,</text><text x="70" y="218" fill="#153c4a" font-size="48" font-weight="700">선택할 수 있습니다.</text>
+<text x="70" y="286" fill="#4d6974" font-size="23">서울 고령자의 이동선택권 격차와 행정동별 개선방안</text>
+<text x="70" y="326" fill="#647e88" font-size="17">AI와 함께하는 교통문제 해결을 위한 데이터 분석 공모전</text></g></svg>
